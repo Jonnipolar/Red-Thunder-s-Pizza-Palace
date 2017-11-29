@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1511968920 source:c:\users\notandi\desktop\3viknaafangi\red-thunder-s-pizza-palace\red thunder's pizza palace\main.cpp
+	<iostream>
+	"MainUI.h"
+
+1511969211 c:\users\notandi\desktop\3viknaafangi\red-thunder-s-pizza-palace\red thunder's pizza palace\mainui.h
+	<iostream>
+
+1511969182 source:c:\users\notandi\desktop\3viknaafangi\red-thunder-s-pizza-palace\red thunder's pizza palace\mainui.cpp
+	"MainUI.h"
+
