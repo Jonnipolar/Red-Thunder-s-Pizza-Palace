@@ -14,11 +14,16 @@ void MainUI::startUI() {
         cout << "q: Quit" << endl;                      // ------""-------------
         cin >> selection;                               // user picks
         if(selection == 'c'){                           // if user picks c go to create topping list class
-
+            manager_sub_ui();
         }else if(selection == 's'){                     // if user picks s go to set prize class
 
         }else if(selection == 'p'){                     // if user picks p go to make pizza class
 
         }
     }
+}
+void MainUI::manager_sub_ui() {
+
+    MakeToppingsList toppings;
+    cin >> toppings;
 }
