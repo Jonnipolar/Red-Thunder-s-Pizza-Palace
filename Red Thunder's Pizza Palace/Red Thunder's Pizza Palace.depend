@@ -217,3 +217,17 @@
 1512397192 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\ui\order_ui.cpp
 	"Order_UI.h"
 
+1512416822 source:c:\users\villi\dropbox\skólagit\red-thunder-s-pizza-palace\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\mainui.h
+	<iostream>
+	<string>
+	"Manager_Sub_UI.h"
+	"Order_UI.h"
+
+1512419510 c:\users\villi\dropbox\skólagit\red-thunder-s-pizza-palace\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\manager_sub_ui.h
+	"MakeToppingsList.h"
+	<iostream>
+	<string>
+
+1512416822 c:\users\villi\dropbox\skólagit\red-thunder-s-pizza-palace\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\order_ui.h
+	<iostream>
+

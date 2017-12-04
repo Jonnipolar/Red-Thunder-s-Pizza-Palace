@@ -34,17 +34,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Repositories/ToppingsRepository.h" />
+		<Unit filename="include/Models/Toppings.h" />
+		<Unit filename="include/Repository/ToppingsRepository.h" />
 		<Unit filename="include/Services/MakeToppingsList.h" />
-		<Unit filename="include/Services/Pizza.h" />
 		<Unit filename="include/UI/MainUI.h" />
 		<Unit filename="include/UI/Manager_Sub_UI.h" />
+		<Unit filename="include/UI/Order_UI.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Repositories/ToppingsRepository.cpp" />
+		<Unit filename="src/Models/Toppings.cpp" />
+		<Unit filename="src/Repository/ToppingsRepository.cpp" />
 		<Unit filename="src/Services/MakeToppingsList.cpp" />
-		<Unit filename="src/Services/Pizza.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />
 		<Unit filename="src/UI/Manager_Sub_UI.cpp" />
+		<Unit filename="src/UI/Order_UI.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
