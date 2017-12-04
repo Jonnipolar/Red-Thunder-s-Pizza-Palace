@@ -1,6 +1,10 @@
 #include "ToppingsRepository.h"
 using namespace std;
 
+ToppingsRepository::ToppingsRepository() {
+        //ctor
+}
+
 void ToppingsRepository::store_toppings(MakeToppingsList topping) {
 
     ofstream fout;
