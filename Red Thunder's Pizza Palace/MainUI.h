@@ -13,9 +13,9 @@ class MainUI
         MainUI();
         /// only function in class, sets up UI when logging in
         void startUI();
-        /// screen to type in toppings
-        void manager_sub_ui();
     private:
+        /// to type in topping
+        void make_topping();
 };
 
 #endif // MAINUI_H
