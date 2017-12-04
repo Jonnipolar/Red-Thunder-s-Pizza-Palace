@@ -13,7 +13,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+<<<<<<< HEAD
 					<Add directory="include" />
+=======
+					<Add directory="include/UI" />
+					<Add directory="include/Services" />
+					<Add directory="include/Repository" />
+					<Add directory="include/Models" />
+>>>>>>> kjartan_test
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,7 +30,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+<<<<<<< HEAD
 					<Add directory="include" />
+=======
+					<Add directory="include/UI" />
+					<Add directory="include/Services" />
+					<Add directory="include/Repository" />
+					<Add directory="include/Models" />
+>>>>>>> kjartan_test
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,15 +52,25 @@
 		<Unit filename="include/Repository/ToppingsRepository.h" />
 		<Unit filename="include/Services/MakeToppingsList.h" />
 		<Unit filename="include/UI/MainUI.h" />
+<<<<<<< HEAD
 		<Unit filename="include/UI/Manager_Sub_UI.h" />
 		<Unit filename="include/UI/Order_UI.h" />
+=======
+		<Unit filename="include/UI/ManagerSubUI.h" />
+		<Unit filename="include/UI/OrderUI.h" />
+>>>>>>> kjartan_test
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Models/Toppings.cpp" />
 		<Unit filename="src/Repository/ToppingsRepository.cpp" />
 		<Unit filename="src/Services/MakeToppingsList.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />
+<<<<<<< HEAD
 		<Unit filename="src/UI/Manager_Sub_UI.cpp" />
 		<Unit filename="src/UI/Order_UI.cpp" />
+=======
+		<Unit filename="src/UI/ManagerSubUI.cpp" />
+		<Unit filename="src/UI/OrderUI.cpp" />
+>>>>>>> kjartan_test
 		<Extensions>
 			<code_completion />
 			<envvars />

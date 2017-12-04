@@ -17,7 +17,11 @@ void MainUI::startUI() {
         cout << "5: Quit" << endl;                                          // ------""-------------
         cin >> selection;                                                   // user picks
         if(selection == '1'){                                               // if user picks c go to Manager's function
+<<<<<<< HEAD
             Manager_Sub_UI man_sub_ui;
+=======
+            ManagerSubUI man_sub_ui;
+>>>>>>> kjartan_test
             man_sub_ui.UI_Start();                                          // Go to Manager's sub-UI
         }else if(selection == '2'){                                         // if user picks s go to Order pizza functiobn
             Order_UI order_ui;
