@@ -26,14 +26,14 @@
 	<fstream>
 	"MakeToppingsList.h"
 
-1512231373 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\main.cpp
+1512396915 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\main.cpp
 	<iostream>
 	"MainUI.h"
 
-1512231390 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\mainui.h
+1512400734 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\mainui.h
 	<iostream>
+	"MakeToppingsList.h"
 	<string>
-	"Manager_Sub_UI.h"
 
 1512231403 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\maketoppingslist.h
 	"ToppingsRepository.h"
@@ -172,33 +172,35 @@
 1512257623 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\toppingsrepository.cpp
 	"ToppingsRepository.h"
 
-1512396359 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\mainui.h
+1512400425 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\mainui.h
 	<iostream>
 	<string>
 	"Manager_Sub_UI.h"
 	"Order_UI.h"
 
-1512398738 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\manager_sub_ui.h
+1512399860 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\manager_sub_ui.h
 	"MakeToppingsList.h"
 	<iostream>
+	<string>
 
-1512393015 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\services\maketoppingslist.h
+1512399368 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\services\maketoppingslist.h
 	<string>
 	<iostream>
 
-1512395663 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\repository\toppingsrepository.cpp
+1512399409 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\repository\toppingsrepository.cpp
 	"ToppingsRepository.h"
 
-1512394229 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\repository\toppingsrepository.h
+1512400101 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\repository\toppingsrepository.h
 	<fstream>
 	"MakeToppingsList.h"
+	<string>
+	<iostream>
 
-1512394116 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\services\maketoppingslist.cpp
+1512399334 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\services\maketoppingslist.cpp
 	"MakeToppingsList.h"
 	"ToppingsRepository.h"
 
-1512392873 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\ui\manager_sub_ui.cpp
-	<iostream>
+1512400016 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\ui\manager_sub_ui.cpp
 	"Manager_Sub_UI.h"
 
 1512397028 c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\include\ui\order_ui.h
@@ -211,4 +213,7 @@
 
 1512396337 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\ui\mainui.cpp
 	"MainUI.h"
+
+1512397192 source:c:\users\kjart\documents\github\red-thunder-s-pizza-palace\red thunder's pizza palace\src\ui\order_ui.cpp
+	"Order_UI.h"
 
