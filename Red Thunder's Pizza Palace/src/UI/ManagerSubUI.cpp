@@ -37,14 +37,14 @@ void ManagerSubUI::UI_Start() {
 void ManagerSubUI::UI_make_toppings() {
     string name;
     int price;
-    char type;
+    int type;
     cout << "Please type in topping" << endl;
     cout << "Name: ";
     cin >> ws;                                                                      // ws needed to clear before getline
     getline(cin, name);
     cout << "Price: ";
     cin >> price;
-    cout << "Type: \n\tm for meat\n\tv for vegetable\n\tc for cheese" << endl;
+    cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
     cin >> type;
     MakeToppingsList topping(name, price, type);                                    // sendir inn í færubreytusmið
     topping.save_topping_list(topping);                                             // sendir í function sem vistar í skjal

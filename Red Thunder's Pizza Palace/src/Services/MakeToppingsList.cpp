@@ -7,7 +7,7 @@ MakeToppingsList::MakeToppingsList() {
     this->type = '\0';
 }
 
-MakeToppingsList::MakeToppingsList(string name, int price, char type) {
+MakeToppingsList::MakeToppingsList(string name, int price, int type) {
 
     this->name = name;      // set name
     this->price = price;    // set price

@@ -11,7 +11,7 @@ class MakeToppingsList
         /// 0 class constructor
         MakeToppingsList();
         /// class constructor
-        MakeToppingsList(string name, int price, char type);
+        MakeToppingsList(string name, int price, int type);
         string get_name();
         int get_price();
         /// sends information to toppings repository
