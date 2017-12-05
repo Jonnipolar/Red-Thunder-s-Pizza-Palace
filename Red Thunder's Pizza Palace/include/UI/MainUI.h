@@ -2,8 +2,8 @@
 #define MAINUI_H
 #include <iostream>
 #include <string>
-#include "Manager_Sub_UI.h"
-#include "Order_UI.h"
+#include "ManagerSubUI.h"
+#include "OrderUI.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ class MainUI
         /// only function in class, sets up UI when logging in
         void startUI();
         /// UI for Manager
-        
+
     private:
         /// to type in topping
         void make_topping();

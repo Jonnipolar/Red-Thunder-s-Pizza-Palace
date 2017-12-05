@@ -13,7 +13,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
+					<Add directory="include/UI" />
+					<Add directory="include/Services" />
+					<Add directory="include/Repository" />
+					<Add directory="include/Models" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,7 +26,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
+					<Add directory="include/UI" />
+					<Add directory="include/Services" />
+					<Add directory="include/Repository" />
+					<Add directory="include/Models" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,15 +44,15 @@
 		<Unit filename="include/Repository/ToppingsRepository.h" />
 		<Unit filename="include/Services/MakeToppingsList.h" />
 		<Unit filename="include/UI/MainUI.h" />
-		<Unit filename="include/UI/Manager_Sub_UI.h" />
-		<Unit filename="include/UI/Order_UI.h" />
+		<Unit filename="include/UI/ManagerSubUI.h" />
+		<Unit filename="include/UI/OrderUI.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Models/Toppings.cpp" />
 		<Unit filename="src/Repository/ToppingsRepository.cpp" />
 		<Unit filename="src/Services/MakeToppingsList.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />
-		<Unit filename="src/UI/Manager_Sub_UI.cpp" />
-		<Unit filename="src/UI/Order_UI.cpp" />
+		<Unit filename="src/UI/ManagerSubUI.cpp" />
+		<Unit filename="src/UI/OrderUI.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
