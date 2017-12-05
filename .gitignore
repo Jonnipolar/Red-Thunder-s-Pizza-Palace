@@ -30,3 +30,22 @@
 *.exe
 *.out
 *.app
+
+*.depend
+
+#################  
+## Code::Blocks  
+#################  
+
+*.depend  
+*.layout  
+
+############  
+## Windows  
+############  
+
+# Windows image file caches  
+Thumbs.db  
+
+# Folder config file  
+Desktop.ini
