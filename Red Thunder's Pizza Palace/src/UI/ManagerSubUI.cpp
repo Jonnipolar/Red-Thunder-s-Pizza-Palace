@@ -24,7 +24,7 @@ void ManagerSubUI::UI_Start() {
             if(selection == '1'){
                 UI_make_size();
             }else if(selection == '2') {
-                //UI_make_bottom();
+                UI_make_bottom();
             }
         }
         else if (selection == '2') {                                               // if user picks t create topping
@@ -78,7 +78,8 @@ void ManagerSubUI::UI_make_bottom() {
     getline(cin, name);
     cout << "Price: ";
     cin >> price;
-    //PizzaBottom pizza_bottoms(name, price);
+    PizzaBottom pizza_bottoms(name, price);
+    pizza_bottom.save_pizza_bottom(pizza_bottoms);
 }
 ManagerSubUI::~ManagerSubUI()
 {

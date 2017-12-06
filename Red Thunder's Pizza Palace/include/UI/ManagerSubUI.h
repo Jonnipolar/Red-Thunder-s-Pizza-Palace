@@ -2,6 +2,7 @@
 #define MANAGER_SUB_UI_H
 #include "MakeToppingsList.h"
 #include "PizzaSizeService.h"
+#include "MakePizzaBottomList.h"
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -24,6 +25,7 @@ class ManagerSubUI
     private:
         MakeToppingsList toppings_list;
         PizzaSizeService pizza_size;
+        MakePizzaBottomList pizza_bottom;
 };
 
 #endif // MANAGER_SUB_UI_H
