@@ -46,8 +46,8 @@ void ManagerSubUI::UI_make_toppings() {
     cin >> price;
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
     cin >> type;
-    MakeToppingsList topping(name, price, type);                                    // sendir inn í færubreytusmið
-    topping.save_topping_list(topping);                                             // sendir í function sem vistar í skjal
+    Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
+    toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
 ManagerSubUI::~ManagerSubUI()
 {

@@ -1,8 +1,7 @@
 #ifndef TOPPINGSREPOSITORY_H
 #define TOPPINGSREPOSITORY_H
 #include <fstream>
-#include "MakeToppingsList.h"
-#include <string>
+#include "Toppings.h"
 #include <iostream>
 
 using namespace std;
@@ -12,7 +11,7 @@ class ToppingsRepository
     public:
         ToppingsRepository();
         /// function to write to document
-        void store_toppings(MakeToppingsList topping);
+        void store_toppings(const Toppings& topping);
     private:
 };
 

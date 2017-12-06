@@ -18,6 +18,7 @@ class ManagerSubUI
         ~ManagerSubUI();
 
     private:
+        MakeToppingsList toppings_list;
 };
 
 #endif // MANAGER_SUB_UI_H

@@ -13,7 +13,7 @@ void MainUI::startUI() {
         cout << "1: Manager" << endl,                                       // Menu for user to pick
         cout << "2: Sales" << endl;                                         // ------""-------------
         cout << "3: Bakery" << endl;                                        // ------""-------------
-        cout << "4; Delivery" << endl;                                      // ------""-------------
+        cout << "4: Delivery" << endl;                                      // ------""-------------
         cout << "5: Quit" << endl;                                          // ------""-------------
         cin >> selection;                                                   // user picks
         if(selection == '1'){                                               // if user picks c go to Manager's function

@@ -2,26 +2,17 @@
 #define MAKETOPPINGSLIST_H
 #include <string>
 #include <iostream>
+#include "ToppingsRepository.h"
 
 using namespace std;
 
 class MakeToppingsList
 {
     public:
-        /// 0 class constructor
-        MakeToppingsList();
-        /// class constructor
-        MakeToppingsList(string name, int price, int type);
-        string get_name();
-        int get_price();
         /// sends information to toppings repository
-        void save_topping_list(MakeToppingsList toppings);
-        /// overwrite ostream
-        friend ostream& operator << (ostream& out, MakeToppingsList& topping);
+        void save_topping_list(const Toppings& toppings);
     private:
-        string name;
-        int price;
-        char type;
+        ToppingsRepository repo;
 };
 
 #endif // MAKETOPPINGSLIST_H
