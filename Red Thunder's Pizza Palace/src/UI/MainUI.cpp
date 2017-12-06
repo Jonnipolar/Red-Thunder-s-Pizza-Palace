@@ -8,6 +8,7 @@ void MainUI::startUI() {
 
     char selection;                                                         // Selection for menu
     while(selection != '5'){                                                // loop until user quit's
+        system("CLS");
         cout << "Welcome to Red Thunder's Pizza" << endl;                   //Welcome message
         cout << "Please choose the service you wish to use:" << endl;       // -||-
         cout << "1: Manager" << endl,                                       // Menu for user to pick

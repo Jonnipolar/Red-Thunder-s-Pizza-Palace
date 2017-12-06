@@ -1,5 +1,8 @@
 #include "ToppingsRepository.h"
 
+ToppingsRepository::ToppingsRepository() {
+        //ctor
+}
 
 void ToppingsRepository::store_toppings(const Toppings& topping) {
 
@@ -9,4 +12,14 @@ void ToppingsRepository::store_toppings(const Toppings& topping) {
         fout << topping;                        /// prints to .txt and is not final, just made it to test
         fout.close();
     }
+}
+vector <Toppings> ToppingsRepository::get_topping() {
+    vector <Toppings> toppings;
+    ifstream fin;
+    Toppings topping;
+
+    fin.open("Toppings.txt");
+
+
+    return toppings;
 }

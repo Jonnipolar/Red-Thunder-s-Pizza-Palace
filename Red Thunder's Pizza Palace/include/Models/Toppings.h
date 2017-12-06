@@ -8,6 +8,7 @@ class Toppings
 {
     public:
         /// class constructor
+        Toppings();
         Toppings(string name, int price, int type);
         string get_name();
         int get_price();

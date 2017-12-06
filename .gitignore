@@ -36,9 +36,7 @@
 #################  
 ## Code::Blocks  
 #################  
-
-*.depend  
-*.layout  
+*.layout
 
 ############  
 ## Windows  
