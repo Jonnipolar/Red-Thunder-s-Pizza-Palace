@@ -17,7 +17,15 @@ void ManagerSubUI::UI_Start() {
         cout << "6: Quit" << endl;                                          // ------""-------------
         cin >> selection;
         if (selection == '1') {                                                     // if user picks p create pizza
-
+            system("CLS");
+            cout << "1: Make new size" << endl;
+            cout << "2: Make new bottom" << endl;
+            cin >> selection;
+            if(selection == '1'){
+                UI_make_size();
+            }else if(selection == '2') {
+                //UI_make_bottom();
+            }
         }
         else if (selection == '2') {                                               // if user picks t create topping
             UI_make_toppings();
@@ -48,6 +56,29 @@ void ManagerSubUI::UI_make_toppings() {
     cin >> type;
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
+}
+void ManagerSubUI::UI_make_size() {
+    string name;
+    int price;
+    cout << "Please type in new size" << endl;
+    cout << "Name: ";
+    cin >> ws;
+    getline(cin, name);
+    cout << "Price: ";
+    cin >> price;
+    PizzaSize pizza_sizes(name, price);
+    pizza_size.save_pizza_size(pizza_sizes);
+}
+void ManagerSubUI::UI_make_bottom() {
+    string name;
+    int price;
+    cout << "Please type in new bottom" << endl;
+    cout << "Name: ";
+    cin >> ws;
+    getline(cin, name);
+    cout << "Price: ";
+    cin >> price;
+    //PizzaBottom pizza_bottoms(name, price);
 }
 ManagerSubUI::~ManagerSubUI()
 {

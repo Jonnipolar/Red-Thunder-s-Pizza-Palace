@@ -1,8 +1,5 @@
 #include "ToppingsRepository.h"
 
-ToppingsRepository::ToppingsRepository() {
-        //ctor
-}
 
 void ToppingsRepository::store_toppings(const Toppings& topping) {
 

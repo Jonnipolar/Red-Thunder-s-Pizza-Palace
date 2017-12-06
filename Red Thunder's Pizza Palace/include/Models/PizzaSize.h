@@ -9,7 +9,7 @@ class PizzaSize
 {
     public:
         PizzaSize(string size, int price);
-        friend ostream& operator << (ostream& out, PizzaSize& size);
+        friend ostream& operator << (ostream& out, const PizzaSize& size);
     private:
         string size;
         int price;

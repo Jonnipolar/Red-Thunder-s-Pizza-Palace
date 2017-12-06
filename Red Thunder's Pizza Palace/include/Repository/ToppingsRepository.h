@@ -9,7 +9,6 @@ using namespace std;
 class ToppingsRepository
 {
     public:
-        ToppingsRepository();
         /// function to write to document
         void store_toppings(const Toppings& topping);
     private:
