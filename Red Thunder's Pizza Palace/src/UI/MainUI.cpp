@@ -16,21 +16,20 @@ void MainUI::startUI() {
         cout << "3: Bakery" << endl;                                        // ------""-------------
         cout << "4: Delivery" << endl;                                      // ------""-------------
         cout << "5: Quit" << endl;                                          // ------""-------------
-        cin >> selection;                                                   // user picks
-        if(selection == '1'){                                               // if user picks c go to Manager's function
-            ManagerSubUI man_sub_ui;
-            man_sub_ui.UI_Start();                                          // Go to Manager's sub-UI
-        }else if(selection == '2'){                                         // if user picks s go to Order pizza functiobn
-            Order_UI order_ui;
-            order_ui.UI_Start();
-        }else if(selection == '3'){                                         // if user picks b go to Bakery function
-
-        }
-        else if (selection == '4') {                                        // if user picks d go to Delivery function
-
-        }
-        else {
-
+        cin >> selection;
+        ManagerSubUI man_sub_ui;
+        Order_UI order_ui;
+        switch(selection){                                                 // user picks
+            case '1':                                               // if user picks c go to Manager's function
+                man_sub_ui.UI_Start();                                          // Go to Manager's sub-UI
+                break;
+            case '2':                                         // if user picks s go to Order pizza functiobn
+                order_ui.UI_Start();
+                break;
+            case '3':                                         // if user picks b go to Bakery function
+                break;
+            case '4':
+                break;                                      // if user picks d go to Delivery function
         }                                                                   // if q quit
     }
 }

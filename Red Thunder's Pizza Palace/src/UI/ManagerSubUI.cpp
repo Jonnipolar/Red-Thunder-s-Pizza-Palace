@@ -38,7 +38,6 @@ void ManagerSubUI::UI_Start() {
 
         }
         else if (selection == '5') {                                               // if user picks a Add a pizza place to choose
-
         }
     }
 }
