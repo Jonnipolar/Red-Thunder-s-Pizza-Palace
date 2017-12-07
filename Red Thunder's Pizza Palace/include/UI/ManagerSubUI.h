@@ -6,7 +6,9 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include <Pizza.h>
+#include "Pizza.h"
+#include "PizzaPlace.h"
+
 using namespace std;
 
 class ManagerSubUI
@@ -21,6 +23,7 @@ class ManagerSubUI
         void UI_make_toppings();
         void UI_make_size();
         void UI_make_bottom();
+        void UI_make_pizza_place();
         ~ManagerSubUI();
 
     private:

@@ -44,6 +44,7 @@ void ManagerSubUI::UI_Start() {
             case '4':
                 break;
             case '5':
+                UI_make_pizza_place();
                 break;
         }
     }
@@ -146,6 +147,17 @@ void ManagerSubUI::UI_make_bottom() {
     cin >> price;
     PizzaBottom pizza_bottoms(name, price);
     pizza_bottom.save_pizza_bottom(pizza_bottoms);
+}
+void ManagerSubUI::UI_make_pizza_place() {
+    string street;
+    int number;
+    cout << "Please type in a new address" << endl;
+    cout << "Street: ";
+    cin >> street;
+    cout << "Number: ";
+    cin >> number;
+    PizzaPlace pizza_place(street, number);
+    // to be continued
 }
 ManagerSubUI::~ManagerSubUI()
 {
