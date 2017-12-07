@@ -3,10 +3,13 @@
 #include "MakeToppingsList.h"
 #include "PizzaSizeService.h"
 #include "MakePizzaBottomList.h"
+#include "PizzaPlaceService.h"
 #include <iostream>
 #include <string>
 #include <stdlib.h>
 #include "Pizza.h"
+#include "PizzaPlace.h"
+
 using namespace std;
 
 class ManagerSubUI
@@ -21,12 +24,14 @@ class ManagerSubUI
         void UI_make_toppings();
         void UI_make_size();
         void UI_make_bottom();
+        void UI_make_pizza_place();
         ~ManagerSubUI();
 
     private:
         MakeToppingsList toppings_list;
         PizzaSizeService pizza_size;
         MakePizzaBottomList pizza_bottom;
+        PizzaPlaceService pizza_places;
 };
 
 #endif // MANAGER_SUB_UI_H

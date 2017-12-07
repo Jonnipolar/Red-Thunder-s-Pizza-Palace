@@ -17,27 +17,35 @@ void ManagerSubUI::UI_Start() {
         cout << "5: Add pizza place" << endl;                               // ------""-------------
         cout << "6: Quit" << endl;                                          // ------""-------------
         cin >> selection;
-        if (selection == '1') {                                                     // if user picks p create pizza
-            system("CLS");
-            cout << "1: Make new size" << endl;
-            cout << "2: Make new bottom" << endl;
-            cout << "3: Make Pizza" << endl;
-            cin >> selection;
-            if(selection == '1'){
-                UI_make_size();
-
-            }
-            else if (selection == '2') {                                               // if user picks t create topping
+        switch (selection) {
+            case '1':                                                   // if user picks p create pizza
+                system("CLS");
+                cout << "1: Make new size" << endl;
+                cout << "2: Make new bottom" << endl;
+                cout << "3: Make Pizza" << endl;
+                cin >> selection;
+                switch (selection) {
+                    case '1':
+                        UI_make_size();
+                        break;
+                    case '2':                                            // if user picks t create topping
+                        UI_make_toppings();
+                        break;
+                    case '3':                                               // if user picks m Create menu
+                        UImake_pizza();
+                        break;
+                }
+                break;
+            case '2':
                 UI_make_toppings();
-
-            }
-            else if (selection == '3') {                                               // if user picks m Create menu
-                UImake_pizza();
-            }
-
-        }
-        else if (selection == '2') {
-            UI_make_toppings();
+                break;
+            case '3':
+                break;
+            case '4':
+                break;
+            case '5':
+                UI_make_pizza_place();
+                break;
         }
     }
 }
@@ -122,6 +130,17 @@ void ManagerSubUI::UI_make_bottom() {
     cin >> price;
     PizzaBottom pizza_bottoms(name, price);
     pizza_bottom.save_pizza_bottom(pizza_bottoms);
+}
+void ManagerSubUI::UI_make_pizza_place() {
+    string street;
+    int number;
+    cout << "Please type in a new address" << endl;
+    cout << "Street: ";
+    cin >> street;
+    cout << "Number: ";
+    cin >> number;
+    PizzaPlace pizza_place(street, number);
+    pizza_places.save_pizza_place(pizza_place);
 }
 ManagerSubUI::~ManagerSubUI()
 {
