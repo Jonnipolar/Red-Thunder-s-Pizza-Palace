@@ -3,6 +3,7 @@
 #include "MakeToppingsList.h"
 #include "PizzaSizeService.h"
 #include "MakePizzaBottomList.h"
+#include "PizzaPlaceService.h"
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -30,6 +31,7 @@ class ManagerSubUI
         MakeToppingsList toppings_list;
         PizzaSizeService pizza_size;
         MakePizzaBottomList pizza_bottom;
+        PizzaPlaceService pizza_places;
 };
 
 #endif // MANAGER_SUB_UI_H

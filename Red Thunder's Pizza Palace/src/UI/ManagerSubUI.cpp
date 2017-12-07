@@ -157,7 +157,7 @@ void ManagerSubUI::UI_make_pizza_place() {
     cout << "Number: ";
     cin >> number;
     PizzaPlace pizza_place(street, number);
-    // to be continued
+    pizza_places.save_pizza_place(pizza_place);
 }
 ManagerSubUI::~ManagerSubUI()
 {
