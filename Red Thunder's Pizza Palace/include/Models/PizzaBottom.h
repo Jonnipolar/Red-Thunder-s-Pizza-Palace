@@ -8,10 +8,12 @@ using namespace std;
 class PizzaBottom
 {
     public:
-        PizzaBottom(string size, int price);
+        PizzaBottom(string type, int price);
+        string get_type();
+        int get_price();
         friend ostream& operator << (ostream& out, const PizzaBottom& bottom);
     private:
-        string size;
+        string type;
         int price;
 };
 
