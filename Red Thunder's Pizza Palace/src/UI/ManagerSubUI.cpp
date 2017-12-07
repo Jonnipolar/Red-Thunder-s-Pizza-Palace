@@ -44,19 +44,12 @@ void ManagerSubUI::UI_Start() {
 void ManagerSubUI::UImake_pizza() {
     Pizza pizza;
     string name;
-    /*
     vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
     vector <Toppings> meatTopp = toppings_list.get_meat_list();
     vector <Toppings> vegetableTopp = toppings_list.get_vegetable_list();
-    */
     vector <Toppings> toppings = toppings_list.get_topping_list();
-    //int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
+    int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
     system("CLS");
-
-    cout << "Break" << endl;
-    cout << toppings[0].get_price() << endl;
-    cout << toppings[1].get_price() << endl;
-    cout << "/Break" << endl;
     cout << "Please type in pizza name" << endl;
     cout << "Pizza: ";
     cin >> name;
@@ -67,36 +60,26 @@ void ManagerSubUI::UImake_pizza() {
         system("CLS");
         cout << "Please enter number for topping to add (0 for no more)" << endl;
         cout << "Meat Toppings: " << endl;
-        for ( unsigned int i = 0; i < toppings.size(); i++ ) {
-            Toppings topping = toppings[i];
-            cout << topping.get_price() << endl;
-            if (topping.get_type() == 1) {
-                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << topping.get_name() << "     " << topping.get_price() << "kr." << endl;
-                cntr++;
-            }
+        for ( unsigned int i = 0; i < meatTopp.size(); i++ ) {
+            cout << meatTopp[i].get_price() << endl;
+            cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << meatTopp[i].get_name() << "     " << meatTopp[i].get_price() << "kr." << endl;
+            cntr++;
         }
         cout << "Vegetable Toppings: " << endl;
-        for ( unsigned int i = 0; i < toppings.size(); i++ ) {
-            Toppings topping = toppings[i];
-            if (topping.get_type() == 2) {
-                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << topping.get_name() << "     " << topping.get_price() << "kr." << endl;
-                cntr++;
-            }
+        for ( unsigned int i = 0; i < vegetableTopp.size(); i++ ) {
+            cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << vegetableTopp[i].get_name() << "     " << vegetableTopp[i].get_price() << "kr." << endl;
+            cntr++;
         }
         cout << "Cheese Topping: " << endl;
-        for ( unsigned int i = 0; i < toppings.size(); i++ ) {
-            Toppings topping = toppings[i];
-            if (topping.get_type() == 3) {
-                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << topping.get_name() << "     " << topping.get_price() << "kr." << endl;
-                cntr++;
-            }
+        for ( unsigned int i = 0; i < cheeseTopp.size(); i++ ) {
+            cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << cheeseTopp[i].get_name() << "     " << cheeseTopp[i].get_price() << "kr." << endl;
+            cntr++;
         }
         cin >> ToppSel;
+        if (ToppSel > 0 && ToppSel <= ToppingAmount) {
 
-        if (ToppSel > 0 && ToppSel <= (int)toppings.size()) {
         }
     }
-
 }
 void ManagerSubUI::UI_make_toppings() {
     system("CLS");
