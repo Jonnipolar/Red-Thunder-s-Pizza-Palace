@@ -16,29 +16,10 @@ void ToppingsRepository::store_toppings(const Toppings& topping) {
 vector <Toppings> ToppingsRepository::get_topping() {
     vector <Toppings> toppings;
     string name;
-    string delim = ":";
-    string substr;
-    stringstream ss;
-    //int pos;
     ifstream fin("Toppings.txt");
     if (fin.is_open()) {
         string str;
         while (getline(fin, str)) {
-
-            /*name = str.substr(0, str.find(delim));
-            pos = str.find(delim);
-            str.erase(0, pos + delim.length());
-            substr = str.substr(0, str.find(delim));
-            ss << substr;
-            ss >> price;
-            pos = str.find(delim);
-            str.erase(0, pos + delim.length());
-            substr = str.substr(0, str.find(delim));
-            ss << substr;
-            ss >> type;
-            Toppings topping(name, price, type);
-            toppings.push_back(topping);
-            */
             int index = str.find(':');
             int indexSecond = str.find(':', index + 1 );
             int indexThird = str.find(':', indexSecond + 1 );
