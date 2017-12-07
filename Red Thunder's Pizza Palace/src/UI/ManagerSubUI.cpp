@@ -7,7 +7,8 @@ ManagerSubUI::ManagerSubUI()
 void ManagerSubUI::UI_Start() {
     char selection;                                                         // Declare selection char
     while (selection != '6') {                                              // While user does not want to quit
-        cout << "\nHello Mr. Manager" << endl;                              // Welcome message
+        system("CLS");
+        cout << "Hello Mr. Manager" << endl;                              // Welcome message
         cout << "What would you like to do:" << endl;                       // -||-
         cout << "1: Make pizza" << endl;                                    // Menu for user to pick
         cout << "2: Make topping" << endl;                                  // ------""-------------
@@ -20,28 +21,85 @@ void ManagerSubUI::UI_Start() {
             system("CLS");
             cout << "1: Make new size" << endl;
             cout << "2: Make new bottom" << endl;
+            cout << "3: Make Pizza" << endl;
             cin >> selection;
             if(selection == '1'){
                 UI_make_size();
-            }else if(selection == '2') {
-                UI_make_bottom();
+
             }
+            else if (selection == '2') {                                               // if user picks t create topping
+                UI_make_toppings();
+
+            }
+            else if (selection == '3') {                                               // if user picks m Create menu
+                UImake_pizza();
+            }
+
         }
-        else if (selection == '2') {                                               // if user picks t create topping
+        else if (selection == '2') {
             UI_make_toppings();
-
-        }
-        else if (selection == '3') {                                               // if user picks m Create menu
-
-        }
-        else if (selection == '4') {                                               // if user picks i Add other items (soda, breadsticks etc.)
-
-        }
-        else if (selection == '5') {                                               // if user picks a Add a pizza place to choose
         }
     }
 }
+void ManagerSubUI::UImake_pizza() {
+    Pizza pizza;
+    string name;
+    /*
+    vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
+    vector <Toppings> meatTopp = toppings_list.get_meat_list();
+    vector <Toppings> vegetableTopp = toppings_list.get_vegetable_list();
+    */
+    vector <Toppings> toppings = toppings_list.get_topping_list();
+    //int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
+    system("CLS");
+
+    cout << "Break" << endl;
+    cout << toppings[0].get_price() << endl;
+    cout << toppings[1].get_price() << endl;
+    cout << "/Break" << endl;
+    cout << "Please type in pizza name" << endl;
+    cout << "Pizza: ";
+    cin >> name;
+
+    int ToppSel = -1;
+    while (ToppSel != 0) {
+        int cntr = 0;
+        system("CLS");
+        cout << "Please enter number for topping to add (0 for no more)" << endl;
+        cout << "Meat Toppings: " << endl;
+        for ( unsigned int i = 0; i < toppings.size(); i++ ) {
+            Toppings topping = toppings[i];
+            cout << topping.get_price() << endl;
+            if (topping.get_type() == 1) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << topping.get_name() << "     " << topping.get_price() << "kr." << endl;
+                cntr++;
+            }
+        }
+        cout << "Vegetable Toppings: " << endl;
+        for ( unsigned int i = 0; i < toppings.size(); i++ ) {
+            Toppings topping = toppings[i];
+            if (topping.get_type() == 2) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << topping.get_name() << "     " << topping.get_price() << "kr." << endl;
+                cntr++;
+            }
+        }
+        cout << "Cheese Topping: " << endl;
+        for ( unsigned int i = 0; i < toppings.size(); i++ ) {
+            Toppings topping = toppings[i];
+            if (topping.get_type() == 3) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << topping.get_name() << "     " << topping.get_price() << "kr." << endl;
+                cntr++;
+            }
+        }
+        cin >> ToppSel;
+
+        if (ToppSel > 0 && ToppSel <= (int)toppings.size()) {
+        }
+    }
+
+}
 void ManagerSubUI::UI_make_toppings() {
+    system("CLS");
     string name;
     int price;
     int type;
@@ -57,6 +115,7 @@ void ManagerSubUI::UI_make_toppings() {
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
 void ManagerSubUI::UI_make_size() {
+    system("CLS");
     string name;
     int price;
     cout << "Please type in new size" << endl;
@@ -69,6 +128,7 @@ void ManagerSubUI::UI_make_size() {
     pizza_size.save_pizza_size(pizza_sizes);
 }
 void ManagerSubUI::UI_make_bottom() {
+    system("CLS");
     string name;
     int price;
     cout << "Please type in new bottom" << endl;
