@@ -1,2 +1,11 @@
-pepp:34:1
-pepepepeppefe:150000:3
+pepperoni:34:1
+sveppur:50:2
+Ostur:30:3
+Gradostur:30:3
+Piparostur:30:3
+Rjomaostur:30:3
+Skinka:30:1
+Paprika:50:2
+Ananas:50:2
+Jalapeno:50:2
+Svartar Olifur:50:2
