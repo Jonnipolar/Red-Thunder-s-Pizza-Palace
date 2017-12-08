@@ -40,11 +40,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Models/Order.h" />
 		<Unit filename="include/Models/Pizza.h" />
 		<Unit filename="include/Models/PizzaBottom.h" />
 		<Unit filename="include/Models/PizzaPlace.h" />
 		<Unit filename="include/Models/PizzaSize.h" />
 		<Unit filename="include/Models/Toppings.h" />
+		<Unit filename="include/Repository/OrderRepository.h" />
 		<Unit filename="include/Repository/PizzaBottomRepository.h" />
 		<Unit filename="include/Repository/PizzaPlaceRepository.h" />
 		<Unit filename="include/Repository/PizzaRepository.h" />
@@ -52,6 +54,7 @@
 		<Unit filename="include/Repository/ToppingsRepository.h" />
 		<Unit filename="include/Services/MakePizzaBottomList.h" />
 		<Unit filename="include/Services/MakeToppingsList.h" />
+		<Unit filename="include/Services/OrderServices.h" />
 		<Unit filename="include/Services/PizzaPlaceService.h" />
 		<Unit filename="include/Services/PizzaService.h" />
 		<Unit filename="include/Services/PizzaSizeService.h" />
@@ -59,11 +62,13 @@
 		<Unit filename="include/UI/ManagerSubUI.h" />
 		<Unit filename="include/UI/OrderUI.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Models/Order.cpp" />
 		<Unit filename="src/Models/Pizza.cpp" />
 		<Unit filename="src/Models/PizzaBottom.cpp" />
 		<Unit filename="src/Models/PizzaPlace.cpp" />
 		<Unit filename="src/Models/PizzaSize.cpp" />
 		<Unit filename="src/Models/Toppings.cpp" />
+		<Unit filename="src/Repository/OrderRepository.cpp" />
 		<Unit filename="src/Repository/PizzaBottomRepository.cpp" />
 		<Unit filename="src/Repository/PizzaPlaceRepository.cpp" />
 		<Unit filename="src/Repository/PizzaRepository.cpp" />
@@ -71,6 +76,7 @@
 		<Unit filename="src/Repository/ToppingsRepository.cpp" />
 		<Unit filename="src/Services/MakePizzaBottomList.cpp" />
 		<Unit filename="src/Services/MakeToppingsList.cpp" />
+		<Unit filename="src/Services/OrderServices.cpp" />
 		<Unit filename="src/Services/PizzaPlaceService.cpp" />
 		<Unit filename="src/Services/PizzaService.cpp" />
 		<Unit filename="src/Services/PizzaSizeService.cpp" />
