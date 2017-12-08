@@ -1,7 +1,8 @@
 #include "PizzaSize.h"
 
 PizzaSize::PizzaSize() {
-
+    this->_size = "";
+    this->price = 0;
 }
 
 PizzaSize::PizzaSize(string _size, int price){

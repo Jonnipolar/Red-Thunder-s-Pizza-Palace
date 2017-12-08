@@ -1,10 +1,11 @@
 #include "PizzaPlace.h"
 
 PizzaPlace::PizzaPlace() {
+    this->street = "";
+    this->number = 0;
 
 }
-PizzaPlace::PizzaPlace(string street, int number)
-{
+PizzaPlace::PizzaPlace(string street, int number) {
     this->street = street;
     this->number = number;
 }
