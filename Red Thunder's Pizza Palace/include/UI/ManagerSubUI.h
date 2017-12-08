@@ -20,6 +20,8 @@ class ManagerSubUI
         void UI_Start();
         ///Function to make pizza
         void UImake_pizza();
+        ///Sub UI to UImake_pizza to add topping to pizza
+        vector <Toppings> SubUI_add_topping();
         ///Function to make topping
         void UI_make_toppings();
         void UI_make_size();

@@ -1,12 +1,5 @@
 #include "MakeToppingsList.h"
 
-/*
-1 for meat
-2 for vegetable
-3 for cheese
-
-*/
-
 void MakeToppingsList::save_topping_list(const Toppings& toppings) {
 
     repo.store_toppings(toppings);                                    // send information to write to document
