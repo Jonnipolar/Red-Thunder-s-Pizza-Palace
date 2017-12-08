@@ -1,7 +1,30 @@
 #include "Pizza.h"
-Pizza::Pizza()
+
+Pizza::Pizza() {
+
+}
+Pizza::Pizza(string name, int price, vector <Toppings> toppings, PizzaBottom bottom, PizzaSize pizzasize)
 {
-    //ctor
+    this->name = name;
+    this->price = price;
+    this->toppings = toppings;
+    this->bottom = bottom;
+    this->pizzaSize = pizzasize;
+}
+string Pizza::get_name() {
+    return this->name;
+}
+int Pizza::get_price() {
+    return this->price;
+}
+vector <Toppings> Pizza::get_toppings() {
+    return this->toppings;
+}
+PizzaBottom Pizza::get_bottom() {
+    return this->bottom;
+}
+PizzaSize Pizza::get_size() {
+    return this->pizzaSize;
 }
 ostream& operator <<(ostream& out, const Pizza& pizza) {
     out << pizza.name << ":" << pizza.price << ":";
@@ -10,7 +33,7 @@ ostream& operator <<(ostream& out, const Pizza& pizza) {
             out << pizza.toppings[i] << ",";
         }
         else {
-            out << pizza.toppings[i];
+            out << pizza.toppings[i] << ":";
         }
     }
     out << pizza.bottom << ":" << pizza.pizzaSize << endl;

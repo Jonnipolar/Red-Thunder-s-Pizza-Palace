@@ -4,13 +4,21 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "PizzaSize.h"
+#include "PizzaBottom.h"
 
 using namespace std;
 class Pizza
 {
     public:
         Pizza();
+        Pizza(string name, int price, vector <Toppings> toppings, PizzaBottom bottom, PizzaSize pizzasize);
         ~Pizza();
+        string get_name();
+        int get_price();
+        vector <Toppings> get_toppings();
+        PizzaBottom get_bottom();
+        PizzaSize get_size();
         friend ostream& operator <<(ostream& out, const Pizza& pizza);
         friend istream& operator >>(istream& in, Pizza& pizza);
 
@@ -18,8 +26,8 @@ class Pizza
         string name;
         int price;
         vector<Toppings> toppings;
-        string bottom;
-        string pizzaSize;
+        PizzaBottom bottom;
+        PizzaSize pizzaSize;
 
 };
 

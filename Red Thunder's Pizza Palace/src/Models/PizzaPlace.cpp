@@ -1,5 +1,8 @@
 #include "PizzaPlace.h"
 
+PizzaPlace::PizzaPlace() {
+
+}
 PizzaPlace::PizzaPlace(string street, int number)
 {
     this->street = street;

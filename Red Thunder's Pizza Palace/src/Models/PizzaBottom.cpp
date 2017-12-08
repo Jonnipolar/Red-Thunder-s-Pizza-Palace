@@ -1,5 +1,8 @@
 #include "PizzaBottom.h"
 
+PizzaBottom::PizzaBottom() {
+
+}
 PizzaBottom::PizzaBottom(string type, int price) {
     this->type = type;
     this->price = price;

@@ -8,6 +8,7 @@ using namespace std;
 class PizzaPlace
 {
     public:
+        PizzaPlace();
         PizzaPlace(string street, int number);
         string get_street();
         int get_number();
