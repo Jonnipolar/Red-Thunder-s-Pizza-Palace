@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include "PizzaSize.h"
+#include <vector>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -10,6 +12,7 @@ class PizzaSizeRepository
 {
     public:
         void store_pizza_size(const PizzaSize& pizza_size);
+        vector <PizzaSize> get_pizza_size();
     private:
 };
 
