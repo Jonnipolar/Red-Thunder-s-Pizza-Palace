@@ -36,7 +36,7 @@ ostream& operator <<(ostream& out, const Pizza& pizza) {
             out << topping.get_name() << ",";
         }
         else {
-            out << topping.get_name();
+            out << topping.get_name() << endl;
         }
     }
     return out;
