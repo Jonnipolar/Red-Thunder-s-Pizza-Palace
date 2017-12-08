@@ -12,7 +12,7 @@ class PizzaPlaceRepository
 {
     public:
         PizzaPlaceRepository();
-        virtual ~PizzaPlaceRepository();
+        ~PizzaPlaceRepository();
         void store_pizza_places(const PizzaPlace& pizza_place);
         vector <PizzaPlace> get_pizza_place();
     private:

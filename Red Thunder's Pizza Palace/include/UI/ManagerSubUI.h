@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "Pizza.h"
 #include "PizzaPlace.h"
-
+#include "PizzaService.h"
 using namespace std;
 
 class ManagerSubUI
@@ -34,6 +34,7 @@ class ManagerSubUI
         PizzaSizeService pizza_size;
         MakePizzaBottomList pizza_bottom;
         PizzaPlaceService pizza_places;
+        PizzaService pizza_service;
 };
 
 #endif // MANAGER_SUB_UI_H

@@ -50,12 +50,14 @@ void ManagerSubUI::UI_Start() {
     }
 }
 void ManagerSubUI::UImake_pizza() {
-    Pizza pizza;
+    PizzaSize _size;
+    PizzaBottom bottom;
     string name;
     system("CLS");
     cout << "Please type in pizza name" << endl;
     cout << "Pizza: ";
-    cin >> name;
+    cin >> ws;
+    getline(cin, name);
     vector <Toppings> userToppings = SubUI_add_topping();
     cout << "\nYour toppings are: " << endl;
     for (unsigned int i = 0; i < userToppings.size(); i++) {
@@ -64,8 +66,8 @@ void ManagerSubUI::UImake_pizza() {
     int price;
     cout << "\nSelect the price for the pizza" << endl;
     cin >> price;
-
-
+    Pizza pizza(name,price,userToppings,bottom,_size);
+    pizza_service.save_pizza(pizza);
 
 }
 vector <Toppings> ManagerSubUI::SubUI_add_topping() {

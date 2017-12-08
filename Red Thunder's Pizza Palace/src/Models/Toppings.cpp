@@ -1,9 +1,9 @@
 #include "Toppings.h"
 
 Toppings::Toppings() {
-    this->name = "";
+    this->name = "No Topping";
     this->price = 0;
-    this->type = '\n';
+    this->type = 0;
 }
 
 Toppings::Toppings(string name, int price, int type) {

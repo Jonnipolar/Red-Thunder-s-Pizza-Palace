@@ -1,7 +1,7 @@
 #include "PizzaBottom.h"
 
 PizzaBottom::PizzaBottom() {
-    this->type = "";
+    this->type = "Klassíkur";
     this->price = 0;
 }
 PizzaBottom::PizzaBottom(string type, int price) {

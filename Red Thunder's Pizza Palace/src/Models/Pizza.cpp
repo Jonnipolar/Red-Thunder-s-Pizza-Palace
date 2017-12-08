@@ -27,16 +27,19 @@ PizzaSize Pizza::get_size() {
     return this->pizzaSize;
 }
 ostream& operator <<(ostream& out, const Pizza& pizza) {
+    PizzaBottom bottom = pizza.bottom;
+    PizzaSize _size = pizza.pizzaSize;
     out << pizza.name << ":" << pizza.price << ":";
     for (unsigned int i = 0; i < pizza.toppings.size(); i++ ) {
+        Toppings topping = pizza.toppings[i];
         if (i != pizza.toppings.size() - 1) {
-            out << pizza.toppings[i] << ",";
+            out << topping.get_name() << ",";
         }
         else {
-            out << pizza.toppings[i] << ":";
+            out << topping.get_name() << ":";
         }
     }
-    out << pizza.bottom << ":" << pizza.pizzaSize << endl;
+    out << bottom.get_type() << ":" << _size.get_size() << endl;
     return out;
 }
 istream& operator >>(istream& in, Pizza& pizza) {
