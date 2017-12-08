@@ -10,8 +10,8 @@ void Order_UI::UI_Start() {
         system("CLS");
         cout << "Hello and welcome to Red Thunder's Pizza" << endl;           // Welcome Message
         cout << "How may i help you?" << endl;                                  // -||-
-        cout << "1: Add an order" << endl;                                      // Choice
-        cout << "2: Quit" << endl;                                              // Choice
+        cout << "[1] Add an order" << endl;                                      // Choice
+        cout << "[2] Quit" << endl;                                              // Choice
         cin >> selection;                                                       // Get user Input
         switch (selection) {
             case '1':
@@ -25,7 +25,19 @@ void Order_UI::UI_Start() {
 }
 void Order_UI::UI_Add_Order() {
     system("CLS");
+    vector <Pizza> pizzas;
     vector <Toppings> toppings = SubUI_add_topping();
+    cout << "What would you like to choose?" << endl;
+    cout << "" << endl;
+    char selection;
+    cin >> selection;
+    switch (selection) {
+        case '1':
+            break;
+        case '2':
+            break;
+    }
+
     cout << "Your toppings are: " << endl;
     for (unsigned int i = 0; i < toppings.size(); i++) {
         cout << "\t[" << i+1 << "] " << "Name of Topping: " << toppings[i].get_name() << endl;

@@ -11,11 +11,11 @@ void MainUI::startUI() {
         system("CLS");
         cout << "Welcome to Red Thunder's Pizza" << endl;                   //Welcome message
         cout << "Please choose the service you wish to use:" << endl;       // -||-
-        cout << "1: Manager" << endl,                                       // Menu for user to pick
-        cout << "2: Sales" << endl;                                         // ------""-------------
-        cout << "3: Bakery" << endl;                                        // ------""-------------
-        cout << "4: Delivery" << endl;                                      // ------""-------------
-        cout << "5: Quit" << endl;                                          // ------""-------------
+        cout << "[1] Manager" << endl,                                       // Menu for user to pick
+        cout << "[2] Sales" << endl;                                         // ------""-------------
+        cout << "[3] Bakery" << endl;                                        // ------""-------------
+        cout << "[4] Delivery" << endl;                                      // ------""-------------
+        cout << "[5] Quit" << endl;                                          // ------""-------------
         cin >> selection;
         ManagerSubUI man_sub_ui;
         Order_UI order_ui;

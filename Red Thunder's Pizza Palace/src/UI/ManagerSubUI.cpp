@@ -10,20 +10,20 @@ void ManagerSubUI::UI_Start() {
         system("CLS");
         cout << "Hello Mr. Manager" << endl;                              // Welcome message
         cout << "What would you like to do:" << endl;                       // -||-
-        cout << "1: Make pizza" << endl;                                    // Menu for user to pick
-        cout << "2: Make topping" << endl;                                  // ------""-------------
-        cout << "3: Create menu" << endl;                                   // ------""-------------
-        cout << "4: Add other items" << endl;                               // ------""-------------
-        cout << "5: Add pizza place" << endl;                               // ------""-------------
-        cout << "6: Quit" << endl;                                          // ------""-------------
+        cout << "[1] Make pizza" << endl;                                    // Menu for user to pick
+        cout << "[2] Make topping" << endl;                                  // ------""-------------
+        cout << "[3] Create menu" << endl;                                   // ------""-------------
+        cout << "[4] Add other items" << endl;                               // ------""-------------
+        cout << "[5] Add pizza place" << endl;                               // ------""-------------
+        cout << "[6] Quit" << endl;                                          // ------""-------------
         cin >> selection;
         switch (selection) {
             case '1':                                                   // if user picks p create pizza
                 system("CLS");
-                cout << "1: Make new size" << endl;
-                cout << "2: Make new bottom" << endl;
-                cout << "3: Make Pizza" << endl;
-                cout << "4: Quit" << endl;
+                cout << "[1] Make new size" << endl;
+                cout << "[2] Make new bottom" << endl;
+                cout << "[3] Make Pizza" << endl;
+                cout << "[4] Quit" << endl;
                 cin >> selection;
                 switch (selection) {
                     case '1':
