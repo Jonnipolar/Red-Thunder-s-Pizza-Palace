@@ -36,10 +36,9 @@ ostream& operator <<(ostream& out, const Pizza& pizza) {
             out << topping.get_name() << ",";
         }
         else {
-            out << topping.get_name() << ":";
+            out << topping.get_name();
         }
     }
-    out << bottom.get_type() << ":" << _size.get_size() << endl;
     return out;
 }
 istream& operator >>(istream& in, Pizza& pizza) {

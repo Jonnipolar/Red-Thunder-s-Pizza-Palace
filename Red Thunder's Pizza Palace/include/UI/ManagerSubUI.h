@@ -24,6 +24,7 @@ class ManagerSubUI
         vector <Toppings> SubUI_add_topping();
         ///Function to make topping
         void UI_make_toppings();
+        void UI_make_menu();
         void UI_make_size();
         void UI_make_bottom();
         void UI_make_pizza_place();

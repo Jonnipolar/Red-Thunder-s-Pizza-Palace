@@ -23,6 +23,7 @@ void ManagerSubUI::UI_Start() {
                 cout << "1: Make new size" << endl;
                 cout << "2: Make new bottom" << endl;
                 cout << "3: Make Pizza" << endl;
+                cout << "4: Quit" << endl;
                 cin >> selection;
                 switch (selection) {
                     case '1':
@@ -34,6 +35,9 @@ void ManagerSubUI::UI_Start() {
                     case '3':                                               // if user picks m Create menu
                         UImake_pizza();
                         break;
+                    case '4':
+                        break;
+
                 }
                 break;
             case '2':
