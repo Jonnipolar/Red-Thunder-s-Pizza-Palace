@@ -1,1 +1,3 @@
-Meat n Cheese:2500:pepperoni,Skinka,Piparostur,RjomaosturPS2:2000:sveppur,pepperoni,Skinka
+Meat n Cheese:2500:pepperoni,Skinka,Piparostur,Rjomaostur
+PS2:2000:sveppur,pepperoni,Skinka
+Pepp:2000:pepperoni,pepperoni,pepperoni,pepperoni

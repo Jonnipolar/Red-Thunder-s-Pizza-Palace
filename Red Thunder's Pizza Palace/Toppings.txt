@@ -9,3 +9,4 @@ Paprika:50:2
 Ananas:50:2
 Jalapeno:50:2
 Svartar Olifur:50:2
+Pipar:30:2
