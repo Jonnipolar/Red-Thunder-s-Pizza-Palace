@@ -28,7 +28,10 @@ void Order_UI::UI_Add_Order() {
     vector <Pizza> pizzas;
     vector <Toppings> toppings = SubUI_add_topping();
     cout << "What would you like to choose?" << endl;
-    cout << "" << endl;
+    cout << "[1] Add Pizza" << endl;
+    cout << "[2] Add Beverages" << endl;
+    cout << "[3] Add Sides" << endl;
+    cout << "[4] ";
     char selection;
     cin >> selection;
     switch (selection) {

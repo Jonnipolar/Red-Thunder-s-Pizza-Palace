@@ -2,10 +2,10 @@
 
 OrderRepository::OrderRepository()
 {
-    //ctor
 }
+void OrderRepository::store_order(const Order& order) {
 
+}
 OrderRepository::~OrderRepository()
 {
-    //dtor
 }
