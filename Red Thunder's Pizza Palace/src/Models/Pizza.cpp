@@ -27,8 +27,6 @@ PizzaSize Pizza::get_size() {
     return this->pizzaSize;
 }
 ostream& operator <<(ostream& out, const Pizza& pizza) {
-    PizzaBottom bottom = pizza.bottom;
-    PizzaSize _size = pizza.pizzaSize;
     out << pizza.name << ":" << pizza.price << ":";
     for (unsigned int i = 0; i < pizza.toppings.size(); i++ ) {
         Toppings topping = pizza.toppings[i];

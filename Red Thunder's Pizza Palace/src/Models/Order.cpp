@@ -30,6 +30,29 @@ void Order::set_time() {
     string TimeOrder(time_buffer);
     this->OrderTime = TimeOrder;
 }
+int Order::get_totalAmount() {
+    return this->TotalAmount;
+}
+string Order::get_typeOfDelivery() {
+    return this->TypeOfDelivery;
+}
+string Order::get_HasBeenPaidFor() {
+    return this->HasBeenPaidFor;
+}
+string Order::get_OrderLocation() {
+    return this->OrderLocation;
+}
+string Order::get_Comment() {
+    return this->Comment;
+}
+ostream& operator <<(ostream& out, Order& order) {
+
+    return out;
+}
+istream& operator >>(istream& in, Order& order) {
+
+    return in;
+}
 Order::~Order()
 {
     //dtor
