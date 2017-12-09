@@ -48,6 +48,7 @@
 		<Unit filename="include/Models/PizzaSize.h" />
 		<Unit filename="include/Models/Toppings.h" />
 		<Unit filename="include/Repository/OrderRepository.h" />
+		<Unit filename="include/Repository/OtherProductsRepository.h" />
 		<Unit filename="include/Repository/PizzaBottomRepository.h" />
 		<Unit filename="include/Repository/PizzaPlaceRepository.h" />
 		<Unit filename="include/Repository/PizzaRepository.h" />
@@ -72,6 +73,7 @@
 		<Unit filename="src/Models/PizzaSize.cpp" />
 		<Unit filename="src/Models/Toppings.cpp" />
 		<Unit filename="src/Repository/OrderRepository.cpp" />
+		<Unit filename="src/Repository/OtherProductsRepository.cpp" />
 		<Unit filename="src/Repository/PizzaBottomRepository.cpp" />
 		<Unit filename="src/Repository/PizzaPlaceRepository.cpp" />
 		<Unit filename="src/Repository/PizzaRepository.cpp" />
