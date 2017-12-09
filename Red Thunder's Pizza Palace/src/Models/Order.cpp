@@ -46,7 +46,7 @@ string Order::get_Comment() {
     return this->Comment;
 }
 ostream& operator <<(ostream& out, Order& order) {
-
+    //out << order.name << ":" <<
     return out;
 }
 istream& operator >>(istream& in, Order& order) {
