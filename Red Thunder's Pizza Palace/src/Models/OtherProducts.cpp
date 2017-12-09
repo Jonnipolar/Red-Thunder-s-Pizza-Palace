@@ -14,6 +14,10 @@ int OtherProducts::get_price() {
 int OtherProducts::get_type() {
     return this->type;
 }
+ostream& operator << (ostream& out, const OtherProducts& other_product) {
+    out << other_product.name << ":" << other_product.price << ":" << other_product.type << endl;
+    return out;
+}
 OtherProducts::~OtherProducts()
 {
     //dtor

@@ -7,9 +7,6 @@ class OtherProductsService
     public:
         OtherProductsService();
         virtual ~OtherProductsService();
-
-    protected:
-
     private:
 };
 

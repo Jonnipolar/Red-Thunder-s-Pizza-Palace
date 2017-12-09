@@ -13,6 +13,7 @@ class OtherProducts
         string get_name();
         int get_price();
         int get_type();
+        friend ostream& operator << (ostream& out, const OtherProducts& other_product);
         virtual ~OtherProducts();
     private:
         string name;
