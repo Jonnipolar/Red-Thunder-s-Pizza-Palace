@@ -10,7 +10,7 @@ class Order
 {
     public:
         Order();
-        Order(string name, vector <Pizza> pizzas, string OrderTime);
+        Order(string name, vector <Pizza> pizzas, string OrderTime, int TotalAmount, string TypeOfDelivery, string HasBeenPaidFor, string OrderLocation, string OrderStatus, string Comment);
         string get_name();
         vector <Pizza> get_pizzas();
         string get_time();
@@ -18,9 +18,10 @@ class Order
         string get_typeOfDelivery();
         string get_HasBeenPaidFor();
         string get_OrderLocation();
+        string get_orderStatus();
         string get_Comment();
         void set_time();
-        friend ostream& operator << (ostream& out, Order& order);
+        friend ostream& operator << (ostream& out, const Order& order);
         friend istream& operator >>(istream& in, Order& order);
         ~Order();
 
@@ -32,6 +33,7 @@ class Order
         string TypeOfDelivery;
         string HasBeenPaidFor;
         string OrderLocation;
+        string OrderStatus;
         string Comment;
 };
 
