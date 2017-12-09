@@ -5,6 +5,9 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include "Toppings.h"
+#include "PizzaBottom.h"
+#include "PizzaSize.h"
 
 using namespace std;
 class PizzaRepository
@@ -12,6 +15,7 @@ class PizzaRepository
     public:
         PizzaRepository();
         void store_pizza(const Pizza& pizza);
+        vector <Pizza> get_pizza();
         ~PizzaRepository();
 
     private:
