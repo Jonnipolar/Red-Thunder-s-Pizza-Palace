@@ -2,10 +2,12 @@
 
 OrderServices::OrderServices()
 {
-    //ctor
-}
 
+}
+void OrderServices::SaveOrder(const Order& order) {
+    order_repo.store_order(order);
+}
 OrderServices::~OrderServices()
 {
-    //dtor
+
 }
