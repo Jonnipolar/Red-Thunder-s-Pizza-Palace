@@ -2,3 +2,6 @@ Meat n Cheese:2500:pepperoni,Skinka,Piparostur,Rjomaostur
 PS2:2000:sveppur,pepperoni,Skinka
 Pepp:2000:pepperoni,pepperoni,pepperoni,pepperoni
 pepp:1000:Drank:2000:Bacon,Bacon Strips,pepperoni,Skinka,Ostur,Gradostur
+Meat n Cheese:2500:pepperoni,Skinka,Piparostur,Rjomaostur,
+PS2:2000:sveppur,pepperoni,Skinka,
+Pepp:2000:pepperoni,pepperoni,pepperoni,pepperoni,
