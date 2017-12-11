@@ -38,10 +38,7 @@ void ManagerSubUI::UI_Start()
                 break;
             default:
                 is_valid = false;
-<<<<<<< HEAD
-=======
                 //stringstream errormessa;
->>>>>>> 7e027991f8e53c78bacbaff4b533c340636896ba
             }
         } while(!is_valid);
     }
