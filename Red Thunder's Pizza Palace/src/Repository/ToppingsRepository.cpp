@@ -21,11 +21,11 @@ vector <Toppings> ToppingsRepository::get_topping() {
         string str;
         while (getline(fin, str)) {
             int index = str.find(':');
-            int indexSecond = str.find(':', index + 1 );
-            int indexThird = str.find(':', indexSecond + 1 );
+            int indexSecond = str.find(':', index + 1);
+            int indexThird = str.find(':', indexSecond + 1);
             name = str.substr(0, index);
-            string price = str.substr(index + 1, (indexSecond - 1) - index );
-            string type = str.substr(indexSecond + 1,(indexThird - 1) - indexSecond );
+            string price = str.substr(index + 1, (indexSecond - 1) - index);
+            string type = str.substr(indexSecond + 1,(indexThird - 1) - indexSecond);
             int _price = atoi(price.c_str());
             int _type = atoi(type.c_str());
             Toppings topping(name, _price,_type);
