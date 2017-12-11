@@ -37,7 +37,7 @@ void ManagerSubUI::UI_Start()
                 break;
             default:
                 is_valid = false;
-                cout << "Villuskilabod fyrir thrwoi";
+                stringstream errormessa
             }
         } while(!is_valid);
     }
