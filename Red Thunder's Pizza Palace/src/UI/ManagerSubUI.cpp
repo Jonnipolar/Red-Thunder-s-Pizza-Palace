@@ -20,7 +20,7 @@ void ManagerSubUI::UI_Start()
         cout << "[6] Quit" << endl;                                          // ------""-------------
         do {
             is_valid = true;
-            cin >> selection;
+            cin >> selection; ///throw a thetta
             switch (selection) {
             case '1':                                                   // if user picks p create pizza
                 UI_select_make_pizza();
@@ -157,11 +157,11 @@ void ManagerSubUI::UI_make_toppings()
     cout << "Please type in topping" << endl;
     cout << "Name: ";
     cin >> ws;                                                               // ws needed to clear before getline
-    getline(cin, name);                                             /// Takmarka vid 20-30 stafi
-    cout << "Price: ";                                          /// setja inn throw a illegal number
+    getline(cin, name);                                                 /// Takmarka vid 20-30 stafi
+    cout << "Price: ";                                                  /// setja inn throw a illegal number
     cin >> price;
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    cin >> type;                                                /// setja inn menuchoice (hvernig sem thad vurkar her)
+    cin >> type;                                                                /// setja inn menuchoice (hvernig sem thad vurkar her)
 
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
