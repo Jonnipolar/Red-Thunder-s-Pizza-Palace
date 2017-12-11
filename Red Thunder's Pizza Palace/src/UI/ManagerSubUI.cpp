@@ -18,7 +18,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
         cout << "[3] Create menu" << endl;                                   // ------""-------------
         cout << "[4] Add other items" << endl;                               // ------""-------------
         cout << "[5] Add pizza place" << endl;                               // ------""-------------
-        cout << "[6] Quit" << endl;                                          // ------""-------------
+        cout << "[6] Back to main menu" << endl;                                          // ------""-------------
         do {
             try {
                 is_valid = true;
@@ -44,6 +44,9 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
                 case '5':
                     UI_make_pizza_place();
                     break;
+                case '6':
+                    break;
+
                 default:
                     is_valid = false;
                     throw InvalidMenuNumberException();
@@ -167,13 +170,16 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
     }
     return userToppings;
 }
-void ManagerSubUI::UI_make_toppings() throw (InvalidNameException)
+void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceException, InvalidMenuNumberException)
 {
     system("CLS");
     string name;
     int price;
     int type;
     bool is_valid = true;
+    string price_input;
+    string type_input;
+
 
     cout << "Please type in topping" << endl;
     do{
@@ -184,16 +190,52 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException)
             getline(cin, name);
             if(name.length() > 20){
                     is_valid = false;
-                    throw InvalidMenuNumberException();
+                    throw InvalidNameException();
             }else{};
         }catch(InvalidNameException e){
             cout << e.get_message();
         }
     }while(is_valid == false);
-    cout << "Price: ";                                                  /// setja inn throw a illegal number
-    cin >> price;
-    cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    cin >> type;                                                                /// setja inn menuchoice (hvernig sem thad vurkar her)
+    do{
+        is_valid = true;
+        try{
+            cout << "Price: ";                                                  /// setja inn throw a illegal number
+            getline(cin, price_input);
+            for(unsigned int i = 0; i < price_input.length();i++){
+                if(!isdigit(price_input[i]))
+                {
+                    is_valid = false;
+                    throw InvalidPriceException();
+                } else{};}
+        } catch(InvalidPriceException e)
+        {
+            cout << e.get_message();
+        }
+        stringstream push_price(price_input);
+        push_price >> price;
+    } while(!is_valid);
+cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
+    do{
+        is_valid = false; ///false for testing purp.
+        try{
+            cout << "Select option: ";
+            getline (cin, type_input);
+
+                for(unsigned int i = 0; i < type_input.length();i++){
+                        cout << type_input.length();
+
+                    if(type_input.empty() || !isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1' ){
+                            is_valid = false;
+                            throw InvalidMenuNumberException();
+                    } else{};
+                }
+        }catch(InvalidMenuNumberException e){
+            cout << e.get_message();
+        }
+        stringstream push_type(type_input);
+        push_type >> type;
+    }while(is_valid == false);
+                                                                    /// setja inn menuchoice (hvernig sem thad vurkar her)
 
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
