@@ -62,7 +62,7 @@ void ManagerSubUI::UI_select_make_pizza()
             UI_make_size();
             break;
         case '2':                                            // if user picks t create topping
-            UI_make_toppings();
+            UI_make_bottom();
             break;
         case '3':                                               // if user picks m Create menu
             UImake_pizza();

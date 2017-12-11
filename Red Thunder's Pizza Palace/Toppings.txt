@@ -10,3 +10,8 @@ Ananas:50:2
 Jalapeno:50:2
 Svartar Olifur:50:2
 Pipar:30:2
+Bacon:34:1
+Bacon Strips:50:1
+Cheddar Cheese:30:3
+Garlic:30:2
+Onion:50:2

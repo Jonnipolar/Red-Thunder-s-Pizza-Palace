@@ -1,1 +1,2 @@
 venjulegur:0
+Pan:1000
