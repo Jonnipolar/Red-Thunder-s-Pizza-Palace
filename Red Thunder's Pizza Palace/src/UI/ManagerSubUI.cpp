@@ -4,7 +4,8 @@ ManagerSubUI::ManagerSubUI()
 {
     //ctor
 }
-void ManagerSubUI::UI_Start() {
+void ManagerSubUI::UI_Start()
+{
     char selection;                                                         // Declare selection char
     bool is_valid = true;
     while (selection != '6') {                                              // While user does not want to quit
@@ -17,35 +18,12 @@ void ManagerSubUI::UI_Start() {
         cout << "[4] Add other items" << endl;                               // ------""-------------
         cout << "[5] Add pizza place" << endl;                               // ------""-------------
         cout << "[6] Quit" << endl;                                          // ------""-------------
-        cin >> selection;
-        switch (selection) {
+        do {
+            is_valid = true;
+            cin >> selection;
+            switch (selection) {
             case '1':                                                   // if user picks p create pizza
-                system("CLS");
-                cout << "[1] Make new size" << endl;
-                cout << "[2] Make new bottom" << endl;
-                cout << "[3] Make Pizza" << endl;
-                cout << "[4] Quit" << endl;
-                do{
-                        is_valid = true
-                cin >> selection;
-                switch (selection) {
-                    case '1':
-                        UI_make_size();
-                        break;
-                    case '2':                                            // if user picks t create topping
-                        UI_make_toppings();
-                        break;
-                    case '3':                                               // if user picks m Create menu
-                        UImake_pizza();
-                        break;
-                    case '4':
-                        break;
-                        is_valid = false;
-                        cout << "Villuskilabod graeja throw";
-
-                }
-                }while(!is_valid);
-                break;
+                UI_select_make_pizza();
             case '2':
                 UI_make_toppings();
                 break;
@@ -56,31 +34,82 @@ void ManagerSubUI::UI_Start() {
             case '5':
                 UI_make_pizza_place();
                 break;
-        }
+            default:
+                is_valid = false;
+                cout << "Villuskilabod fyrir thrwoi";
+            }
+        } while(!is_valid);
     }
 }
-void ManagerSubUI::UImake_pizza() {
+
+void ManagerSubUI::UI_select_make_pizza()
+{
+    bool is_valid = true;
+    char selection;
+
+    system("CLS");
+    cout << "[1] Make new size" << endl;
+    cout << "[2] Make new bottom" << endl;
+    cout << "[3] Make Pizza" << endl;
+    cout << "[4] Quit" << endl;
+    do { /// Her kemur try
+        is_valid = true;
+        cin >> selection;
+        switch (selection) {
+        case '1':
+            UI_make_size();
+            break;
+        case '2':                                            // if user picks t create topping
+            UI_make_toppings();
+            break;
+        case '3':                                               // if user picks m Create menu
+            UImake_pizza();
+            break;
+        case '4':
+            break;
+        default:
+            is_valid = false;
+            cout << "Villuskilabod graeja throw";
+
+        }
+    } while(!is_valid);
+}
+
+
+
+void ManagerSubUI::UImake_pizza()
+{
+    bool is_valid = true;
     PizzaSize _size;
     PizzaBottom bottom;
     string name;
     system("CLS");
     cout << "Please type in pizza name" << endl;
     cout << "Pizza: ";
-    cin >> ws;
-    getline(cin, name);
+    do{
+            is_valid = true;
+        cin >> ws;
+        getline(cin, name);
+        if(name.length() > 30){
+                is_valid = false;
+            /// throw herna
+        }else{};
+    }while(is_valid == false);
     vector <Toppings> userToppings = SubUI_add_topping();
     cout << "\nYour toppings are: " << endl;
     for (unsigned int i = 0; i < userToppings.size(); i++) {
         cout << "\t[" << i+1 << "] " << "Name of Topping: " << userToppings[i].get_name() << endl;
     }
     int price;
+
     cout << "\nSelect the price for the pizza" << endl;
     cin >> price;
     Pizza pizza(name,price,userToppings,bottom,_size);
     pizza_service.save_pizza(pizza);
 
 }
-vector <Toppings> ManagerSubUI::SubUI_add_topping() {
+vector <Toppings> ManagerSubUI::SubUI_add_topping()
+{
     vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
     vector <Toppings> meatTopp = toppings_list.get_meat_list();
     vector <Toppings> vegetableTopp = toppings_list.get_vegetable_list();
@@ -117,7 +146,8 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping() {
     }
     return userToppings;
 }
-void ManagerSubUI::UI_make_toppings() {
+void ManagerSubUI::UI_make_toppings()
+{
     system("CLS");
     string name;
     int price;
@@ -133,7 +163,8 @@ void ManagerSubUI::UI_make_toppings() {
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
-void ManagerSubUI::UI_make_size() {
+void ManagerSubUI::UI_make_size()
+{
     system("CLS");
     string name;
     int price;
@@ -146,7 +177,8 @@ void ManagerSubUI::UI_make_size() {
     PizzaSize pizza_sizes(name, price);
     pizza_size.save_pizza_size(pizza_sizes);
 }
-void ManagerSubUI::UI_make_bottom() {
+void ManagerSubUI::UI_make_bottom()
+{
     system("CLS");
     string name;
     int price;
@@ -159,7 +191,8 @@ void ManagerSubUI::UI_make_bottom() {
     PizzaBottom pizza_bottoms(name, price);
     pizza_bottom.save_pizza_bottom(pizza_bottoms);
 }
-void ManagerSubUI::UI_make_pizza_place() {
+void ManagerSubUI::UI_make_pizza_place()
+{
     string street;
     int number;
     cout << "Please type in a new address" << endl;
