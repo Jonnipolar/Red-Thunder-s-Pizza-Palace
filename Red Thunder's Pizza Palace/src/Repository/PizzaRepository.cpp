@@ -16,13 +16,15 @@ vector <Pizza> PizzaRepository::get_pizza () {
     ifstream fin("Pizzas.txt");
     string name;
     string price;
+    string parse = "";
     PizzaSize _size;
     PizzaBottom bottom;
     string toppings;
-    vector <Toppings> topping;
     if (fin.is_open()) {
         string str;
         while (getline(fin, str)) {
+            vector <Toppings> topping;
+            parse = "";
             int index = str.find(':');
             int index_second = str.find(':', index + 1);
             int index_third = str.find(':', index_second + 1);
@@ -31,13 +33,12 @@ vector <Pizza> PizzaRepository::get_pizza () {
             toppings = str.substr(index_second + 1, (index_third - 1) - index_second);
             int _price = atoi(price.c_str());
             for(unsigned int i = 0; i < toppings.size();i++) {
-                string parse = "";
-                if(toppings[i] != ',') {
-                    parse += toppings[i];
-                }else{
+                if(toppings[i] == ',') {
                     Toppings _topping(parse,0,0);
                     topping.push_back(_topping);
                     parse = "";
+                }else{
+                    parse += toppings[i];
                 }
                 if(i == (topping.size()-1)){
                     Toppings _topping(parse,0,0);

@@ -6,6 +6,7 @@ ManagerSubUI::ManagerSubUI()
 }
 void ManagerSubUI::UI_Start()
 {
+    vector <Pizza> pizza;
     char selection;                                                         // Declare selection char
     bool is_valid = true;
     while (selection != '6') {                                              // While user does not want to quit
@@ -29,6 +30,11 @@ void ManagerSubUI::UI_Start()
                 UI_make_toppings();
                 break;
             case '3':
+                pizza = pizza_service.get_pizzas();
+                for (unsigned int i = 0; i < pizza.size(); i++) {
+                    cout << pizza[i];
+                }
+                cin >> selection;
                 break;
             case '4':
                 UI_make_other_items();
@@ -38,10 +44,7 @@ void ManagerSubUI::UI_Start()
                 break;
             default:
                 is_valid = false;
-<<<<<<< HEAD
-=======
                 //stringstream errormessa;
->>>>>>> 7e027991f8e53c78bacbaff4b533c340636896ba
             }
         } while(!is_valid);
     }
