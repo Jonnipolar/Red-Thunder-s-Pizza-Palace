@@ -4,7 +4,7 @@ ManagerSubUI::ManagerSubUI()
 {
     //ctor
 }
-void ManagerSubUI::UI_Start()
+void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
 {
     vector <Pizza> pizza;
     char selection;                                                         // Declare selection char
@@ -20,32 +20,37 @@ void ManagerSubUI::UI_Start()
         cout << "[5] Add pizza place" << endl;                               // ------""-------------
         cout << "[6] Quit" << endl;                                          // ------""-------------
         do {
-            is_valid = true;
-            cin >> selection; ///throw a thetta
-            switch (selection) {
-            case '1':                                                        // if user picks p create pizza
-                UI_select_make_pizza();
-                break;
-            case '2':
-                UI_make_toppings();
-                break;
-            case '3':
-                pizza = pizza_service.get_pizzas();
-                for (unsigned int i = 0; i < pizza.size(); i++) {
-                    cout << pizza[i];
-                }
+            try {
+                is_valid = true;
+                cout << "Select option: ";
                 cin >> selection;
-                break;
-            case '4':
-                UI_make_other_items();
-                break;
-            case '5':
-                UI_make_pizza_place();
-                break;
-            default:
-                is_valid = false;
-                //stringstream errormessa;
-            }
+                switch (selection) {
+                case '1':                                                        // if user picks p create pizza
+                    UI_select_make_pizza();
+                    break;
+                case '2':
+                    UI_make_toppings();
+                    break;
+                case '3':
+                    pizza = pizza_service.get_pizzas();
+                    for (unsigned int i = 0; i < pizza.size(); i++) {
+                        cout << pizza[i];
+                    }
+                    cin >> selection; ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR??
+                    break;
+                case '4':
+                    UI_make_other_items();
+                    break;
+                case '5':
+                    UI_make_pizza_place();
+                    break;
+                default:
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                }
+            } catch(InvalidMenuNumberException e) {
+                cout << e.get_message();
+            };
         } while(!is_valid);
     }
 }
@@ -59,26 +64,30 @@ void ManagerSubUI::UI_select_make_pizza()
     cout << "[1] Make new size" << endl;
     cout << "[2] Make new bottom" << endl;
     cout << "[3] Make Pizza" << endl;
-    cout << "[4] Quit" << endl;
-    do {                                                                        /// Her kemur try
-        is_valid = true;
-        cin >> selection;
-        switch (selection) {
-        case '1':
-            UI_make_size();
-            break;
-        case '2':                                            // if user picks t create topping
-            UI_make_bottom();
-            break;
-        case '3':                                               // if user picks m Create menu
-            UImake_pizza();
-            break;
-        case '4':
-            break;
-        default:
-            is_valid = false;
-            cout << "Villuskilabod graeja throw";
-
+    cout << "[4] Back to main menu" << endl;
+    do {
+        try {                                                                           /// Her kemur try
+            is_valid = true;
+            cout << "Select option: ";
+            cin >> selection;
+            switch (selection) {
+            case '1':
+                UI_make_size();
+                break;
+            case '2':                                            // if user picks t create topping
+                UI_make_bottom();
+                break;
+            case '3':                                               // if user picks m Create menu
+                UImake_pizza();
+                break;
+            case '4':
+                break;
+            default:
+                is_valid = false;
+                throw InvalidMenuNumberException();
+            }
+        } catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
         }
     } while(!is_valid);
 }
@@ -100,7 +109,7 @@ void ManagerSubUI::UImake_pizza()
         getline(cin, name);
         if(name.length() > 30) {
             is_valid = false;
-                                                                            /// throw herna
+            /// throw herna
         } else {};
     } while(is_valid == false);
     vector <Toppings> userToppings = SubUI_add_topping();
@@ -219,7 +228,8 @@ void ManagerSubUI::UI_make_pizza_place()
     PizzaPlace pizza_place(street, number);
     pizza_places.save_pizza_place(pizza_place);
 }
-void ManagerSubUI::UI_make_other_items() {
+void ManagerSubUI::UI_make_other_items()
+{
     string name;
     int price;
     int type;
