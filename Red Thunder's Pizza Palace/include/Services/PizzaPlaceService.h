@@ -8,6 +8,7 @@ class PizzaPlaceService
         PizzaPlaceService();
         virtual ~PizzaPlaceService();
         void save_pizza_place(const PizzaPlace& pizza_place);
+        vector <PizzaPlace> get_pizza_place();
     private:
         PizzaPlaceRepository pizza_places;
 };

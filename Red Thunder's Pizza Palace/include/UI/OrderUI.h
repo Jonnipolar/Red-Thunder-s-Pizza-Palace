@@ -27,6 +27,13 @@ class Order_UI
         PizzaSize UI_Get_Size();
         int get_price_of_toppings(vector <Toppings> toppings);
         Pizza get_pizza_menus();
+        int get_price_of_pizzas(vector <Pizza> pizzas);
+        string get_time();
+        string get_type_of_delivery();
+        string get_has_been_paid_for();
+        PizzaPlace get_order_location();
+        string get_order_status();
+        string get_comment();
         ~Order_UI();
 
     private:

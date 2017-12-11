@@ -6,9 +6,14 @@ Order::Order()
     Pizza pizza;
     this->pizzas.push_back(pizza);
     set_time();
-
+    this->TotalAmount = 0;
+    this->TypeOfDelivery = "No Delivery";
+    this->HasBeenPaidFor = "No payment";
+    this->OrderLocation = PizzaPlace();
+    this->OrderStatus = "No Status";
+    this->Comment = "No Comment";
 }
-Order::Order(string name, vector <Pizza> pizzas, string OrderTime, int TotalAmount, string TypeOfDelivery, string HasBeenPaidFor, string OrderLocation, string OrderStatus, string Comment) {
+Order::Order(string name, vector <Pizza> pizzas, string OrderTime, int TotalAmount, string TypeOfDelivery, string HasBeenPaidFor, PizzaPlace OrderLocation, string OrderStatus, string Comment) {
     this->name = name;
     this->pizzas = pizzas;
     this->OrderTime = OrderTime;
@@ -45,7 +50,7 @@ string Order::get_typeOfDelivery() {
 string Order::get_HasBeenPaidFor() {
     return this->HasBeenPaidFor;
 }
-string Order::get_OrderLocation() {
+PizzaPlace Order::get_OrderLocation() {
     return this->OrderLocation;
 }
 string Order::get_orderStatus() {
@@ -55,6 +60,7 @@ string Order::get_Comment() {
     return this->Comment;
 }
 ostream& operator <<(ostream& out, const Order& order) {
+    PizzaPlace place = order.OrderLocation;
     out << order.name << ":";
     for ( unsigned int i = 0; i < order.pizzas.size(); i++ ) {
         Pizza pizza = order.pizzas[i];
@@ -86,7 +92,7 @@ ostream& operator <<(ostream& out, const Order& order) {
         }
     }
     out << order.OrderTime << ":" << order.TotalAmount << ":" << order.TypeOfDelivery
-        << ":" << order.HasBeenPaidFor << ":" << order.OrderLocation << ":"
+        << ":" << order.HasBeenPaidFor << ":" << place.get_street() << ":"
         << order.OrderStatus << ":" << order.Comment << endl;
     return out;
 }

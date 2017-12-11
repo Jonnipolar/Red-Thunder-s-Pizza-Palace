@@ -17,15 +17,20 @@ void Order_UI::UI_Start() {
             case '1':
                 UI_Add_Order();
                 break;
-            case '2':
-                break;
-
         }
     }
 }
 void Order_UI::UI_Add_Order() {
     system("CLS");
     Pizza pizza;
+    string name;
+    string order_time;
+    int total_price;
+    string typeOfDelivery;
+    string HasBeenPaidFor;
+    string OrderLocation;
+    string OrderStatus;
+    string Comment;
     vector <Pizza> pizzas;
     char selection;
     while (selection != '5') {
@@ -46,7 +51,9 @@ void Order_UI::UI_Add_Order() {
             case '3':
                 break;
             case '4':
-
+                cout << "Name of Person: ";
+                cin >> name;
+                total_price = get_price_of_pizzas(pizzas);
                 break;
         }
     }
@@ -108,7 +115,7 @@ vector <Toppings> Order_UI::SubUI_add_topping() {
             toppings.push_back(cheeseTopp[i]);
             cntr++;
         }
-        cout << "Please enter number for topping to add (0 for no more)" << endl;
+        cout << "Please enter the number for topping to add (0 for no more)" << endl;
         cin >> ToppSel;
         if (ToppSel > 0 && ToppSel <= ToppingAmount) {
             userToppings.push_back(toppings[ToppSel-1]);
@@ -125,7 +132,7 @@ PizzaBottom Order_UI::UI_Get_Bottom() {
     for ( unsigned int i = 0; i < pizza_bottom_list.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizza_bottom_list[i].get_type() << endl;
     }
-    cout << "Please enter number for Bottom" << endl;
+    cout << "Please enter the number for Bottom" << endl;
     cin >> BottSel;
     if (BottSel > 0 && BottSel <= (int)pizza_bottom_list.size()) {
         user_pizza_bottom = pizza_bottom_list[BottSel - 1];
@@ -141,7 +148,7 @@ PizzaSize Order_UI::UI_Get_Size() {
     for ( unsigned int i = 0; i < pizza_size_list.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizza_size_list[i].get_size() << endl;
     }
-    cout << "Please enter number for Size" << endl;
+    cout << "Please enter the number for Size" << endl;
     cin >> SizeSel;
     if (SizeSel > 0 && SizeSel <= (int)pizza_size_list.size()) {
         user_pizza_size = pizza_size_list[SizeSel - 1];
@@ -159,13 +166,88 @@ Pizza Order_UI::get_pizza_menus() {
     int PizzaSel = -1;
     vector <Pizza> pizzas = pizza_service.get_pizzas();
     Pizza user_pizza;
+    system("CLS");
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
     }
+    cin >> PizzaSel;
     if (PizzaSel > 0 && PizzaSel <= (int)pizzas.size()) {
         user_pizza = pizzas[PizzaSel - 1];
     }
     return user_pizza;
+}
+int Order_UI::get_price_of_pizzas(vector <Pizza> pizzas) {
+    int price = 0;
+    for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
+        price += pizzas[i].get_price();
+    }
+    return price;
+}
+string Order_UI::get_time() {
+    time_t timestamp = time(0);
+    char time_buffer[80];
+    strftime(time_buffer, sizeof(time_buffer), "%d/%m/%Y %H:%M ", localtime(&timestamp));
+    string TimeOrder(time_buffer);
+    return TimeOrder;
+}
+string Order_UI::get_type_of_delivery() {
+    string typeOfDelivery = "";
+    int delSel = -1;
+    system("CLS");
+    cout << "PLease choose the type of delivery" << endl;
+    cout << "\t[1] Home" << endl;
+    cout << "\t[2] Pickup" << endl;
+    cin >> delSel;
+    if (delSel > 0 && delSel <= 2) {
+        if (delSel == 1) {
+            typeOfDelivery = "Home";
+            return typeOfDelivery;
+        }
+        else {
+            typeOfDelivery = "Pickup";
+            return typeOfDelivery;
+        }
+    }
+    return typeOfDelivery;
+}
+string Order_UI::get_has_been_paid_for() {
+    string hasBeenPaidFor = "";
+    int paidSel = -1;
+    system("CLS");
+    cout << "Is the user paying in advance or on pickup" << endl;
+    cout << "\t[1] In Advance" << endl;
+    cout << "\t[2] On Pickup" << endl;
+    cin >> paidSel;
+    if (paidSel > 0 && paidSel <= 2) {
+        if (paidSel == 1) {
+            hasBeenPaidFor = "In Advance";
+            return hasBeenPaidFor;
+        }
+        else {
+            hasBeenPaidFor = "On Pickup";
+            return hasBeenPaidFor;
+        }
+    }
+    return hasBeenPaidFor;
+}
+PizzaPlace Order_UI::get_order_location() {
+    vector <PizzaPlace> user_pizza_places = pizza_places.get_pizza_place();
+    PizzaPlace user_place;
+    int locSel = -1;
+    system("CL");
+    cout << "Select the location to pick up / Send from" << endl;
+    for ( unsigned int i = 0; i < user_pizza_places.size(); i++ ) {
+        cout << "\t[" << i+1 << "] " << user_pizza_places[i].get_street() << endl;
+    }
+    cin >> locSel;
+    if (locSel > 0 && locSel <= (int)user_pizza_places.size()) {
+        user_place = user_pizza_places[locSel - 1];
+        return user_place;
+    }
+    return user_place;
+}
+string Order_UI::get_order_status() {
+
 }
 Order_UI::~Order_UI()
 {
