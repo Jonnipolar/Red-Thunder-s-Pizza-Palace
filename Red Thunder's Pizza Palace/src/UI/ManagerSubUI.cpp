@@ -178,7 +178,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
     int type;
     bool is_valid = true;
     string price_input;
-    string type_input;
+
 
 
     cout << "Please type in topping" << endl;
@@ -217,6 +217,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
 cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
     do{
         is_valid = false; ///false for testing purp.
+        string type_input = "";
         try{
             cout << "Select option: ";
             getline (cin, type_input);
