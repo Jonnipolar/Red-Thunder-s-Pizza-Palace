@@ -10,6 +10,7 @@
 #include "PizzaSizeService.h"
 #include "MakePizzaBottomList.h"
 #include "PizzaPlaceService.h"
+#include "OtherProductsService.h"
 using namespace std;
 
 class ManagerSubUI
@@ -29,6 +30,7 @@ class ManagerSubUI
         void UI_make_bottom();
         void UI_make_pizza_place();
         void UI_select_make_pizza();
+        void UI_make_other_items();
         ~ManagerSubUI();
 
     private:
@@ -37,6 +39,7 @@ class ManagerSubUI
         MakePizzaBottomList pizza_bottom;
         PizzaPlaceService pizza_places;
         PizzaService pizza_service;
+        OtherProductsService serv;
 };
 
 #endif // MANAGER_SUB_UI_H

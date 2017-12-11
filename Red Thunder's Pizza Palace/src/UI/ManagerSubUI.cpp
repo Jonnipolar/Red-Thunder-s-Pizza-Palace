@@ -10,8 +10,8 @@ void ManagerSubUI::UI_Start()
     bool is_valid = true;
     while (selection != '6') {                                              // While user does not want to quit
         system("CLS");
-        cout << "Hello Mr. Manager" << endl;                              // Welcome message
-        cout << "What would you like to do:" << endl;                       // -||-
+        cout << "Hello Mr. Manager" << endl;                                 // Welcome message
+        cout << "What would you like to do:" << endl;                        // -||-
         cout << "[1] Make pizza" << endl;                                    // Menu for user to pick
         cout << "[2] Make topping" << endl;                                  // ------""-------------
         cout << "[3] Create menu" << endl;                                   // ------""-------------
@@ -22,7 +22,7 @@ void ManagerSubUI::UI_Start()
             is_valid = true;
             cin >> selection; ///throw a thetta
             switch (selection) {
-            case '1':                                                   // if user picks p create pizza
+            case '1':                                                        // if user picks p create pizza
                 UI_select_make_pizza();
                 break;
             case '2':
@@ -31,13 +31,13 @@ void ManagerSubUI::UI_Start()
             case '3':
                 break;
             case '4':
+                UI_make_other_items();
                 break;
             case '5':
                 UI_make_pizza_place();
                 break;
             default:
                 is_valid = false;
-                stringstream errormessa
             }
         } while(!is_valid);
     }
@@ -211,6 +211,23 @@ void ManagerSubUI::UI_make_pizza_place()
 
     PizzaPlace pizza_place(street, number);
     pizza_places.save_pizza_place(pizza_place);
+}
+void ManagerSubUI::UI_make_other_items() {
+    string name;
+    int price;
+    int type;
+
+    cout << "Please type in a new item" << endl;
+    cout << "Name: ";
+    cin >> ws;
+    getline(cin, name);
+    cout << "Price: ";
+    cin >> price;
+    cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes";
+    cin >> type;
+
+    OtherProducts other_products(name, price, type);
+    serv.save_other_products(other_products);
 }
 ManagerSubUI::~ManagerSubUI()
 {

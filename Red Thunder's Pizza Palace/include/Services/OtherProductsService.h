@@ -8,9 +8,12 @@ using namespace std;
 class OtherProductsService
 {
     public:
-        OtherProductsService();
-        virtual ~OtherProductsService();
+
+        void save_other_products(const OtherProducts& other_products);
         vector <OtherProducts> get_other_product();
+        vector <OtherProducts> get_soda_list();
+        vector <OtherProducts> get_sauces_list();
+        vector <OtherProducts> get_side();
     private:
         OtherProductsRepository repo;
 };
