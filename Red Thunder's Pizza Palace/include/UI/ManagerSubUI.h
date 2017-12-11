@@ -10,7 +10,6 @@
 #include "PizzaSizeService.h"
 #include "MakePizzaBottomList.h"
 #include "PizzaPlaceService.h"
-#include "InvalidMenuNumberException.h"
 using namespace std;
 
 class ManagerSubUI
@@ -18,7 +17,7 @@ class ManagerSubUI
     public:
         ManagerSubUI();
         ///Start The UI
-        void UI_Start()throw (InvalidMenuNumberException);
+        void UI_Start();
         ///Function to make pizza
         void UImake_pizza();
         ///Sub UI to UImake_pizza to add topping to pizza
