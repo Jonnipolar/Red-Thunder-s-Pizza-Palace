@@ -33,7 +33,7 @@ void Order_UI::UI_Add_Order() {
     string Comment;
     vector <Pizza> pizzas;
     char selection;
-    while (selection != '5') {
+    while (selection != 5) {
         system("CLS");
         cout << "What would you like to choose?" << endl;
         cout << "[1] Add Pizza" << endl;
@@ -64,6 +64,9 @@ void Order_UI::UI_Add_Order() {
                 Comment = get_comment();
                 order = Order(name,pizzas,order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
                 order_service.SaveOrder(order);
+                selection = 5;
+                break;
+            case '5':
                 break;
         }
     }
@@ -197,7 +200,7 @@ int Order_UI::get_price_of_pizzas(vector <Pizza> pizzas) {
 string Order_UI::get_time() {
     time_t timestamp = time(0);
     char time_buffer[80];
-    strftime(time_buffer, sizeof(time_buffer), "%d/%m/%Y %H:%M ", localtime(&timestamp));
+    strftime(time_buffer, sizeof(time_buffer), "%d/%m/%Y %H:%M", localtime(&timestamp));
     string TimeOrder(time_buffer);
     return TimeOrder;
 }
@@ -288,7 +291,8 @@ string Order_UI::get_comment() {
     int ComSel = -1;
     cout << "(Optional) Any Comments?" << endl;
     cout << "[1] Yes" << endl;
-    cout << "[2] No" << endl;;
+    cout << "[2] No" << endl;
+    cin >> ComSel;
     if (ComSel > 0 && ComSel <= 2) {
         if (ComSel == 1) {
             cout << "What comment does the user want to leave?" << endl;
