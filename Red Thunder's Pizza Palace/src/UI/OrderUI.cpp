@@ -54,7 +54,7 @@ void Order_UI::UI_Add_Order() {
             case '4':
                 system("CLS");
                 cout << "Name of Person: ";
-                cin >> name;
+                getline(cin, name);
                 order_time = get_time();
                 total_price = get_price_of_pizzas(pizzas);
                 typeOfDelivery = get_type_of_delivery();
@@ -305,7 +305,7 @@ string Order_UI::get_comment() {
     if (ComSel > 0 && ComSel <= 2) {
         if (ComSel == 1) {
             cout << "What comment does the user want to leave?" << endl;
-            cin >> comment;
+            getline(cin, comment);
         }
         else {
             return comment;
