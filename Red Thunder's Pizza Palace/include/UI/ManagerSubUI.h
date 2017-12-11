@@ -28,7 +28,7 @@ class ManagerSubUI
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
         ///Function to make topping
-        void UI_make_toppings();
+        void UI_make_toppings() throw(InvalidNameException);
         void UI_make_menu();
         void UI_make_size();
         void UI_make_bottom();
