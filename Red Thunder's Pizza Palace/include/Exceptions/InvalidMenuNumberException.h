@@ -10,6 +10,7 @@ public:
     string get_message();
 
     private:
+
     string _message;
 
 };

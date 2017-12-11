@@ -57,7 +57,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
 
 void ManagerSubUI::UI_select_make_pizza()
 {
-    bool is_valid = true;
+    bool is_valid = true; // is valid heldur user i loop a medan thu ert med vitlaust svar.
     char selection;
 
     system("CLS");
@@ -82,11 +82,11 @@ void ManagerSubUI::UI_select_make_pizza()
                 break;
             case '4':
                 break;
-            default:
+            default: //kastar a throw
                 is_valid = false;
                 throw InvalidMenuNumberException();
             }
-        } catch(InvalidMenuNumberException e) {
+        } catch(InvalidMenuNumberException e) { // gripur throw i message
             cout << e.get_message();
         }
     } while(!is_valid);
