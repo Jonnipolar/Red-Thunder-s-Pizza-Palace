@@ -26,7 +26,7 @@ void ManagerSubUI::UI_Start() {
                 cout << "[3] Make Pizza" << endl;
                 cout << "[4] Quit" << endl;
                 do{
-                        is_valid = true
+                        is_valid = true;
                 cin >> selection;
                 switch (selection) {
                     case '1':
