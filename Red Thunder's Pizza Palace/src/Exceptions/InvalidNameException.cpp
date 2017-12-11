@@ -2,7 +2,7 @@
 
 InvalidNameException::InvalidNameException()
 {
-    _message = "Name of item cannot be more that 30 letters.\n";
+    _message = "Name of item cannot be more that 20 letters.\n";
 }
 
 string InvalidNameException::get_message()

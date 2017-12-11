@@ -108,7 +108,7 @@ void ManagerSubUI::UImake_pizza() throw (InvalidNameException)
         cin >> ws;
         getline(cin, name);
         try {
-            if(name.length() > 30) {
+            if(name.length() > 20) {
                 is_valid = false;
                 throw InvalidNameException();
             } else {};
@@ -173,12 +173,23 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException)
     string name;
     int price;
     int type;
+    bool is_valid = true;
 
     cout << "Please type in topping" << endl;
-
-    cout << "Name: ";
-    cin >> ws;                                                               // ws needed to clear before getline
-    getline(cin, name);                                                 /// Takmarka vid 20-30 stafi
+    do{
+        is_valid = true;
+        try{
+            cout << "Name: ";
+            cin >> ws;                                                               // ws needed to clear before getline
+            getline(cin, name);
+            if(name.length() > 20){
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+            }else{};
+        }catch(InvalidNameException e){
+            cout << e.get_message();
+        }
+    }while(is_valid == false);
     cout << "Price: ";                                                  /// setja inn throw a illegal number
     cin >> price;
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
