@@ -2,10 +2,10 @@
 
 InvalidNameException::InvalidNameException()
 {
-    //ctor
+    _message = "Name of item cannot be more that 30 letters.\n";
 }
 
-InvalidNameException::~InvalidNameException()
+string InvalidNameException::get_message()
 {
-    //dtor
+    return _message;
 }

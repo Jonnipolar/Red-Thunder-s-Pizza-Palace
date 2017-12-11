@@ -36,7 +36,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
                     for (unsigned int i = 0; i < pizza.size(); i++) {
                         cout << pizza[i];
                     }
-                    cin >> selection; ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR??
+                    cin >> selection; ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
                     break;
                 case '4':
                     UI_make_other_items();
@@ -66,7 +66,7 @@ void ManagerSubUI::UI_select_make_pizza()
     cout << "[3] Make Pizza" << endl;
     cout << "[4] Back to main menu" << endl;
     do {
-        try {                                                                           /// Her kemur try
+        try {                                                                          //try og throw komid
             is_valid = true;
             cout << "Select option: ";
             cin >> selection;
@@ -94,7 +94,7 @@ void ManagerSubUI::UI_select_make_pizza()
 
 
 
-void ManagerSubUI::UImake_pizza()
+void ManagerSubUI::UImake_pizza() throw (InvalidNameException)
 {
     bool is_valid = true;
     PizzaSize _size;
@@ -103,14 +103,18 @@ void ManagerSubUI::UImake_pizza()
     system("CLS");
     cout << "Please type in pizza name" << endl;
     cout << "Pizza: ";
-    do {
-        is_valid = true;                                                                ///SETHA INN THROW
+    do { //throw komid
+        is_valid = true;
         cin >> ws;
         getline(cin, name);
-        if(name.length() > 30) {
-            is_valid = false;
-            /// throw herna
-        } else {};
+        try {
+            if(name.length() > 30) {
+                is_valid = false;
+                throw InvalidNameException();
+            } else {};
+        } catch(InvalidNameException e) {
+            cout << e.get_message();
+        }
     } while(is_valid == false);
     vector <Toppings> userToppings = SubUI_add_topping();
     cout << "\nYour toppings are: " << endl;
@@ -134,7 +138,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
     vector <Toppings> userToppings;
     int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
     int ToppSel = -1;
-    while (ToppSel != 0) {
+    while (ToppSel != 0) {                                                               ///vantar ekki numberthrow herna lika?
         int cntr = 0;
         system("CLS");
         cout << "\nMeat Toppings: \n" << endl;
@@ -163,7 +167,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
     }
     return userToppings;
 }
-void ManagerSubUI::UI_make_toppings()
+void ManagerSubUI::UI_make_toppings() throw (InvalidNameException)
 {
     system("CLS");
     string name;
@@ -171,6 +175,7 @@ void ManagerSubUI::UI_make_toppings()
     int type;
 
     cout << "Please type in topping" << endl;
+
     cout << "Name: ";
     cin >> ws;                                                               // ws needed to clear before getline
     getline(cin, name);                                                 /// Takmarka vid 20-30 stafi

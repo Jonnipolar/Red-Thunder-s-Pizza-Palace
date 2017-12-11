@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <sstream>
 #include "InvalidMenuNumberException.h"
+#include "InvalidNameException.h"
 using namespace std;
 
 class ManagerSubUI
@@ -23,7 +24,7 @@ class ManagerSubUI
         ///Start The UI
         void UI_Start() throw (InvalidMenuNumberException);
         ///Function to make pizza
-        void UImake_pizza();
+        void UImake_pizza() throw (InvalidNameException);
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
         ///Function to make topping
