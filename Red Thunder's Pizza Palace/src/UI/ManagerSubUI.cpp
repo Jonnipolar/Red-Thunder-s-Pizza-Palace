@@ -23,36 +23,8 @@ void ManagerSubUI::UI_Start()
             cin >> selection;
             switch (selection) {
             case '1':                                                   // if user picks p create pizza
-
                 UI_select_make_pizza();
-
-                system("CLS");
-                cout << "[1] Make new size" << endl;
-                cout << "[2] Make new bottom" << endl;
-                cout << "[3] Make Pizza" << endl;
-                cout << "[4] Quit" << endl;
-                do {
-                    is_valid = true;
-                    cin >> selection;
-                    switch (selection) {
-                    case '1':
-                        UI_make_size();
-                        break;
-                    case '2':                                            // if user picks t create topping
-                        UI_make_toppings();
-                        break;
-                    case '3':                                               // if user picks m Create menu
-                        UImake_pizza();
-                        break;
-                    case '4':
-                        break;
-                        is_valid = false;
-                        cout << "Villuskilabod graeja throw";
-
-                    }
-                } while(!is_valid);
                 break;
-
             case '2':
                 UI_make_toppings();
                 break;
@@ -81,7 +53,7 @@ void ManagerSubUI::UI_select_make_pizza()
     cout << "[2] Make new bottom" << endl;
     cout << "[3] Make Pizza" << endl;
     cout << "[4] Quit" << endl;
-    do { /// Her kemur try
+    do {                                                                        /// Her kemur try
         is_valid = true;
         cin >> selection;
         switch (selection) {
@@ -116,12 +88,12 @@ void ManagerSubUI::UImake_pizza()
     cout << "Please type in pizza name" << endl;
     cout << "Pizza: ";
     do {
-        is_valid = true;
+        is_valid = true;                                                                ///SETHA INN THROW
         cin >> ws;
         getline(cin, name);
         if(name.length() > 30) {
             is_valid = false;
-            /// throw herna
+                                                                            /// throw herna
         } else {};
     } while(is_valid == false);
     vector <Toppings> userToppings = SubUI_add_topping();
@@ -132,7 +104,7 @@ void ManagerSubUI::UImake_pizza()
     int price;
 
     cout << "\nSelect the price for the pizza" << endl;
-    cin >> price;
+    cin >> price;                                                       /// SETJA INN THROW = BARA POS NUMBERS (GAETI THURFT AD CONVERTA)
     Pizza pizza(name,price,userToppings,bottom,_size);
     pizza_service.save_pizza(pizza);
 
@@ -181,14 +153,16 @@ void ManagerSubUI::UI_make_toppings()
     string name;
     int price;
     int type;
+
     cout << "Please type in topping" << endl;
     cout << "Name: ";
-    cin >> ws;                                                                      // ws needed to clear before getline
-    getline(cin, name);
-    cout << "Price: "; /// setja inn throw a illegal number
+    cin >> ws;                                                               // ws needed to clear before getline
+    getline(cin, name);                                             /// Takmarka vid 20-30 stafi
+    cout << "Price: ";                                          /// setja inn throw a illegal number
     cin >> price;
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    cin >> type;/// setja inn menuchoice (hvernig sem thad vurkar her)
+    cin >> type;                                                /// setja inn menuchoice (hvernig sem thad vurkar her)
+
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
@@ -197,12 +171,14 @@ void ManagerSubUI::UI_make_size()
     system("CLS");
     string name;
     int price;
+
     cout << "Please type in new size" << endl;
     cout << "Name: ";
-    cin >> ws;
+    cin >> ws;                           ///hafa thetta bara whatever
     getline(cin, name);
     cout << "Price: ";
-    cin >> price;
+    cin >> price;                                           ///can only be numbers
+
     PizzaSize pizza_sizes(name, price);
     pizza_size.save_pizza_size(pizza_sizes);
 }
@@ -211,12 +187,14 @@ void ManagerSubUI::UI_make_bottom()
     system("CLS");
     string name;
     int price;
+
     cout << "Please type in new bottom" << endl;
     cout << "Name: ";
     cin >> ws;
     getline(cin, name);
     cout << "Price: ";
-    cin >> price;
+    cin >> price;                                                           ///only numbers
+
     PizzaBottom pizza_bottoms(name, price);
     pizza_bottom.save_pizza_bottom(pizza_bottoms);
 }
@@ -224,11 +202,13 @@ void ManagerSubUI::UI_make_pizza_place()
 {
     string street;
     int number;
+
     cout << "Please type in a new address" << endl;
     cout << "Street: ";
-    cin >> street;
+    cin >> street;                                                          /// nafn - ath ad lata setja number i nedri linu
     cout << "Number: ";
-    cin >> number;
+    cin >> number;                                                  /// cannot be puntuation (ma vera 1b 1c samt
+
     PizzaPlace pizza_place(street, number);
     pizza_places.save_pizza_place(pizza_place);
 }
