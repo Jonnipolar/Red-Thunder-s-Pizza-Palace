@@ -6,6 +6,7 @@ ManagerSubUI::ManagerSubUI()
 }
 void ManagerSubUI::UI_Start() {
     char selection;                                                         // Declare selection char
+    bool is_valid = true;
     while (selection != '6') {                                              // While user does not want to quit
         system("CLS");
         cout << "Hello Mr. Manager" << endl;                              // Welcome message
@@ -24,6 +25,8 @@ void ManagerSubUI::UI_Start() {
                 cout << "[2] Make new bottom" << endl;
                 cout << "[3] Make Pizza" << endl;
                 cout << "[4] Quit" << endl;
+                do{
+                        is_valid = true
                 cin >> selection;
                 switch (selection) {
                     case '1':
@@ -37,8 +40,11 @@ void ManagerSubUI::UI_Start() {
                         break;
                     case '4':
                         break;
+                        is_valid = false;
+                        cout << "Villuskilabod graeja throw";
 
                 }
+                }while(!is_valid);
                 break;
             case '2':
                 UI_make_toppings();
