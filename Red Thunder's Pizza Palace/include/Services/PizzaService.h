@@ -8,6 +8,7 @@ class PizzaService
     public:
         PizzaService();
         void save_pizza(const Pizza& pizza);
+        vector <Pizza> get_pizzas();
         ~PizzaService();
 
     private:

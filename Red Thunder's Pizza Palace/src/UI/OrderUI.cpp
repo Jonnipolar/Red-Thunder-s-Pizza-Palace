@@ -25,6 +25,7 @@ void Order_UI::UI_Start() {
 }
 void Order_UI::UI_Add_Order() {
     system("CLS");
+    Pizza pizza;
     vector <Pizza> pizzas;
     char selection;
     while (selection != '5') {
@@ -37,34 +38,43 @@ void Order_UI::UI_Add_Order() {
         cin >> selection;
         switch (selection) {
             case '1':
-                UI_Add_Order_Pizza();
+                pizza = UI_Add_Order_Pizza();
+                pizzas.push_back(pizza);
                 break;
             case '2':
                 break;
             case '3':
                 break;
             case '4':
+
                 break;
         }
     }
 }
 Pizza Order_UI::UI_Add_Order_Pizza() {
     Pizza pizza;
+    int price;
     vector <Toppings> toppings;
+    PizzaBottom user_pizza_bottom;
+    PizzaSize user_pizza_size;
     char selection;
     string name = "";
     system("CLS");
     cout << "What would you like to do?" << endl;
-    cout << "[1] Add pizza from Menu" << endl;
-    cout << "[2] Add custom pizza" << endl;
+    cout << "[1] Add custom pizza" << endl;
+    cout << "[2] Add pizza from Menu" << endl;
     cin >> selection;
     switch (selection) {
         case '1':
             toppings = SubUI_add_topping();
-
-
+            name = "Custom Pizza";
+            user_pizza_bottom = UI_Get_Bottom();
+            user_pizza_size = UI_Get_Size();
+            price = get_price_of_toppings(toppings);
+            pizza = Pizza(name, price, toppings, user_pizza_bottom, user_pizza_size);
             break;
         case '2':
+            pizza = get_pizza_menus();
             break;
     }
     return pizza;
@@ -137,6 +147,25 @@ PizzaSize Order_UI::UI_Get_Size() {
         user_pizza_size = pizza_size_list[SizeSel - 1];
     }
     return user_pizza_size;
+}
+int Order_UI::get_price_of_toppings(vector <Toppings> toppings) {
+    int price = 0;
+    for ( unsigned int i = 0; i < toppings.size(); i++ ) {
+        price += toppings[i].get_price();
+    }
+    return price;
+}
+Pizza Order_UI::get_pizza_menus() {
+    int PizzaSel = -1;
+    vector <Pizza> pizzas = pizza_service.get_pizzas();
+    Pizza user_pizza;
+    for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
+        cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
+    }
+    if (PizzaSel > 0 && PizzaSel <= (int)pizzas.size()) {
+        user_pizza = pizzas[PizzaSel - 1];
+    }
+    return user_pizza;
 }
 Order_UI::~Order_UI()
 {
