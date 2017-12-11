@@ -21,19 +21,20 @@ void Order_UI::UI_Start() {
     }
 }
 void Order_UI::UI_Add_Order() {
-    system("CLS");
     Pizza pizza;
+    Order order;
     string name;
     string order_time;
     int total_price;
     string typeOfDelivery;
     string HasBeenPaidFor;
-    string OrderLocation;
+    PizzaPlace OrderLocation;
     string OrderStatus;
     string Comment;
     vector <Pizza> pizzas;
     char selection;
     while (selection != '5') {
+        system("CLS");
         cout << "What would you like to choose?" << endl;
         cout << "[1] Add Pizza" << endl;
         cout << "[2] Add Beverages" << endl;
@@ -51,9 +52,18 @@ void Order_UI::UI_Add_Order() {
             case '3':
                 break;
             case '4':
+                system("CLS");
                 cout << "Name of Person: ";
                 cin >> name;
+                order_time = get_time();
                 total_price = get_price_of_pizzas(pizzas);
+                typeOfDelivery = get_type_of_delivery();
+                HasBeenPaidFor = get_has_been_paid_for();
+                OrderLocation = get_order_location();
+                OrderStatus = get_order_status();
+                Comment = get_comment();
+                order = Order(name,pizzas,order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
+                order_service.SaveOrder(order);
                 break;
         }
     }
@@ -167,6 +177,7 @@ Pizza Order_UI::get_pizza_menus() {
     vector <Pizza> pizzas = pizza_service.get_pizzas();
     Pizza user_pizza;
     system("CLS");
+    cout << "Choose the pizza you want: " << endl;
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
     }
@@ -234,7 +245,7 @@ PizzaPlace Order_UI::get_order_location() {
     vector <PizzaPlace> user_pizza_places = pizza_places.get_pizza_place();
     PizzaPlace user_place;
     int locSel = -1;
-    system("CL");
+    system("CLS");
     cout << "Select the location to pick up / Send from" << endl;
     for ( unsigned int i = 0; i < user_pizza_places.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << user_pizza_places[i].get_street() << endl;
@@ -247,7 +258,47 @@ PizzaPlace Order_UI::get_order_location() {
     return user_place;
 }
 string Order_UI::get_order_status() {
-
+    string orderStatus;
+    int statSel = -1;
+    system("CLS");
+    cout << "Select the status of the order" << endl;
+    cout << "[1] Processing" << endl;
+    cout << "[2] In Oven" << endl;
+    cout << "[3] Complete" << endl;
+    cin >> statSel;
+    if (statSel > 0 && statSel <= 3) {
+        if (statSel == 1) {
+            orderStatus = "Processing";
+            return orderStatus;
+        }
+        else if (statSel == 2) {
+            orderStatus = "In Oven";
+            return orderStatus;
+        }
+        else {
+            orderStatus = "Complete";
+            return orderStatus;
+        }
+    }
+    return orderStatus;
+}
+string Order_UI::get_comment() {
+    system("CLS");
+    string comment = "";
+    int ComSel = -1;
+    cout << "(Optional) Any Comments?" << endl;
+    cout << "[1] Yes" << endl;
+    cout << "[2] No" << endl;;
+    if (ComSel > 0 && ComSel <= 2) {
+        if (ComSel == 1) {
+            cout << "What comment does the user want to leave?" << endl;
+            cin >> comment;
+        }
+        else {
+            return comment;
+        }
+    }
+    return comment;
 }
 Order_UI::~Order_UI()
 {
