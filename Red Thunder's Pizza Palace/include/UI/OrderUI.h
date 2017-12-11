@@ -10,6 +10,7 @@
 #include "PizzaSizeService.h"
 #include "MakePizzaBottomList.h"
 #include "PizzaPlaceService.h"
+#include "OrderServices.h"
 
 using namespace std;
 class Order_UI
@@ -19,8 +20,11 @@ class Order_UI
         ///Start The UI
         void UI_Start();
         void UI_Add_Order();
+        Pizza UI_Add_Order_Pizza();
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
+        PizzaBottom UI_Get_Bottom();
+        PizzaSize UI_Get_Size();
         ~Order_UI();
 
     private:
@@ -29,6 +33,7 @@ class Order_UI
         MakePizzaBottomList pizza_bottom;
         PizzaPlaceService pizza_places;
         PizzaService pizza_service;
+        OrderServices order_service;
 };
 
 #endif // ORDER_UI_H

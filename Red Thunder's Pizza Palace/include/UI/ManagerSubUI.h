@@ -28,6 +28,7 @@ class ManagerSubUI
         void UI_make_size();
         void UI_make_bottom();
         void UI_make_pizza_place();
+        void UI_select_make_pizza();
         ~ManagerSubUI();
 
     private:

@@ -1,4 +1,4 @@
-#ifndef OTHERPRODUCTSREPOSITORY_H
+#define OTHERPRODUCTSREPOSITORY_H
 #define OTHERPRODUCTSREPOSITORY_H
 #include <fstream>
 #include "OtherProducts.h"
@@ -16,4 +16,3 @@ class OtherProductsRepository
         vector <OtherProducts> get_other_products();
 };
 
-#endif // OTHERPRODUCTSREPOSITORY_H
