@@ -40,6 +40,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Exceptions/InvalidMenuNumber.h" />
 		<Unit filename="include/Models/Order.h" />
 		<Unit filename="include/Models/OtherProducts.h" />
 		<Unit filename="include/Models/Pizza.h" />
@@ -65,6 +66,7 @@
 		<Unit filename="include/UI/ManagerSubUI.h" />
 		<Unit filename="include/UI/OrderUI.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Exceptions/InvalidMenuNumber.cpp" />
 		<Unit filename="src/Models/Order.cpp" />
 		<Unit filename="src/Models/OtherProducts.cpp" />
 		<Unit filename="src/Models/Pizza.cpp" />
