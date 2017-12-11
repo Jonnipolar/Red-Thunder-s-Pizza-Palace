@@ -17,6 +17,7 @@
 					<Add directory="include/Services" />
 					<Add directory="include/Repository" />
 					<Add directory="include/Models" />
+					<Add directory="include/Exceptions" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -30,6 +31,7 @@
 					<Add directory="include/Services" />
 					<Add directory="include/Repository" />
 					<Add directory="include/Models" />
+					<Add directory="include/Exceptions" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />

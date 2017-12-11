@@ -1,4 +1,4 @@
-#include "../../include/Exceptions/InvalidMenuNumber.h"
+#include "InvalidMenuNumber.h"
 
 InvalidMenuNumber::InvalidMenuNumber()
 {
