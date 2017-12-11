@@ -23,7 +23,36 @@ void ManagerSubUI::UI_Start()
             cin >> selection;
             switch (selection) {
             case '1':                                                   // if user picks p create pizza
+<<<<<<< HEAD
                 UI_select_make_pizza();
+=======
+                system("CLS");
+                cout << "[1] Make new size" << endl;
+                cout << "[2] Make new bottom" << endl;
+                cout << "[3] Make Pizza" << endl;
+                cout << "[4] Quit" << endl;
+                do{
+                        is_valid = true;
+                cin >> selection;
+                switch (selection) {
+                    case '1':
+                        UI_make_size();
+                        break;
+                    case '2':                                            // if user picks t create topping
+                        UI_make_toppings();
+                        break;
+                    case '3':                                               // if user picks m Create menu
+                        UImake_pizza();
+                        break;
+                    case '4':
+                        break;
+                        is_valid = false;
+                        cout << "Villuskilabod graeja throw";
+
+                }
+                }while(!is_valid);
+                break;
+>>>>>>> 84499f9295b658950b6ed094fc364fd004b04983
             case '2':
                 UI_make_toppings();
                 break;
