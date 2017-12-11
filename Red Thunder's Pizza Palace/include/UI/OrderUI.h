@@ -25,6 +25,8 @@ class Order_UI
         vector <Toppings> SubUI_add_topping();
         PizzaBottom UI_Get_Bottom();
         PizzaSize UI_Get_Size();
+        int get_price_of_toppings(vector <Toppings> toppings);
+        Pizza get_pizza_menus();
         ~Order_UI();
 
     private:

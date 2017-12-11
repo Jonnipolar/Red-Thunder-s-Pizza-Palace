@@ -23,9 +23,7 @@ void ManagerSubUI::UI_Start()
             cin >> selection;
             switch (selection) {
             case '1':                                                   // if user picks p create pizza
-<<<<<<< HEAD
                 UI_select_make_pizza();
-=======
                 system("CLS");
                 cout << "[1] Make new size" << endl;
                 cout << "[2] Make new bottom" << endl;
@@ -52,7 +50,6 @@ void ManagerSubUI::UI_Start()
                 }
                 }while(!is_valid);
                 break;
->>>>>>> 84499f9295b658950b6ed094fc364fd004b04983
             case '2':
                 UI_make_toppings();
                 break;
