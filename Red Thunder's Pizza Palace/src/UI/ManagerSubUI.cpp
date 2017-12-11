@@ -23,18 +23,18 @@ void ManagerSubUI::UI_Start()
             cin >> selection;
             switch (selection) {
             case '1':                                                   // if user picks p create pizza
-<<<<<<< HEAD
+
                 UI_select_make_pizza();
-=======
+
                 system("CLS");
                 cout << "[1] Make new size" << endl;
                 cout << "[2] Make new bottom" << endl;
                 cout << "[3] Make Pizza" << endl;
                 cout << "[4] Quit" << endl;
-                do{
-                        is_valid = true;
-                cin >> selection;
-                switch (selection) {
+                do {
+                    is_valid = true;
+                    cin >> selection;
+                    switch (selection) {
                     case '1':
                         UI_make_size();
                         break;
@@ -49,10 +49,10 @@ void ManagerSubUI::UI_Start()
                         is_valid = false;
                         cout << "Villuskilabod graeja throw";
 
-                }
-                }while(!is_valid);
+                    }
+                } while(!is_valid);
                 break;
->>>>>>> 84499f9295b658950b6ed094fc364fd004b04983
+
             case '2':
                 UI_make_toppings();
                 break;
@@ -115,15 +115,15 @@ void ManagerSubUI::UImake_pizza()
     system("CLS");
     cout << "Please type in pizza name" << endl;
     cout << "Pizza: ";
-    do{
-            is_valid = true;
+    do {
+        is_valid = true;
         cin >> ws;
         getline(cin, name);
-        if(name.length() > 30){
-                is_valid = false;
+        if(name.length() > 30) {
+            is_valid = false;
             /// throw herna
-        }else{};
-    }while(is_valid == false);
+        } else {};
+    } while(is_valid == false);
     vector <Toppings> userToppings = SubUI_add_topping();
     cout << "\nYour toppings are: " << endl;
     for (unsigned int i = 0; i < userToppings.size(); i++) {
@@ -185,10 +185,10 @@ void ManagerSubUI::UI_make_toppings()
     cout << "Name: ";
     cin >> ws;                                                                      // ws needed to clear before getline
     getline(cin, name);
-    cout << "Price: ";
+    cout << "Price: "; /// setja inn throw a illegal number
     cin >> price;
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    cin >> type;
+    cin >> type;/// setja inn menuchoice (hvernig sem thad vurkar her)
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
