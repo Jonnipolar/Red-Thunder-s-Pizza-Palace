@@ -8,8 +8,9 @@ class MakePizzaBottomList
 {
     public:
         void save_pizza_bottom(const PizzaBottom& pizza_bottom);
+        vector <PizzaBottom> Get_Pizza_Bottom();
     private:
-        PizzaBottomRepository pizza_bottoms;
+        PizzaBottomRepository pizza_bottom_repo;
 };
 
 #endif // MAKEPIZZABOTTOMLIST_H

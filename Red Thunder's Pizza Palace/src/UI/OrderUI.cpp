@@ -8,10 +8,10 @@ void Order_UI::UI_Start() {
     char selection;                                                             // Create Variable to keep hold of user selection
     while (selection != '2') {                                                  // While loop
         system("CLS");
-        cout << "Hello and welcome to Red Thunder's Pizza" << endl;           // Welcome Message
+        cout << "Hello and welcome to Red Thunder's Pizza" << endl;             // Welcome Message
         cout << "How may i help you?" << endl;                                  // -||-
-        cout << "[1] Add an order" << endl;                                      // Choice
-        cout << "[2] Quit" << endl;                                              // Choice
+        cout << "[1] Add an order" << endl;                                     // Choice
+        cout << "[2] Quit" << endl;                                             // Choice
         cin >> selection;                                                       // Get user Input
         switch (selection) {
             case '1':
@@ -25,8 +25,6 @@ void Order_UI::UI_Start() {
 }
 void Order_UI::UI_Add_Order() {
     system("CLS");
-    vector <Pizza> pizzas;
-    vector <Toppings> toppings = SubUI_add_topping();
     cout << "What would you like to choose?" << endl;
     cout << "[1] Add Pizza" << endl;
     cout << "[2] Add Beverages" << endl;
@@ -36,16 +34,35 @@ void Order_UI::UI_Add_Order() {
     cin >> selection;
     switch (selection) {
         case '1':
+            UI_Add_Order_Pizza();
+            break;
+        case '2':
+            break;
+        case '3':
+            break;
+        case '4':
+            break;
+    }
+}
+void Order_UI::UI_Add_Order_Pizza() {
+    vector <Toppings> toppings;
+
+    char selection;
+    vector <Pizza> pizzas;
+    string name = "";
+    system("CLS");
+    cout << "What would you like to do?" << endl;
+    cout << "[1] Add pizza from Menu" << endl;
+    cout << "[2] Add custom pizza" << endl;
+    cin >> selection;
+    switch (selection) {
+        case '1':
+            toppings = SubUI_add_topping();
+
             break;
         case '2':
             break;
     }
-
-    cout << "Your toppings are: " << endl;
-    for (unsigned int i = 0; i < toppings.size(); i++) {
-        cout << "\t[" << i+1 << "] " << "Name of Topping: " << toppings[i].get_name() << endl;
-    }
-
 }
 vector <Toppings> Order_UI::SubUI_add_topping() {
     vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
@@ -84,6 +101,7 @@ vector <Toppings> Order_UI::SubUI_add_topping() {
     }
     return userToppings;
 }
+
 Order_UI::~Order_UI()
 {
     //dtor
