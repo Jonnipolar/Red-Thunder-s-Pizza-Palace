@@ -95,6 +95,11 @@ Pizza Order_UI::UI_Add_Order_Pizza() {
             break;
         case '2':
             pizza = get_pizza_menus();
+            user_pizza_bottom = UI_Get_Bottom();
+            user_pizza_size = UI_Get_Size();
+            price = pizza.get_price() + user_pizza_bottom.get_price() + user_pizza_size.get_price();
+            Pizza new_pizza = Pizza(pizza.get_name(),pizza.get_price(),pizza.get_toppings(),user_pizza_bottom,user_pizza_size);
+            return new_pizza;
             break;
     }
     return pizza;
@@ -193,7 +198,11 @@ Pizza Order_UI::get_pizza_menus() {
 int Order_UI::get_price_of_pizzas(vector <Pizza> pizzas) {
     int price = 0;
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
+        PizzaBottom user_pizza_bottom = pizzas[i].get_bottom();
+        PizzaSize user_pizza_size = pizzas[i].get_size();
         price += pizzas[i].get_price();
+        price += user_pizza_bottom.get_price();
+        price += user_pizza_size.get_price();
     }
     return price;
 }

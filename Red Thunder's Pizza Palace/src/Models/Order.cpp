@@ -70,20 +70,20 @@ ostream& operator <<(ostream& out, const Order& order) {
             for ( unsigned int i = 0; i < toppings.size(); i++ ) {
                 Toppings topping = toppings[i];
                 if (i != toppings.size() - 1) {
-                    out << topping.get_name() << ";";
+                    out << topping.get_name() << ",";
                 }
                 else {
-                    out << topping.get_name() << ",";
+                    out << topping.get_name() << ";";
                 }
             }
         }
         else {
-            out << pizza.get_name();
+            out << pizza.get_name() << ",";
             vector <Toppings> toppings = pizza.get_toppings();
             for ( unsigned int i = 0; i < toppings.size(); i++ ) {
                 Toppings topping = toppings[i];
                 if (i != toppings.size() - 1) {
-                    out << topping.get_name() << ";";
+                    out << topping.get_name() << ",";
                 }
                 else {
                     out << topping.get_name() << ":";
