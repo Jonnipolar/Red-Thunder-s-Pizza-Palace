@@ -18,11 +18,11 @@ void MainUI::startUI()throw (InvalidMenuNumberException)
         cout << "[3] Bakery" << endl;                                           // ------""-------------
         cout << "[4] Delivery" << "inactive ATM" << endl;                                         // ------""-------------
         cout << "[5] Quit" << endl;                                             // ------""-------------
-        cin >> selection;
         do {
             try {
                 is_valid = true;
                 cout << "Select option: ";
+                cin.sync();
                 cin >> selection;
                 switch (selection) {
                 case '1':

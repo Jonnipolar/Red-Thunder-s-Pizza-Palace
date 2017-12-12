@@ -2,7 +2,7 @@
 
 InvalidMenuNumberException::InvalidMenuNumberException()
 {
-    _message = "Invalid choice: Please select an option from the list. \n";
+    _message = "Invalid choice. Please select an option from the list. \n";
 
 }
 
