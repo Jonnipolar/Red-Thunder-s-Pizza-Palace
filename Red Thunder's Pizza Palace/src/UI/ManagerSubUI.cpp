@@ -290,7 +290,7 @@ void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceExcep
     string price_input;
 
     cout << "Please type in new size name (description)." << endl;
-     do { ///name - ready
+    do { ///name - ready
         is_valid = true;
         try {
             cout << "Name: ";
@@ -345,7 +345,7 @@ void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceExc
 
 
     cout << "Please type in new bottom name (description)." << endl;
-     do { ///name - ready
+    do { ///name - ready
         is_valid = true;
         try {
             cout << "Name: ";
@@ -399,7 +399,7 @@ void ManagerSubUI::UI_make_pizza_place()
     bool is_valid = true;
 
     cout << "Please type in a new address." << endl;
-     do { ///name - ready
+    do { ///name - ready
         is_valid = true;
         try {
             string name;
@@ -417,7 +417,7 @@ void ManagerSubUI::UI_make_pizza_place()
             cout << e.get_message();
         }
     } while(!is_valid);
-                                                         /// nafn - ath ad lata setja number i nedri linu
+    /// nafn - ath ad lata setja number i nedri linu
     cout << "Please type in house number." << endl;
     do { ///name - ready
         is_valid = true;
@@ -425,12 +425,11 @@ void ManagerSubUI::UI_make_pizza_place()
             cout << "House number: ";
             cin.sync();
             getline(cin, number_input);
-            for(unsigned int i = 0; i < number_input.length();i++){
-                if(ispunct(number_input[i])){
+            for(unsigned int i = 0; i < number_input.length(); i++) {
+                if(ispunct(number_input[i])) {
                     is_valid = false;
                     throw InvalidStreetAddressException();
-                }
-                else{};
+                } else {};
             }
             if(number_input.length() > 20) {
                 is_valid = false;
@@ -458,7 +457,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
     string price_input;
 
     cout << "Please type in a new extra." << endl;
-     do { ///name - ready
+    do { ///name - ready
         is_valid = true;
         try {
             cout << "Name: ";
@@ -504,7 +503,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
 
 
     cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl; /// herna get eg kannski stungid inn djos tharna... moddinu fyrir thetta Uppi
-        do { //mod for menunumber - not universally adaptive (see below)
+    do { //mod for menunumber - not universally adaptive (see below)
         is_valid = true;
         string type_input;
         try {
