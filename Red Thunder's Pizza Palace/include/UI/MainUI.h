@@ -5,6 +5,8 @@
 #include "ManagerSubUI.h"
 #include "OrderUI.h"
 #include "BakeryUI.h"
+#include "InvalidMenuNumberException.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -13,7 +15,7 @@ class MainUI
     public:
         MainUI();
         /// only function in class, sets up UI when logging in
-        void startUI();
+        void startUI() throw (InvalidMenuNumberException);
         /// UI for Manager
 
     private:
