@@ -152,7 +152,6 @@ vector <Toppings> Order_UI::SubUI_add_topping()
 }
 PizzaBottom Order_UI::UI_Get_Bottom()
 {
-    int BottSel = -1;
     PizzaBottom user_pizza_bottom;
     vector <PizzaBottom> pizza_bottom_list = pizza_bottom.Get_Pizza_Bottom();
     system("CLS");
@@ -161,16 +160,14 @@ PizzaBottom Order_UI::UI_Get_Bottom()
         cout << "\t[" << i+1 << "] " << pizza_bottom_list[i].get_type() << endl;
     }
     cout << "Please enter the number for Bottom" << endl;
-    cin.sync();
-    cin >> BottSel;                                                         ///ath input her m.v. size
-    if (BottSel > 0 && BottSel <= (int)pizza_bottom_list.size()) {
+    unsigned int BottSel = get_integer_input_variable_size(pizza_bottom_list.size());
+    if (BottSel > 0 && BottSel <= pizza_bottom_list.size()) {
         user_pizza_bottom = pizza_bottom_list[BottSel - 1];
     }
     return user_pizza_bottom;
 }
 PizzaSize Order_UI::UI_Get_Size()
 {
-    unsigned int SizeSel = -1;
     PizzaSize user_pizza_size;
     vector <PizzaSize> pizza_size_list = pizza_size.Get_Pizza_Sizes();
     system("CLS");
@@ -179,7 +176,7 @@ PizzaSize Order_UI::UI_Get_Size()
         cout << "\t[" << i+1 << "] " << pizza_size_list[i].get_size() << endl;
     }
     cout << "Please enter the number for Size" << endl;
-    SizeSel = get_integer_input_variable_size(pizza_size_list.size());                                                                 ///ath input her lika
+    unsigned int SizeSel = get_integer_input_variable_size(pizza_size_list.size());                                                                 ///ath input her lika
     if (SizeSel > 0 && SizeSel <= pizza_size_list.size()) {
         user_pizza_size = pizza_size_list[SizeSel - 1];
     }
@@ -195,7 +192,6 @@ int Order_UI::get_price_of_toppings(vector <Toppings> toppings)
 }
 Pizza Order_UI::get_pizza_menus()
 {
-    unsigned int PizzaSel = -1;
     vector <Pizza> pizzas = pizza_service.get_pizzas();
     Pizza user_pizza;
     system("CLS");
@@ -203,7 +199,7 @@ Pizza Order_UI::get_pizza_menus()
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
     }
-    PizzaSel = get_integer_input_variable_size(pizzas.size());                                                          ///ath herna input mida vid array
+    unsigned int PizzaSel = get_integer_input_variable_size(pizzas.size());                                                          ///ath herna input mida vid array
     if (PizzaSel > 0 && PizzaSel <= pizzas.size()) {
         user_pizza = pizzas[PizzaSel - 1];
     }
@@ -219,7 +215,6 @@ OtherProducts Order_UI::add_other_prduct()
     vector <OtherProducts> dish_prod = other_prod_service.get_side();
     vector <OtherProducts> total_prod;
     unsigned int total_amount = soda_prod.size() + sauce_prod.size() + dish_prod.size();
-    unsigned int prodSel = -1;
     int cntr = 0;
     cout << "Sodas: " << endl;
     for ( unsigned int i = 0; i < soda_prod.size(); i++ ) {
@@ -239,7 +234,7 @@ OtherProducts Order_UI::add_other_prduct()
         cntr++;
         total_prod.push_back(dish_prod[i]);
     }
-    prodSel = get_integer_input_variable_size(total_amount);                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
+    unsigned int prodSel = get_integer_input_variable_size(total_amount);                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
     if (prodSel > 0 && prodSel <= total_amount) {
         other_product = total_prod[prodSel - 1];
     }
@@ -334,7 +329,7 @@ string Order_UI::get_order_status() throw (InvalidMenuNumberException)
     cout << "[1] Processing" << endl;
     cout << "[2] In Oven" << endl;
     cout << "[3] Complete" << endl;
-    do { // /etta er catch svo thad er ser a bati
+    do { ///tharf ekkert valdation a thessi switch
         try {
             is_valid = true;
             cout << "select status: ";
