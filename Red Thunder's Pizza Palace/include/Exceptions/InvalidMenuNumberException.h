@@ -8,7 +8,9 @@ public:
     InvalidMenuNumberException();
 
     string get_message();
-private:
+
+    private:
+
     string _message;
 
 };

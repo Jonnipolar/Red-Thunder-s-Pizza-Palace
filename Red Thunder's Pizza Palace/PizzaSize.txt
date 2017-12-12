@@ -1,2 +1,5 @@
 Stor:1500
 Stor:1500
+stor:0
+jebb:0
+oke:500

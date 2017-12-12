@@ -1,10 +1,11 @@
 #define OTHERPRODUCTSREPOSITORY_H
 #define OTHERPRODUCTSREPOSITORY_H
 #include <fstream>
-#include "OtherProducts.h"
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
+#include "OtherProducts.h"
+
 using namespace std;
 
 

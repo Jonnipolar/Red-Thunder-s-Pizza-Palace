@@ -9,6 +9,7 @@ using namespace std;
 class OtherProducts
 {
     public:
+        OtherProducts();
         OtherProducts(string name, int price, int type);
         string get_name();
         int get_price();

@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <stdlib.h>
+#include <sstream>
 #include "Pizza.h"
 #include "PizzaPlace.h"
 #include "PizzaService.h"
@@ -11,7 +13,10 @@
 #include "MakePizzaBottomList.h"
 #include "PizzaPlaceService.h"
 #include "OtherProductsService.h"
-#include <stdlib.h>
+#include "InvalidMenuNumberException.h"
+#include "InvalidNameException.h"
+#include "InvalidPriceException.h"
+#include "InvalidStreetAddressException.h"
 using namespace std;
 
 class ManagerSubUI
@@ -19,19 +24,19 @@ class ManagerSubUI
     public:
         ManagerSubUI();
         ///Start The UI
-        void UI_Start();
+        void UI_Start() throw (InvalidMenuNumberException);
         ///Function to make pizza
-        void UImake_pizza();
+        void UImake_pizza() throw (InvalidNameException, InvalidPriceException);
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
         ///Function to make topping
-        void UI_make_toppings();
+        void UI_make_toppings() throw (InvalidNameException, InvalidPriceException, InvalidMenuNumberException);
         void UI_make_menu();
-        void UI_make_size();
-        void UI_make_bottom();
+        void UI_make_size() throw (InvalidNameException, InvalidPriceException);
+        void UI_make_bottom()throw (InvalidNameException, InvalidPriceException);
         void UI_make_pizza_place();
-        void UI_select_make_pizza();
-        void UI_make_other_items();
+        void UI_select_make_pizza() throw (InvalidMenuNumberException);
+        void UI_make_other_items()throw (InvalidNameException, InvalidPriceException);
         ~ManagerSubUI();
 
     private:

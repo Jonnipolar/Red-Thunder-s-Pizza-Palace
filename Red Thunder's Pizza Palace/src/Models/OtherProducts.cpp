@@ -1,5 +1,11 @@
 #include "OtherProducts.h"
 
+
+OtherProducts::OtherProducts() {
+    this->name = "No Product";
+    this->price = 0;
+    this->type = -1;
+}
 OtherProducts::OtherProducts(string name, int price, int type){
     this->name = name;
     this->price = price;

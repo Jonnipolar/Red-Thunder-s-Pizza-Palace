@@ -2,9 +2,9 @@
 #define ORDER_H
 #include <iostream>
 #include <vector>
+#include <ctime>
 #include "Pizza.h"
 #include "PizzaPlace.h"
-#include <ctime>
 
 using namespace std;
 class Order

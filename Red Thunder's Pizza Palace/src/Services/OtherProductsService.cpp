@@ -31,7 +31,7 @@ vector <OtherProducts> OtherProductsService::get_side() {
     vector <OtherProducts> other_products = repo.get_other_products();
     vector <OtherProducts> side_prod;
     for (unsigned int i = 0; i < other_products.size(); i++) {
-        if(other_products[i].get_type()) {
+        if(other_products[i].get_type() == 3) {
             side_prod.push_back(other_products[i]);
         }
     }

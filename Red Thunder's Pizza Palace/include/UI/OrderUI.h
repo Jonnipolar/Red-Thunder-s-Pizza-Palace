@@ -11,7 +11,7 @@
 #include "MakePizzaBottomList.h"
 #include "PizzaPlaceService.h"
 #include "OrderServices.h"
-
+#include "OtherProductsService.h"
 using namespace std;
 class Order_UI
 {
@@ -27,6 +27,7 @@ class Order_UI
         PizzaSize UI_Get_Size();
         int get_price_of_toppings(vector <Toppings> toppings);
         Pizza get_pizza_menus();
+        OtherProducts add_other_prduct();
         int get_price_of_pizzas(vector <Pizza> pizzas);
         string get_time();
         string get_type_of_delivery();
@@ -43,6 +44,7 @@ class Order_UI
         PizzaPlaceService pizza_places;
         PizzaService pizza_service;
         OrderServices order_service;
+        OtherProductsService other_prod_service;
 };
 
 #endif // ORDER_UI_H

@@ -11,6 +11,14 @@ void OrderRepository::store_order(const Order& order) {
         fout.close();
     }
 }
+vector <Order> OrderRepository::get_order() {
+    vector <Order> orders;
+    ifstream fin("Orders.txt");
+
+
+
+    return orders;
+}
 OrderRepository::~OrderRepository()
 {
 }

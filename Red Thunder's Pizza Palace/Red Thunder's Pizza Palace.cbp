@@ -43,6 +43,9 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Exceptions/InvalidMenuNumberException.h" />
+		<Unit filename="include/Exceptions/InvalidNameException.h" />
+		<Unit filename="include/Exceptions/InvalidPriceException.h" />
+		<Unit filename="include/Exceptions/InvalidStreetAddressException.h" />
 		<Unit filename="include/Models/Order.h" />
 		<Unit filename="include/Models/OtherProducts.h" />
 		<Unit filename="include/Models/Pizza.h" />
@@ -64,11 +67,15 @@
 		<Unit filename="include/Services/PizzaPlaceService.h" />
 		<Unit filename="include/Services/PizzaService.h" />
 		<Unit filename="include/Services/PizzaSizeService.h" />
+		<Unit filename="include/UI/BakeryUI.h" />
 		<Unit filename="include/UI/MainUI.h" />
 		<Unit filename="include/UI/ManagerSubUI.h" />
 		<Unit filename="include/UI/OrderUI.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Exceptions/InvalidMenuNumberException.cpp" />
+		<Unit filename="src/Exceptions/InvalidNameException.cpp" />
+		<Unit filename="src/Exceptions/InvalidPriceException.cpp" />
+		<Unit filename="src/Exceptions/InvalidStreetAddressException.cpp" />
 		<Unit filename="src/Models/Order.cpp" />
 		<Unit filename="src/Models/OtherProducts.cpp" />
 		<Unit filename="src/Models/Pizza.cpp" />
@@ -90,6 +97,7 @@
 		<Unit filename="src/Services/PizzaPlaceService.cpp" />
 		<Unit filename="src/Services/PizzaService.cpp" />
 		<Unit filename="src/Services/PizzaSizeService.cpp" />
+		<Unit filename="src/UI/BakeryUI.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />
 		<Unit filename="src/UI/ManagerSubUI.cpp" />
 		<Unit filename="src/UI/OrderUI.cpp" />

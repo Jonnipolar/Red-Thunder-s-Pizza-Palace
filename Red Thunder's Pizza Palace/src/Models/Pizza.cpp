@@ -1,6 +1,12 @@
 #include "Pizza.h"
 
 Pizza::Pizza() {
+    this->name = "No pizza";
+    this->price = 0;
+    Toppings topping;
+    this->toppings.push_back(topping);
+    this->bottom = PizzaBottom();
+    this->pizzaSize = PizzaSize();
 
 }
 Pizza::Pizza(string name, int price, vector <Toppings> toppings, PizzaBottom bottom, PizzaSize pizzasize)

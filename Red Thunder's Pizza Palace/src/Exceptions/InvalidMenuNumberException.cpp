@@ -2,7 +2,8 @@
 
 InvalidMenuNumberException::InvalidMenuNumberException()
 {
-    string _message = "Invalid choice: Please select an option from the list.";
+    _message = "Invalid choice: Please select an option from the list. \n";
+
 }
 
 string InvalidMenuNumberException::get_message()
