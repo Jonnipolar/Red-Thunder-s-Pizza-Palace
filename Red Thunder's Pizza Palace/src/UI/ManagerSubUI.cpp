@@ -399,8 +399,8 @@ void ManagerSubUI::UI_make_pizza_place()
     bool is_valid = true;
 
     cout << "Please type in a new address." << endl;
-    bool is_valid = true;
      do { ///name - ready
+        is_valid = true;
         try {
             string name;
             cout << "Street name: ";
