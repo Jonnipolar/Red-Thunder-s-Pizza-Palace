@@ -2,30 +2,30 @@
 
 ManagerSubUI::ManagerSubUI()
 {
-    //ctor
+                                                                                             //ctor
 }
 void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
 {
     vector <Pizza> pizza;
-    char selection;                                                         // Declare selection char
+    char selection;                                                                          // Declare selection char
     bool is_valid = true;
-    while (selection != '6') {                                              // While user does not want to quit
+    while (selection != '6') {                                                               // While user does not want to quit
         system("CLS");
-        cout << "Hello Mr. Manager" << endl;                                 // Welcome message
-        cout << "What would you like to do:" << endl;                        // -||-
-        cout << "[1] Make pizza" << endl;                                    // Menu for user to pick
-        cout << "[2] Make topping" << endl;                                  // ------""-------------
-        cout << "[3] Create menu" << endl;                                   // ------""-------------
-        cout << "[4] Add other items" << endl;                               // ------""-------------
-        cout << "[5] Add pizza place" << endl;                               // ------""-------------
-        cout << "[6] Back to main menu" << endl;                                          // ------""-------------
+        cout << "Hello Mr. Manager" << endl;                                                 // Welcome message
+        cout << "What would you like to do:" << endl;                                        // -||-
+        cout << "[1] Make pizza" << endl;                                                    // Menu for user to pick
+        cout << "[2] Make topping" << endl;                                                  // ------""-------------
+        cout << "[3] View pizza menu" << endl;                                               // ------""-------------
+        cout << "[4] Add other items" << endl;                                               // ------""-------------
+        cout << "[5] Add pizza place" << endl;                                               // ------""-------------
+        cout << "[6] Back to main menu" << endl;                                             // ------""-------------
         do {
             try {
                 is_valid = true;
                 cout << "Select option: ";
                 cin >> selection;
                 switch (selection) {
-                case '1':                                                        // if user picks p create pizza
+                case '1':                                                                    // if user picks p create pizza
                     UI_select_make_pizza();
                     break;
                 case '2':
@@ -36,7 +36,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
                     for (unsigned int i = 0; i < pizza.size(); i++) {
                         cout << pizza[i];
                     }
-                    cin >> selection; ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
+                    cin >> selection;                                                        ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
                     break;
                 case '4':
                     UI_make_other_items();
@@ -60,7 +60,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
 
 void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
 {
-    bool is_valid = true; // is valid heldur user i loop a medan thu ert med vitlaust svar.
+    bool is_valid = true;                                                                    // is valid heldur user i loop a medan thu ert med vitlaust svar.
     char selection;
 
     system("CLS");
@@ -69,7 +69,7 @@ void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
     cout << "[3] Make Pizza" << endl;
     cout << "[4] Back to main menu" << endl;
     do {
-        try {                                                                          //try og throw komid
+        try {                                                                                //try og throw komid
             is_valid = true;
             cout << "Select option: ";
             cin >> selection;
@@ -77,19 +77,19 @@ void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
             case '1':
                 UI_make_size();
                 break;
-            case '2':                                            // if user picks t create topping
+            case '2':                                                                        // if user picks t create topping
                 UI_make_bottom();
                 break;
-            case '3':                                               // if user picks m Create menu
+            case '3':                                                                        // if user picks m Create menu
                 UImake_pizza();
                 break;
             case '4':
                 break;
-            default: //kastar a throw
+            default:                                                                         //kastar a throw
                 is_valid = false;
                 throw InvalidMenuNumberException();
             }
-        } catch(InvalidMenuNumberException e) { // gripur throw i message
+        } catch(InvalidMenuNumberException e) {                                              // gripur throw i message
             cout << e.get_message();
         }
     } while(!is_valid);
@@ -97,7 +97,7 @@ void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
 
 
 
-void ManagerSubUI::UImake_pizza() throw (InvalidNameException, InvalidPriceException) /// throw komin
+void ManagerSubUI::UImake_pizza() throw (InvalidNameException, InvalidPriceException)        /// throw komin
 {
     bool is_valid = true;
     PizzaSize _size;
@@ -109,7 +109,7 @@ void ManagerSubUI::UImake_pizza() throw (InvalidNameException, InvalidPriceExcep
         is_valid = true;
         try {
             cout << "Name: ";
-            cin.sync();                             ///þetta verður að vera Sync en ekki WS svo að .empty function virki
+            cin.sync();                                                                      ///þetta verður að vera Sync en ekki WS svo að .empty function virki
             getline(cin, name);
             if(name.length() > 20) {
                 is_valid = false;
@@ -166,7 +166,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
     vector <Toppings> userToppings;
     int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
     int ToppSel = -1;
-    while (ToppSel != 0) {                                                               ///vantar ekki numberthrow herna lika?
+    while (ToppSel != 0) {                                                                   ///vantar ekki numberthrow herna lika?
         int cntr = 0;
         system("CLS");
         cout << "\nMeat Toppings: \n" << endl;
@@ -207,10 +207,10 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
 
 
     cout << "Please type in topping" << endl;
-    do { ///name - ready
+    do {                                                                                     ///name - ready
         is_valid = true;
         try {
-            cout << "Name: ";                                                       // ws needed to clear before getline
+            cout << "Name: ";                                                                // ws needed to clear before getline
             cin.sync();
             getline(cin, name);
             if(name.length() > 20) {
@@ -225,7 +225,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
         }
     } while(!is_valid);
 
-    do { ///ready for use PRICE
+    do {                                                                                     ///ready for use PRICE
         is_valid = true;
         string price_input = "";
         try {
@@ -251,7 +251,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
 
 
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    do { //mod for menunumber - not universally adaptive (see below)
+    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
         is_valid = true;
         string type_input;
         try {
@@ -265,7 +265,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
                 throw InvalidMenuNumberException();
             } else {};
             for(unsigned int i = 0; i < type_input.length(); i++) {
-                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') { // because of this (see above)
+                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') {      // because of this (see above)
                     is_valid = false;
                     throw InvalidMenuNumberException();
                 } else {};
@@ -279,7 +279,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
 
     toppings_list.save_topping_list(name, price, type);                                      // sendir í function sem vistar í skjal
 }
-void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceException) /// KOMINN HINGAD!!!
+void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceException)        /// KOMINN HINGAD!!!
 {
     system("CLS");
     string name;
@@ -289,7 +289,7 @@ void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceExcep
     string price_input;
 
     cout << "Please type in new size name (description)." << endl;
-    do { ///name - ready
+    do {                                                                                     ///name - ready
         is_valid = true;
         try {
             cout << "Name: ";
@@ -312,7 +312,7 @@ void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceExcep
         is_valid = true;
         try {
             cout << "Price: ";
-            cin.sync();                                                     /// setja inn throw a illegal number
+            cin.sync();                                                                      /// setja inn throw a illegal number
             getline(cin, price_input);
             for(unsigned int i = 0; i < price_input.length(); i++) {
                 if(!isdigit(price_input[i])) {
@@ -320,7 +320,7 @@ void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceExcep
                     throw InvalidPriceException();
                 } else {};
             }
-            if(price_input.empty()) { // passar ad madur slai eitthvad inn
+            if(price_input.empty()) {                                                        // passar ad madur slai eitthvad inn
                 is_valid = false;
                 throw InvalidPriceException();
             } else {};
@@ -344,7 +344,7 @@ void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceExc
 
 
     cout << "Please type in new bottom name (description)." << endl;
-    do { ///name - ready
+    do {                                                                                     ///name - ready
         is_valid = true;
         try {
             cout << "Name: ";
@@ -368,7 +368,7 @@ void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceExc
         is_valid = true;
         try {
             cout << "Price: ";
-            cin.sync();                                                     /// setja inn throw a illegal number
+            cin.sync();                                                                      /// setja inn throw a illegal number
             getline(cin, price_input);
             for(unsigned int i = 0; i < price_input.length(); i++) {
                 if(!isdigit(price_input[i])) {
@@ -376,7 +376,7 @@ void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceExc
                     throw InvalidPriceException();
                 } else {};
             }
-            if(price_input.empty()) { // passar ad madur slai eitthvad inn
+            if(price_input.empty()) {                                                        // passar ad madur slai eitthvad inn
                 is_valid = false;
                 throw InvalidPriceException();
             } else {};
@@ -385,7 +385,7 @@ void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceExc
         }
         stringstream push_price(price_input);
         push_price >> price;
-    } while(!is_valid);                                                          ///only numbers
+    } while(!is_valid);                                                                      ///only numbers
 
     PizzaBottom pizza_bottoms(name, price);
     pizza_bottom.save_pizza_bottom(pizza_bottoms);
@@ -398,7 +398,7 @@ void ManagerSubUI::UI_make_pizza_place()
     bool is_valid = true;
 
     cout << "Please type in a new address." << endl;
-    do { ///name - ready
+    do {                                                                                     ///name - ready
         is_valid = true;
         try {
             string name;
@@ -416,9 +416,9 @@ void ManagerSubUI::UI_make_pizza_place()
             cout << e.get_message();
         }
     } while(!is_valid);
-    /// nafn - ath ad lata setja number i nedri linu
+                                                                                             /// nafn - ath ad lata setja number i nedri linu
     cout << "Please type in house number." << endl;
-    do { ///name - ready
+    do {                                                                                     ///name - ready
         is_valid = true;
         try {
             cout << "House number: ";
@@ -456,7 +456,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
     string price_input;
 
     cout << "Please type in a new extra." << endl;
-    do { ///name - ready
+    do {                                                                                     ///name - ready
         is_valid = true;
         try {
             cout << "Name: ";
@@ -480,7 +480,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
         is_valid = true;
         try {
             cout << "Price: ";
-            cin.sync();                                                     /// setja inn throw a illegal number
+            cin.sync();                                                                      /// setja inn throw a illegal number
             getline(cin, price_input);
             for(unsigned int i = 0; i < price_input.length(); i++) {
                 if(!isdigit(price_input[i])) {
@@ -488,7 +488,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
                     throw InvalidPriceException();
                 } else {};
             }
-            if(price_input.empty()) { // passar ad madur slai eitthvad inn
+            if(price_input.empty()) {                                                        // passar ad madur slai eitthvad inn
                 is_valid = false;
                 throw InvalidPriceException();
             } else {};
@@ -501,8 +501,8 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
 
 
 
-    cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl; /// herna get eg kannski stungid inn djos tharna... moddinu fyrir thetta Uppi
-    do { //mod for menunumber - not universally adaptive (see below)
+    cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl;                 /// herna get eg kannski stungid inn djos tharna... moddinu fyrir thetta Uppi
+    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
         is_valid = true;
         string type_input;
         try {
@@ -516,7 +516,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
                 throw InvalidMenuNumberException();
             } else {};
             for(unsigned int i = 0; i < type_input.length(); i++) {
-                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') { // because of this (see above)
+                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') {      // because of this (see above)
                     is_valid = false;
                     throw InvalidMenuNumberException();
                 } else {};
@@ -534,5 +534,5 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
 
 ManagerSubUI::~ManagerSubUI()
 {
-    //dtor
+                                                                                             //dtor
 }
