@@ -170,8 +170,7 @@ void ManagerSubUI::UI_make_toppings()
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
     cin >> type;                                                                /// setja inn menuchoice (hvernig sem thad vurkar her)
 
-    Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
-    toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
+    toppings_list.save_topping_list(name, price, type);                                      // sendir í function sem vistar í skjal
 }
 void ManagerSubUI::UI_make_size()
 {
@@ -236,6 +235,7 @@ void ManagerSubUI::UI_make_other_items() {
     OtherProducts other_products(name, price, type);
     serv.save_other_products(other_products);
 }
+
 ManagerSubUI::~ManagerSubUI()
 {
     //dtor

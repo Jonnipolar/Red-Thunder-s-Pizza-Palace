@@ -1,5 +1,5 @@
-pepperoni:34:1
-sveppur:50:2
+pepperoni:200:1
+sveppur:100:2
 Ostur:30:3
 Gradostur:30:3
 Piparostur:30:3
@@ -15,3 +15,4 @@ Bacon Strips:50:1
 Cheddar Cheese:30:3
 Garlic:30:2
 Onion:50:2
+stort pepperoni:200:1

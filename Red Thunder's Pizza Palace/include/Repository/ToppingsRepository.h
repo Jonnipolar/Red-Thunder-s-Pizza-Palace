@@ -13,7 +13,7 @@ class ToppingsRepository
     public:
         ToppingsRepository();
         /// function to write to document
-        void store_toppings(const Toppings& topping);
+        void store_toppings(vector <Toppings> topping);
         vector <Toppings> get_topping();
     private:
 };

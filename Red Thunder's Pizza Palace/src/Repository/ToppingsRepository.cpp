@@ -4,12 +4,14 @@ ToppingsRepository::ToppingsRepository() {
         //ctor
 }
 
-void ToppingsRepository::store_toppings(const Toppings& topping) {
+void ToppingsRepository::store_toppings(vector <Toppings> topping) {
 
     ofstream fout;
-    fout.open("Toppings.txt", ios::app);
+    fout.open("Toppings.txt");
     if(fout.is_open()){
-        fout << topping;                        /// prints to .txt and is not final, just made it to test
+        for (unsigned int i = 0; i < topping.size(); i++) {
+            fout << topping[i];                        /// prints to .txt and is not final, just made it to test
+        }
         fout.close();
     }
 }
