@@ -70,8 +70,12 @@ ostream& operator <<(ostream& out, const Order& order) {
     out << order.name << ":";
     for ( unsigned int i = 0; i < order.pizzas.size(); i++ ) {
         Pizza pizza = order.pizzas[i];
+        PizzaSize pizza_size = pizza.get_size();
+        PizzaBottom bottom = pizza.get_bottom();
         if (i != order.pizzas.size() - 1) {
             out << pizza.get_name() << ";";
+            out << pizza_size.get_size() << ";";
+            out << bottom.get_type() << ";";
             vector <Toppings> toppings = pizza.get_toppings();
             for ( unsigned int i = 0; i < toppings.size(); i++ ) {
                 Toppings topping = toppings[i];
@@ -84,7 +88,9 @@ ostream& operator <<(ostream& out, const Order& order) {
             }
         }
         else {
-            out << pizza.get_name() << ",";
+            out << pizza.get_name() << ";";
+            out << pizza_size.get_size() << ";";
+            out << bottom.get_type() << ";";
             vector <Toppings> toppings = pizza.get_toppings();
             for ( unsigned int i = 0; i < toppings.size(); i++ ) {
                 Toppings topping = toppings[i];

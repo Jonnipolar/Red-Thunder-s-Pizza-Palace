@@ -35,7 +35,7 @@ void Order_UI::UI_Add_Order() {
     vector <Pizza> pizzas;
     vector <OtherProducts> other_products;
     char selection;
-    while (selection != 4) {
+    while (selection != '4') {
         system("CLS");
         cout << "What would you like to choose?" << endl;
         cout << "[1] Add Pizza" << endl;
@@ -66,7 +66,7 @@ void Order_UI::UI_Add_Order() {
                 Comment = get_comment();
                 order = Order(name,pizzas, other_products, order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
                 order_service.SaveOrder(order);
-                selection = 5;
+                selection = '4';
                 break;
             case '4':
                 break;
