@@ -199,7 +199,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
     system("CLS");
 
     int price;
-    int type;
+    unsigned int type;
     bool is_valid = true;
     string name;
 
@@ -250,31 +250,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
 
 
     cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
-        is_valid = true;
-        string type_input;
-        try {
-            cout << "Select option: ";
-            cin.sync();
-            getline(cin,type_input);
-            stringstream push_type(type_input);
-            push_type >> type;
-            if(type > 3 || type <1 || type_input.empty()) {
-                is_valid = false;
-                throw InvalidMenuNumberException();
-            } else {};
-            for(unsigned int i = 0; i < type_input.length(); i++) {
-                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') {      // because of this (see above)
-                    is_valid = false;
-                    throw InvalidMenuNumberException();
-                } else {};
-            }
-        } catch(InvalidMenuNumberException e) {
-            cout << e.get_message();
-        }
-        stringstream push_type(type_input);
-        push_type >> type;
-    } while(!is_valid);
+    type = get_integer_input_variable_size(3);
 
     toppings_list.save_topping_list(name, price, type);                                      // sendir í function sem vistar í skjal
 }
@@ -448,7 +424,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
 {
     string name;
     int price;
-    int type;
+    unsigned int type;
     bool is_valid = true;
     string price_input;
 
@@ -499,31 +475,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
 
 
     cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl;                 /// herna get eg kannski stungid inn djos tharna... moddinu fyrir thetta Uppi
-    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
-        is_valid = true;
-        string type_input;
-        try {
-            cout << "Select option: ";
-            cin.sync();
-            getline(cin,type_input);
-            stringstream push_type(type_input);
-            push_type >> type;
-            if(type > 3 || type <1 || type_input.empty()) {
-                is_valid = false;
-                throw InvalidMenuNumberException();
-            } else {};
-            for(unsigned int i = 0; i < type_input.length(); i++) {
-                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') {      // because of this (see above)
-                    is_valid = false;
-                    throw InvalidMenuNumberException();
-                } else {};
-            }
-        } catch(InvalidMenuNumberException e) {
-            cout << e.get_message();
-        }
-        stringstream push_type(type_input);
-        push_type >> type;
-    } while(!is_valid);
+    type = get_integer_input_variable_size(3);
 
     serv.save_other_products(name, price, type);
 }
@@ -531,4 +483,36 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
 ManagerSubUI::~ManagerSubUI()
 {
                                                                                              //dtor
+}
+
+unsigned int ManagerSubUI::get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException) //skilar int eftir s
+{
+    unsigned int input;
+    bool is_valid = true;
+    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
+        is_valid = true;
+        string input_input;
+        try {
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input_input);
+            stringstream push_input(input_input);
+            push_input >> input;
+            if(input > size || input <1 || input_input.empty()) {
+                is_valid = false;
+                throw InvalidMenuNumberException();
+            } else {};
+            for(unsigned int i = 0; i < input_input.length(); i++) {
+                if(!isdigit(input_input[i])) {      // because of this (see above)
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                } else {};
+            }
+        } catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
+        stringstream push_input(input_input);
+        push_input >> input;
+    } while(!is_valid);
+    return input;
 }

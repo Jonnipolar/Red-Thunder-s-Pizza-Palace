@@ -119,8 +119,8 @@ vector <Toppings> Order_UI::SubUI_add_topping()
     vector <Toppings> vegetableTopp = toppings_list.get_vegetable_list();
     vector <Toppings> toppings;
     vector <Toppings> userToppings;
-    int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
-    int ToppSel = -1;
+    unsigned int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
+    unsigned int ToppSel = -1;
     while (ToppSel != 0) {
         int cntr = 0;
         system("CLS");
@@ -143,7 +143,7 @@ vector <Toppings> Order_UI::SubUI_add_topping()
             cntr++;
         }
         cout << "Please enter the number for topping to add (0 for no more)" << endl;
-        cin >> ToppSel;
+        ToppSel = get_integer_input_variable_size(ToppingAmount);
         if (ToppSel > 0 && ToppSel <= ToppingAmount) {
             userToppings.push_back(toppings[ToppSel-1]);
         }
@@ -170,7 +170,7 @@ PizzaBottom Order_UI::UI_Get_Bottom()
 }
 PizzaSize Order_UI::UI_Get_Size()
 {
-    int SizeSel = -1;
+    unsigned int SizeSel = -1;
     PizzaSize user_pizza_size;
     vector <PizzaSize> pizza_size_list = pizza_size.Get_Pizza_Sizes();
     system("CLS");
@@ -179,8 +179,8 @@ PizzaSize Order_UI::UI_Get_Size()
         cout << "\t[" << i+1 << "] " << pizza_size_list[i].get_size() << endl;
     }
     cout << "Please enter the number for Size" << endl;
-    cin >> SizeSel;                                                                 ///ath input her lika
-    if (SizeSel > 0 && SizeSel <= (int)pizza_size_list.size()) {
+    SizeSel = get_integer_input_variable_size(pizza_size_list.size());                                                                 ///ath input her lika
+    if (SizeSel > 0 && SizeSel <= pizza_size_list.size()) {
         user_pizza_size = pizza_size_list[SizeSel - 1];
     }
     return user_pizza_size;
@@ -195,7 +195,7 @@ int Order_UI::get_price_of_toppings(vector <Toppings> toppings)
 }
 Pizza Order_UI::get_pizza_menus()
 {
-    int PizzaSel = -1;
+    unsigned int PizzaSel = -1;
     vector <Pizza> pizzas = pizza_service.get_pizzas();
     Pizza user_pizza;
     system("CLS");
@@ -203,8 +203,8 @@ Pizza Order_UI::get_pizza_menus()
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
     }
-    cin >> PizzaSel;                                                            ///ath herna input mida vid array
-    if (PizzaSel > 0 && PizzaSel <= (int)pizzas.size()) {
+    PizzaSel = get_integer_input_variable_size(pizzas.size());                                                          ///ath herna input mida vid array
+    if (PizzaSel > 0 && PizzaSel <= pizzas.size()) {
         user_pizza = pizzas[PizzaSel - 1];
     }
     return user_pizza;
@@ -218,8 +218,8 @@ OtherProducts Order_UI::add_other_prduct()
     vector <OtherProducts> sauce_prod = other_prod_service.get_sauces_list();
     vector <OtherProducts> dish_prod = other_prod_service.get_side();
     vector <OtherProducts> total_prod;
-    int total_amount = soda_prod.size() + sauce_prod.size() + dish_prod.size();
-    int prodSel = -1;
+    unsigned int total_amount = soda_prod.size() + sauce_prod.size() + dish_prod.size();
+    unsigned int prodSel = -1;
     int cntr = 0;
     cout << "Sodas: " << endl;
     for ( unsigned int i = 0; i < soda_prod.size(); i++ ) {
@@ -239,7 +239,7 @@ OtherProducts Order_UI::add_other_prduct()
         cntr++;
         total_prod.push_back(dish_prod[i]);
     }
-    cin >> prodSel;                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
+    prodSel = get_integer_input_variable_size(total_amount);                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
     if (prodSel > 0 && prodSel <= total_amount) {
         other_product = total_prod[prodSel - 1];
     }
@@ -274,7 +274,7 @@ string Order_UI::get_type_of_delivery()  ///vantar
     cout << "PLease choose the type of delivery" << endl;
     cout << "\t[1] Home" << endl;
     cout << "\t[2] Pickup" << endl;
-    delSel = get_integer_input2();
+    delSel = get_integer_input_variable_size(2);
     if (delSel > 0 && delSel <= 2) {                        /// her er if en ekki switch
         if (delSel == 1) {
             typeOfDelivery = "Home";
@@ -294,7 +294,7 @@ string Order_UI::get_has_been_paid_for()   ///vantar
     cout << "Is the user paying in advance or on pickup" << endl;
     cout << "\t[1] In Advance" << endl;
     cout << "\t[2] On Pickup" << endl;
-    paidSel = get_integer_input2();                                                  /// ath her (menu input??) - thetta er if en ekki switch
+    paidSel = get_integer_input_variable_size(2);                                                  /// ath her (menu input??) - thetta er if en ekki switch
     if (paidSel > 0 && paidSel <= 2) {
         if (paidSel == 1) {
             hasBeenPaidFor = "In Advance";
@@ -316,38 +316,8 @@ PizzaPlace Order_UI::get_order_location() throw (InvalidMenuNumberException)  //
     for ( unsigned int i = 0; i < user_pizza_places.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << user_pizza_places[i].get_street() << endl;
     }
-    bool is_valid = true;
-    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
-        is_valid = true;
-        string locsel_input;
-        try {
-            cout << "Select option: ";
-            cin.sync();
-            getline(cin,locsel_input);
-            stringstream push_locsel(locsel_input);
-            push_locsel >> locSel;
-            if(locSel > user_pizza_places.size() || locSel <1 || locsel_input.empty()) {
-                is_valid = false;
-                throw InvalidMenuNumberException();
-            } else {};
-            for(unsigned int i = 0; i < locsel_input.length(); i++) {
-                if(!isdigit(locsel_input[i])) {      // because of this (see above)
-                    is_valid = false;
-                    throw InvalidMenuNumberException();
-                } else {};
-            }
-        } catch(InvalidMenuNumberException e) {
-            cout << e.get_message();
-        }
-        stringstream push_locsel(locsel_input);
-        push_locsel >> locSel;
-    } while(!is_valid);
+    locSel = get_integer_input_variable_size(user_pizza_places.size());
 
-
-    //locSel = get_integer_input();
-
-
-    ///ath hvernig eg implementa menuselect med vector
     if (locSel > 0 && locSel <= user_pizza_places.size()) {                    ///liklega thetta size ??? kannski
         user_place = user_pizza_places[locSel - 1];
         return user_place;
@@ -399,11 +369,11 @@ string Order_UI::get_comment()
 {
     system("CLS");
     string comment = "";
-    int ComSel = -1;
+    unsigned int ComSel;
     cout << "(Optional) Any Comments?" << endl;
     cout << "[1] Yes" << endl;
     cout << "[2] No" << endl;
-    ComSel = get_integer_input2();
+    ComSel = get_integer_input_variable_size(2);
     if (ComSel > 0 && ComSel <= 2) {
         if (ComSel == 1) {
             cout << "What comment does the user want to leave?" << endl;        ///tharf ekkert ad gera her hugsa eg.. ekkert validation.
@@ -420,6 +390,40 @@ Order_UI::~Order_UI()
     //dtor
 }
 
+unsigned int Order_UI::get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException) //skilar int eftir s
+{
+    unsigned int input;
+    bool is_valid = true;
+    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
+        is_valid = true;
+        string input_input;
+        try {
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input_input);
+            stringstream push_input(input_input);
+            push_input >> input;
+            if(input > size || input <1 || input_input.empty()) {
+                is_valid = false;
+                throw InvalidMenuNumberException();
+            } else {};
+            for(unsigned int i = 0; i < input_input.length(); i++) {
+                if(!isdigit(input_input[i])) {      // because of this (see above)
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                } else {};
+            }
+        } catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
+        stringstream push_input(input_input);
+        push_input >> input;
+    } while(!is_valid);
+    return input;
+}
+
+
+/*
 int Order_UI::get_integer_input3() throw (InvalidMenuNumberException)
 {
     bool is_valid = true;
@@ -513,3 +517,4 @@ int Order_UI::get_integer_input4() throw (InvalidMenuNumberException)  /// thess
     } while(!is_valid);
     return type;
 }
+*/

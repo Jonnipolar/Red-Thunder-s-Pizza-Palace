@@ -38,6 +38,7 @@ public:
     void UI_select_make_pizza() throw (InvalidMenuNumberException);
     void UI_make_other_items()throw (InvalidNameException, InvalidPriceException);
     ~ManagerSubUI();
+    unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
 
 private:
     MakeToppingsList toppings_list;
