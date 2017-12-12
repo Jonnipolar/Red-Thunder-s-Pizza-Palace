@@ -442,8 +442,7 @@ void ManagerSubUI::UI_make_pizza_place()
     stringstream push_number(number_input);
     push_number >> number;
 
-    PizzaPlace pizza_place(street, number);
-    pizza_places.save_pizza_place(pizza_place);
+    pizza_places.save_pizza_place(street, number);
 }
 void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPriceException)
 {

@@ -1,19 +1,12 @@
 #include "PizzaPlaceRepository.h"
 
-PizzaPlaceRepository::PizzaPlaceRepository()
-{
-    //ctor
-}
-
-PizzaPlaceRepository::~PizzaPlaceRepository()
-{
-    //dtor
-}
-void PizzaPlaceRepository::store_pizza_places(const PizzaPlace& pizza_place) {
+void PizzaPlaceRepository::store_pizza_places(vector <PizzaPlace> pizza_place) {
     ofstream fout;
-    fout.open("PizzaPlaces.txt", ios::app);
+    fout.open("PizzaPlaces.txt");
     if(fout.is_open()){
-        fout << pizza_place;                        /// prints to .txt and is not final, just made it to test
+        for(unsigned int i = 0; i < pizza_place.size(); i++) {
+            fout << pizza_place[i];                        /// prints to .txt and is not final, just made it to test
+        }
         fout.close();
     }
 }

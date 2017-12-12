@@ -5,9 +5,7 @@
 class PizzaPlaceService
 {
     public:
-        PizzaPlaceService();
-        virtual ~PizzaPlaceService();
-        void save_pizza_place(const PizzaPlace& pizza_place);
+        void save_pizza_place(string street, int number);
         vector <PizzaPlace> get_pizza_place();
     private:
         PizzaPlaceRepository pizza_places;

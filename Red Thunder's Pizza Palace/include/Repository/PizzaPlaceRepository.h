@@ -11,9 +11,7 @@ using namespace std;
 class PizzaPlaceRepository
 {
     public:
-        PizzaPlaceRepository();
-        ~PizzaPlaceRepository();
-        void store_pizza_places(const PizzaPlace& pizza_place);
+        void store_pizza_places(vector <PizzaPlace> pizza_place);
         vector <PizzaPlace> get_pizza_place();
     private:
 };
