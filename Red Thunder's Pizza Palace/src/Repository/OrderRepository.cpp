@@ -14,7 +14,21 @@ void OrderRepository::store_order(const Order& order) {
 vector <Order> OrderRepository::get_order() {
     vector <Order> orders;
     ifstream fin("Orders.txt");
+    string NameOfPerson;
+    vector <Pizza> Pizzas;
+    string Price;
+    string OrderTime;
+    string TypeOfDelivery;
+    string HasBeenPaidFor;
+    PizzaPlace OrderLocation;
+    string OrderStatus;
+    string comment;
+    if (fin.is_open()) {
+        string str;
+        while (getline(fin, str)) {
 
+        }
+    }
 
 
     return orders;

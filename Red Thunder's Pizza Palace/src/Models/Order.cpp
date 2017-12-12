@@ -67,7 +67,8 @@ string Order::get_Comment() {
 }
 ostream& operator <<(ostream& out, const Order& order) {
     PizzaPlace place = order.OrderLocation;
-    out << order.name << ":";
+    string delim = "|";
+    out << order.name << delim;
     for ( unsigned int i = 0; i < order.pizzas.size(); i++ ) {
         Pizza pizza = order.pizzas[i];
         PizzaSize pizza_size = pizza.get_size();
@@ -98,7 +99,7 @@ ostream& operator <<(ostream& out, const Order& order) {
                     out << topping.get_name() << ",";
                 }
                 else {
-                    out << topping.get_name() << ":";
+                    out << topping.get_name() << delim;
                 }
             }
         }
@@ -112,9 +113,9 @@ ostream& operator <<(ostream& out, const Order& order) {
             out << other_prod.get_name() << ":";
         }
     }
-    out << order.OrderTime << ":" << order.TotalAmount << ":" << order.TypeOfDelivery
-        << ":" << order.HasBeenPaidFor << ":" << place.get_street() << ":"
-        << order.OrderStatus << ":" << order.Comment << endl;
+    out << order.OrderTime << delim << order.TotalAmount << delim << order.TypeOfDelivery
+        << delim << order.HasBeenPaidFor << delim << place.get_street() << delim
+        << order.OrderStatus << delim << order.Comment << endl;
     return out;
 }
 istream& operator >>(istream& in, Order& order) {
