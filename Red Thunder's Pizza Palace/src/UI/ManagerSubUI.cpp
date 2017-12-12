@@ -277,8 +277,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
         push_type >> type;
     } while(!is_valid);
 
-    Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
-    toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
+    toppings_list.save_topping_list(name, price, type);                                      // sendir í function sem vistar í skjal
 }
 void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceException) /// KOMINN HINGAD!!!
 {
@@ -532,6 +531,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
     OtherProducts other_products(name, price, type);
     serv.save_other_products(other_products);
 }
+
 ManagerSubUI::~ManagerSubUI()
 {
     //dtor

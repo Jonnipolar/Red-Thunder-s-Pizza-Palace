@@ -11,7 +11,7 @@ class MakeToppingsList
 {
     public:
         /// sends information to toppings repository
-        void save_topping_list(const Toppings& toppings);
+        void save_topping_list(string name, int price, int type);
         vector <Toppings> get_topping_list();
         vector <Toppings> get_cheese_list();
         vector <Toppings> get_vegetable_list();
