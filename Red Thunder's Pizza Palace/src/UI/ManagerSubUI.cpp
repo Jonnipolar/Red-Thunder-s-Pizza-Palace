@@ -331,8 +331,7 @@ void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceExcep
         push_price >> price;
     } while(!is_valid);
 
-    PizzaSize pizza_sizes(name, price);
-    pizza_size.save_pizza_size(pizza_sizes);
+    pizza_size.save_pizza_size(name, price);
 }
 void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceException)
 {

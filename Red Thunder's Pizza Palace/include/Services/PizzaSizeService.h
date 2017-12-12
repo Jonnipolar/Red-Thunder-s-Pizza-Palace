@@ -7,7 +7,7 @@ using namespace std;
 class PizzaSizeService
 {
     public:
-        void save_pizza_size(const PizzaSize& pizza_size);
+        void save_pizza_size(string name, int price);
         vector <PizzaSize> Get_Pizza_Sizes();
     private:
         PizzaSizeRepository pizza_sizes_repo;
