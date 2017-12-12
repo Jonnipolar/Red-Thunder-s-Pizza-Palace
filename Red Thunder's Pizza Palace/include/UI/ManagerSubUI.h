@@ -25,7 +25,7 @@ class ManagerSubUI
         ///Start The UI
         void UI_Start() throw (InvalidMenuNumberException);
         ///Function to make pizza
-        void UImake_pizza() throw (InvalidNameException);
+        void UImake_pizza() throw (InvalidNameException, InvalidPriceException);
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
         ///Function to make topping

@@ -97,21 +97,24 @@ void ManagerSubUI::UI_select_make_pizza()
 
 
 
-void ManagerSubUI::UImake_pizza() throw (InvalidNameException)
+void ManagerSubUI::UImake_pizza() throw (InvalidNameException, InvalidPriceException) /// throw komin
 {
     bool is_valid = true;
     PizzaSize _size;
     PizzaBottom bottom;
     string name;
     system("CLS");
-    cout << "Please type in pizza name" << endl;
-    cout << "Pizza: ";
-    do { //throw komid
+    cout << "Please type in new pizza name" << endl;
+    do {
         is_valid = true;
-        cin >> ws;
-        getline(cin, name);
         try {
+            cout << "Name: ";
+            cin.sync();                             ///þetta verður að vera Sync en ekki WS svo að .empty function virki
+            getline(cin, name);
             if(name.length() > 20) {
+                is_valid = false;
+                throw InvalidNameException();
+            } else if(name.empty()) {
                 is_valid = false;
                 throw InvalidNameException();
             } else {};
@@ -125,12 +128,34 @@ void ManagerSubUI::UImake_pizza() throw (InvalidNameException)
         cout << "\t[" << i+1 << "] " << "Name of Topping: " << userToppings[i].get_name() << endl;
     }
     int price;
+    string price_input;
 
     cout << "\nSelect the price for the pizza" << endl;
-    cin >> price;                                                       /// SETJA INN THROW = BARA POS NUMBERS (GAETI THURFT AD CONVERTA)
+    do {
+        is_valid = true;
+        try {
+            cout << "Price: ";
+            cin.sync();                                                     /// setja inn throw a illegal number
+            getline(cin, price_input);
+            for(unsigned int i = 0; i < price_input.length(); i++) {
+                if(!isdigit(price_input[i])) {
+                    is_valid = false;
+                    throw InvalidPriceException();
+                } else {};
+            }
+            if(price_input.empty()) {
+                is_valid = false;
+                throw InvalidPriceException();
+            } else {};
+        } catch(InvalidPriceException e) {
+            cout << e.get_message();
+        }
+        stringstream push_price(price_input);
+        push_price >> price;
+    } while(!is_valid);
+
     Pizza pizza(name,price,userToppings,bottom,_size);
     pizza_service.save_pizza(pizza);
-
 }
 vector <Toppings> ManagerSubUI::SubUI_add_topping()
 {
@@ -173,75 +198,89 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
 void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceException, InvalidMenuNumberException)
 {
     system("CLS");
-    string name;
+
     int price;
     int type;
     bool is_valid = true;
-    string price_input;
+    string name;
 
 
 
     cout << "Please type in topping" << endl;
-    do{
+    do {
         is_valid = true;
-        try{
-            cout << "Name: ";
-            cin >> ws;                                                               // ws needed to clear before getline
+        try {
+            cout << "Name: ";                                                       // ws needed to clear before getline
+            cin.sync();
             getline(cin, name);
-            if(name.length() > 20){
-                    is_valid = false;
-                    throw InvalidNameException();
-            }else{};
-        }catch(InvalidNameException e){
+            if(name.length() > 20) {
+                is_valid = false;
+                throw InvalidNameException();
+            } else if(name.empty()) {
+                is_valid = false;
+                throw InvalidNameException();
+            } else {};
+        } catch(InvalidNameException e) {
             cout << e.get_message();
         }
-    }while(is_valid == false);
-    do{
+    } while(is_valid == false);
+
+    do {
         is_valid = true;
-        try{
-            cout << "Price: ";                                                  /// setja inn throw a illegal number
+        string price_input = "";
+        try {
+            cout << "Price: ";
+            cin.sync();                                                     /// setja inn throw a illegal number
             getline(cin, price_input);
-            for(unsigned int i = 0; i < price_input.length();i++){
-                if(!isdigit(price_input[i]))
-                {
+            for(unsigned int i = 0; i < price_input.length(); i++) {
+                if(!isdigit(price_input[i])) {
                     is_valid = false;
                     throw InvalidPriceException();
-                } else{};}
-        } catch(InvalidPriceException e)
-        {
+                } else {};
+            }
+            if(price_input.empty()) {
+                is_valid = false;
+                throw InvalidPriceException();
+            } else {};
+        } catch(InvalidPriceException e) {
             cout << e.get_message();
         }
         stringstream push_price(price_input);
         push_price >> price;
     } while(!is_valid);
-cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-    do{
-        is_valid = false; ///false for testing purp.
-        string type_input = "";
-        try{
+
+
+    cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
+    do {
+        is_valid = true;
+        string type_input;
+        try {
             cout << "Select option: ";
-            getline (cin, type_input);
-
-                for(unsigned int i = 0; i < type_input.length();i++){
-                        cout << type_input.length();
-
-                    if(type_input.empty() || !isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1' ){
-                            is_valid = false;
-                            throw InvalidMenuNumberException();
-                    } else{};
-                }
-        }catch(InvalidMenuNumberException e){
+            cin.sync();
+            getline(cin,type_input);
+            stringstream push_type(type_input);
+            push_type >> type;
+            if(type > 3 || type <1 || type_input.empty()) {
+                is_valid = false;
+                throw InvalidMenuNumberException();
+            } else {};
+            for(unsigned int i = 0; i < type_input.length(); i++) {
+                if(!isdigit(type_input[i]) || type_input[i]>'3' || type_input[i]<'1') {
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                } else {};
+            }
+        } catch(InvalidMenuNumberException e) {
             cout << e.get_message();
         }
         stringstream push_type(type_input);
         push_type >> type;
-    }while(is_valid == false);
-                                                                    /// setja inn menuchoice (hvernig sem thad vurkar her)
+    } while(is_valid == false);
 
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
-void ManagerSubUI::UI_make_size()
+void ManagerSubUI::UI_make_size() /// KOMINN HINGAD!!!
 {
     system("CLS");
     string name;
