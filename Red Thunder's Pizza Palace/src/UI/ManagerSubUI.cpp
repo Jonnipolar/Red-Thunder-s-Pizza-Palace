@@ -58,7 +58,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
     }
 }
 
-void ManagerSubUI::UI_select_make_pizza()
+void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
 {
     bool is_valid = true; // is valid heldur user i loop a medan thu ert med vitlaust svar.
     char selection;
@@ -280,7 +280,7 @@ void ManagerSubUI::UI_make_toppings() throw (InvalidNameException, InvalidPriceE
     Toppings topping(name, price, type);                                    // sendir inn í færubreytusmið
     toppings_list.save_topping_list(topping);                                      // sendir í function sem vistar í skjal
 }
-void ManagerSubUI::UI_make_size() /// KOMINN HINGAD!!!
+void ManagerSubUI::UI_make_size() throw (InvalidNameException, InvalidPriceException) /// KOMINN HINGAD!!!
 {
     system("CLS");
     string name;
@@ -335,7 +335,7 @@ void ManagerSubUI::UI_make_size() /// KOMINN HINGAD!!!
     PizzaSize pizza_sizes(name, price);
     pizza_size.save_pizza_size(pizza_sizes);
 }
-void ManagerSubUI::UI_make_bottom()
+void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceException)
 {
     system("CLS");
     string name;
@@ -395,6 +395,8 @@ void ManagerSubUI::UI_make_pizza_place()
 {
     string street;
     int number;
+    string number_input;
+    bool is_valid = true;
 
     cout << "Please type in a new address." << endl;
      do { ///name - ready
@@ -402,26 +404,51 @@ void ManagerSubUI::UI_make_pizza_place()
         try {
             cout << "Street name: ";
             cin.sync();
-            getline(cin, name);
-            if(name.length() > 20) {
+            getline(cin, street);
+            if(street.length() > 20) {
                 is_valid = false;
-                throw InvalidNameException();
-            } else if(name.empty()) {
+                throw InvalidStreetAddressException();
+            } else if(street.empty()) {
                 is_valid = false;
-                throw InvalidNameException();
+                throw InvalidStreetAddressException();
             } else {};
-        } catch(InvalidNameException e) {
+        } catch(InvalidStreetAddressException e) {
             cout << e.get_message();
         }
     } while(!is_valid);
                                                          /// nafn - ath ad lata setja number i nedri linu
-    cout << "Number: ";
-    cin >> number;                                                  /// cannot be puntuation (ma vera 1b 1c samt
+    cout << "Please type in house number." << endl;
+    do { ///name - ready
+        is_valid = true;
+        try {
+            cout << "House number: ";
+            cin.sync();
+            getline(cin, number_input);
+            for(unsigned int i = 0; i < number_input.length();i++){
+                if(ispunct(number_input[i])){
+                    is_valid = false;
+                    throw InvalidStreetAddressException();
+                }
+                else{};
+            }
+            if(number_input.length() > 20) {
+                is_valid = false;
+                throw InvalidStreetAddressException();
+            } else if(number_input.empty()) {
+                is_valid = false;
+                throw InvalidStreetAddressException();
+            } else {};
+        } catch(InvalidStreetAddressException e) {
+            cout << e.get_message();
+        }
+    } while(!is_valid);
+    stringstream push_number(number_input);
+    push_number >> number;
 
     PizzaPlace pizza_place(street, number);
     pizza_places.save_pizza_place(pizza_place);
 }
-void ManagerSubUI::UI_make_other_items()
+void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPriceException)
 {
     string name;
     int price;

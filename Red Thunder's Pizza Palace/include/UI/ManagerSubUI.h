@@ -16,6 +16,7 @@
 #include "InvalidMenuNumberException.h"
 #include "InvalidNameException.h"
 #include "InvalidPriceException.h"
+#include "InvalidStreetAddressException.h"
 using namespace std;
 
 class ManagerSubUI
@@ -31,11 +32,11 @@ class ManagerSubUI
         ///Function to make topping
         void UI_make_toppings() throw (InvalidNameException, InvalidPriceException, InvalidMenuNumberException);
         void UI_make_menu();
-        void UI_make_size();
-        void UI_make_bottom();
+        void UI_make_size() throw (InvalidNameException, InvalidPriceException);
+        void UI_make_bottom()throw (InvalidNameException, InvalidPriceException);
         void UI_make_pizza_place();
-        void UI_select_make_pizza();
-        void UI_make_other_items();
+        void UI_select_make_pizza() throw (InvalidMenuNumberException);
+        void UI_make_other_items()throw (InvalidNameException, InvalidPriceException);
         ~ManagerSubUI();
 
     private:
