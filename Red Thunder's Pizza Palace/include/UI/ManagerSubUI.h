@@ -39,6 +39,8 @@ public:
     void UI_make_other_items()throw (InvalidNameException, InvalidPriceException);
     ~ManagerSubUI();
     unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
+    unsigned int get_price() throw (InvalidPriceException);
+    string get_name() throw (InvalidNameException);
 
 private:
     MakeToppingsList toppings_list;
