@@ -17,6 +17,8 @@ void Order_UI::UI_Start() {
             case '1':
                 UI_Add_Order();
                 break;
+            case '2':
+                break;
         }
     }
 }
@@ -55,7 +57,7 @@ void Order_UI::UI_Add_Order() {
             case '3':
                 system("CLS");
                 cout << "Name of Person: ";
-                cin >> ws;
+                cin.sync();
                 getline(cin, name);
                 order_time = get_time();
                 total_price = get_price_of_pizzas(pizzas);
@@ -106,6 +108,7 @@ Pizza Order_UI::UI_Add_Order_Pizza() {
     }
     return pizza;
 }
+
 vector <Toppings> Order_UI::SubUI_add_topping() {
     vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
     vector <Toppings> meatTopp = toppings_list.get_meat_list();
@@ -153,7 +156,8 @@ PizzaBottom Order_UI::UI_Get_Bottom() {
         cout << "\t[" << i+1 << "] " << pizza_bottom_list[i].get_type() << endl;
     }
     cout << "Please enter the number for Bottom" << endl;
-    cin >> BottSel;
+    cin.sync();
+    cin >> BottSel;                                                         ///ath input her m.v. size
     if (BottSel > 0 && BottSel <= (int)pizza_bottom_list.size()) {
         user_pizza_bottom = pizza_bottom_list[BottSel - 1];
     }
@@ -169,7 +173,7 @@ PizzaSize Order_UI::UI_Get_Size() {
         cout << "\t[" << i+1 << "] " << pizza_size_list[i].get_size() << endl;
     }
     cout << "Please enter the number for Size" << endl;
-    cin >> SizeSel;
+    cin >> SizeSel;                                                                 ///ath input her lika
     if (SizeSel > 0 && SizeSel <= (int)pizza_size_list.size()) {
         user_pizza_size = pizza_size_list[SizeSel - 1];
     }
@@ -191,7 +195,7 @@ Pizza Order_UI::get_pizza_menus() {
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
     }
-    cin >> PizzaSel;
+    cin >> PizzaSel;                                                            ///ath herna input mida vid array
     if (PizzaSel > 0 && PizzaSel <= (int)pizzas.size()) {
         user_pizza = pizzas[PizzaSel - 1];
     }
@@ -226,7 +230,7 @@ OtherProducts Order_UI::add_other_prduct() {
         cntr++;
         total_prod.push_back(dish_prod[i]);
     }
-    cin >> prodSel;
+    cin >> prodSel;                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
     if (prodSel > 0 && prodSel <= total_amount) {
         other_product = total_prod[prodSel - 1];
     }
@@ -259,7 +263,7 @@ string Order_UI::get_type_of_delivery() {
     cout << "\t[1] Home" << endl;
     cout << "\t[2] Pickup" << endl;
     cin >> delSel;
-    if (delSel > 0 && delSel <= 2) {
+    if (delSel > 0 && delSel <= 2) {                        /// her er if en ekki switch
         if (delSel == 1) {
             typeOfDelivery = "Home";
             return typeOfDelivery;
@@ -278,7 +282,7 @@ string Order_UI::get_has_been_paid_for() {
     cout << "Is the user paying in advance or on pickup" << endl;
     cout << "\t[1] In Advance" << endl;
     cout << "\t[2] On Pickup" << endl;
-    cin >> paidSel;
+    cin >> paidSel;                                                         /// ath her (menu input??) - thetta er if en ekki switch
     if (paidSel > 0 && paidSel <= 2) {
         if (paidSel == 1) {
             hasBeenPaidFor = "In Advance";
@@ -300,8 +304,8 @@ PizzaPlace Order_UI::get_order_location() {
     for ( unsigned int i = 0; i < user_pizza_places.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << user_pizza_places[i].get_street() << endl;
     }
-    cin >> locSel;
-    if (locSel > 0 && locSel <= (int)user_pizza_places.size()) {
+    cin >> locSel;                                                                  ///ath hvernig eg implementa menuselect med vector
+    if (locSel > 0 && locSel <= (int)user_pizza_places.size()) {                    ///liklega thetta size ??? kannski
         user_place = user_pizza_places[locSel - 1];
         return user_place;
     }
@@ -315,7 +319,7 @@ string Order_UI::get_order_status() {
     cout << "[1] Processing" << endl;
     cout << "[2] In Oven" << endl;
     cout << "[3] Complete" << endl;
-    cin >> statSel;
+    cin >> statSel;                                                                 ///menuThrow (ath thetta er if en ekki switch)
     if (statSel > 0 && statSel <= 3) {
         if (statSel == 1) {
             orderStatus = "Processing";
@@ -342,8 +346,8 @@ string Order_UI::get_comment() {
     cin >> ComSel;
     if (ComSel > 0 && ComSel <= 2) {
         if (ComSel == 1) {
-            cout << "What comment does the user want to leave?" << endl;
-            cin >> ws;
+            cout << "What comment does the user want to leave?" << endl;        ///tharf ekkert ad gera her hugsa eg.. ekkert validation.
+            cin.sync();
             getline(cin, comment);
         }
         else {

@@ -20,6 +20,8 @@ class Order_UI
         ///Start The UI
         void UI_Start();
         void UI_Add_Order();
+        Pizza add_custom_pizza();
+        Pizza add_menu_pizza();
         Pizza UI_Add_Order_Pizza();
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
