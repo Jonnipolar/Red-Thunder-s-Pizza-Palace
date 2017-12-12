@@ -21,6 +21,7 @@ void Order_UI::UI_Start() {
     }
 }
 void Order_UI::UI_Add_Order() {
+    OtherProducts other_product;
     Pizza pizza;
     Order order;
     string name;
@@ -32,15 +33,15 @@ void Order_UI::UI_Add_Order() {
     string OrderStatus;
     string Comment;
     vector <Pizza> pizzas;
+    vector <OtherProducts> other_products;
     char selection;
-    while (selection != 5) {
+    while (selection != 4) {
         system("CLS");
         cout << "What would you like to choose?" << endl;
         cout << "[1] Add Pizza" << endl;
-        cout << "[2] Add Beverages" << endl;
-        cout << "[3] Add Sides" << endl;
-        cout << "[4] Finish Order" << endl;
-        cout << "[5] Quit" << endl;
+        cout << "[2] Add Sides / Beverages" << endl;
+        cout << "[3] Finish Order" << endl;
+        cout << "[4] Quit" << endl;
         cin >> selection;
         switch (selection) {
             case '1':
@@ -48,12 +49,13 @@ void Order_UI::UI_Add_Order() {
                 pizzas.push_back(pizza);
                 break;
             case '2':
+                other_product = add_other_prduct();
+                other_products.push_back(other_product);
                 break;
             case '3':
-                break;
-            case '4':
                 system("CLS");
                 cout << "Name of Person: ";
+                cin >> ws;
                 getline(cin, name);
                 order_time = get_time();
                 total_price = get_price_of_pizzas(pizzas);
@@ -66,7 +68,7 @@ void Order_UI::UI_Add_Order() {
                 order_service.SaveOrder(order);
                 selection = 5;
                 break;
-            case '5':
+            case '4':
                 break;
         }
     }
@@ -195,6 +197,42 @@ Pizza Order_UI::get_pizza_menus() {
     }
     return user_pizza;
 }
+OtherProducts Order_UI::add_other_prduct() {
+    OtherProducts other_product;
+    system("CLS");
+    cout << "Please add the sides you want!" << endl;
+    vector <OtherProducts> soda_prod = other_prod_service.get_soda_list();
+    vector <OtherProducts> sauce_prod = other_prod_service.get_sauces_list();
+    vector <OtherProducts> dish_prod = other_prod_service.get_side();
+    vector <OtherProducts> total_prod;
+    int total_amount = soda_prod.size() + sauce_prod.size() + dish_prod.size();
+    int prodSel = -1;
+    int cntr = 0;
+    cout << "Sodas: " << endl;
+    for ( unsigned int i = 0; i < soda_prod.size(); i++ ) {
+        cout << "\t[" << cntr+1 << "] " << soda_prod[i].get_name() << endl;
+        cntr++;
+        total_prod.push_back(soda_prod[i]);
+    }
+    cout << "\nSauces: " << endl;
+    for ( unsigned int i = 0; i < sauce_prod.size(); i++ ) {
+        cout << "\t[" << cntr+1 << "] " << sauce_prod[i].get_name() << endl;
+        cntr++;
+        total_prod.push_back(sauce_prod[i]);
+    }
+    cout << "\nDishes: " << endl;
+    for ( unsigned int i = 0; i < dish_prod.size(); i++ ) {
+        cout << "\t[" << cntr+1 << "] " << dish_prod[i].get_name() << endl;
+        cntr++;
+        total_prod.push_back(dish_prod[i]);
+    }
+    cin >> prodSel;
+    if (prodSel > 0 && prodSel <= total_amount) {
+        other_product = total_prod[prodSel - 1];
+    }
+
+    return other_product;
+}
 int Order_UI::get_price_of_pizzas(vector <Pizza> pizzas) {
     int price = 0;
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
@@ -305,6 +343,7 @@ string Order_UI::get_comment() {
     if (ComSel > 0 && ComSel <= 2) {
         if (ComSel == 1) {
             cout << "What comment does the user want to leave?" << endl;
+            cin >> ws;
             getline(cin, comment);
         }
         else {

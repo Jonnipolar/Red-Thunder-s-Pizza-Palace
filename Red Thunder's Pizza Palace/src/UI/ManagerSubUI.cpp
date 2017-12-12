@@ -331,7 +331,7 @@ void ManagerSubUI::UI_make_other_items()
     string name;
     int price;
     int type;
-
+    system("CLS");
     cout << "Please type in a new item" << endl;
     cout << "Name: ";
     cin >> ws;
