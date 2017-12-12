@@ -3,11 +3,13 @@
 PizzaRepository::PizzaRepository() {
 
 }
-void PizzaRepository::store_pizza(const Pizza& pizza) {
+void PizzaRepository::store_pizza(vector <Pizza> pizza) {
     ofstream fout;
-    fout.open("Pizzas.txt", ios::app);
+    fout.open("Pizzas.txt");
     if(fout.is_open()){
-        fout << pizza;                        /// prints to .txt and is not final, just made it to test
+        for(unsigned int i = 0; i < pizza.size(); i++) {
+            fout << pizza[i];                        /// prints to .txt and is not final, just made it to test
+        }
         fout.close();
     }
 }

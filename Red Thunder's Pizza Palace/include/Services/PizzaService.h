@@ -7,7 +7,7 @@ class PizzaService
 {
     public:
         PizzaService();
-        void save_pizza(const Pizza& pizza);
+        void save_pizza(string name, int price, vector <Toppings> toppings, PizzaBottom bottom, PizzaSize pizza_size);
         vector <Pizza> get_pizzas();
         ~PizzaService();
 

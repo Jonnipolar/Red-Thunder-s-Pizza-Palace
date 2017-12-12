@@ -14,7 +14,7 @@ class PizzaRepository
 {
     public:
         PizzaRepository();
-        void store_pizza(const Pizza& pizza);
+        void store_pizza(vector <Pizza> pizza);
         vector <Pizza> get_pizza();
         ~PizzaRepository();
 

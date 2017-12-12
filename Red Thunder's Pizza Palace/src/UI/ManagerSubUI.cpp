@@ -154,8 +154,7 @@ void ManagerSubUI::UImake_pizza() throw (InvalidNameException, InvalidPriceExcep
         push_price >> price;
     } while(!is_valid);
 
-    Pizza pizza(name,price,userToppings,bottom,_size);
-    pizza_service.save_pizza(pizza);
+    pizza_service.save_pizza(name,price,userToppings,bottom,_size);
 }
 vector <Toppings> ManagerSubUI::SubUI_add_topping()
 {
