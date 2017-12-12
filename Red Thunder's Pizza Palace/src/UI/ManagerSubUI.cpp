@@ -391,14 +391,15 @@ void ManagerSubUI::UI_make_other_items()
     int price;
     int type;
     system("CLS");
-    bool is_valid = true;
+    //bool is_valid = true;
     cout << "Please type in a new item" << endl;
     cout << "Name: ";
     cin >> ws;
     getline(cin, name);
     cout << "Price: ";
     cin >> price;
-    cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes";
+    cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl;
+    cout << "Select Type: ";
     cin >> type;
 
     OtherProducts other_products(name, price, type);
