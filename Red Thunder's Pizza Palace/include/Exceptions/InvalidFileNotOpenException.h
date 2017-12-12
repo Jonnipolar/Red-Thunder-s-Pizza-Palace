@@ -8,7 +8,7 @@ class InvalidFileNotOpenException
 {
     public:
         InvalidFileNotOpenException();
-        string get_message;
+        string get_message();
 
     private:
         string _message;
