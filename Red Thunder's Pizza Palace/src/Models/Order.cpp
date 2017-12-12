@@ -5,6 +5,8 @@ Order::Order()
     this->name = "No Order";
     Pizza pizza;
     this->pizzas.push_back(pizza);
+    OtherProducts other_prod;
+    this->otherProducts.push_back(other_prod);
     set_time();
     this->TotalAmount = 0;
     this->TypeOfDelivery = "No Delivery";
@@ -13,9 +15,10 @@ Order::Order()
     this->OrderStatus = "No Status";
     this->Comment = "No Comment";
 }
-Order::Order(string name, vector <Pizza> pizzas, string OrderTime, int TotalAmount, string TypeOfDelivery, string HasBeenPaidFor, PizzaPlace OrderLocation, string OrderStatus, string Comment) {
+Order::Order(string name, vector <Pizza> pizzas, vector <OtherProducts> other_prod, string OrderTime, int TotalAmount, string TypeOfDelivery, string HasBeenPaidFor, PizzaPlace OrderLocation, string OrderStatus, string Comment) {
     this->name = name;
     this->pizzas = pizzas;
+    this->otherProducts = other_prod;
     this->OrderTime = OrderTime;
     this->TotalAmount = TotalAmount;
     this->TypeOfDelivery = TypeOfDelivery;
@@ -29,6 +32,9 @@ string Order::get_name() {
 }
 vector <Pizza> Order::get_pizzas() {
     return this->pizzas;
+}
+vector <OtherProducts> Order::get_other_prod() {
+    return this->otherProducts;
 }
 string Order::get_time() {
     return this->OrderTime;
@@ -89,6 +95,15 @@ ostream& operator <<(ostream& out, const Order& order) {
                     out << topping.get_name() << ":";
                 }
             }
+        }
+    }
+    for ( unsigned int i = 0; i < order.otherProducts.size(); i++ ) {
+        OtherProducts other_prod = order.otherProducts[i];
+        if (i != order.otherProducts.size() - 1) {
+            out << other_prod.get_name() << ";";
+        }
+        else {
+            out << other_prod.get_name() << ":";
         }
     }
     out << order.OrderTime << ":" << order.TotalAmount << ":" << order.TypeOfDelivery

@@ -11,7 +11,7 @@ void Order_UI::UI_Start() {
         cout << "Hello and welcome to Red Thunder's Pizza" << endl;             // Welcome Message
         cout << "How may i help you?" << endl;                                  // -||-
         cout << "[1] Add an order" << endl;                                     // Choice
-        cout << "[2] Quit" << endl;                                             // Choice
+        cout << "[2] Back to Main Menu" << endl;                                             // Choice
         cin >> selection;                                                       // Get user Input
         switch (selection) {
             case '1':
@@ -64,7 +64,7 @@ void Order_UI::UI_Add_Order() {
                 OrderLocation = get_order_location();
                 OrderStatus = get_order_status();
                 Comment = get_comment();
-                order = Order(name,pizzas,order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
+                order = Order(name,pizzas, other_products, order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
                 order_service.SaveOrder(order);
                 selection = 5;
                 break;
