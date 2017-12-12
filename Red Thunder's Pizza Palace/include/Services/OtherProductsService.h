@@ -9,7 +9,7 @@ class OtherProductsService
 {
     public:
 
-        void save_other_products(const OtherProducts& other_products);
+        void save_other_products(string name, int price, int type);
         vector <OtherProducts> get_other_product();
         vector <OtherProducts> get_soda_list();
         vector <OtherProducts> get_sauces_list();

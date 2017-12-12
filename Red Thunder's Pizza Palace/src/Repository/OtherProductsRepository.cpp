@@ -4,11 +4,13 @@ OtherProductsRepository::OtherProductsRepository()
 {
     //ctor
 }
-void OtherProductsRepository::store_other_products(const OtherProducts& other_products) {
+void OtherProductsRepository::store_other_products(vector <OtherProducts> other_products) {
     ofstream fout;
     fout.open("OtherProducts.txt", ios::app);
     if(fout.is_open()) {
-        fout << other_products;
+        for(unsigned int i = 0; i < other_products.size(); i++) {
+            fout << other_products[i];
+        }
         fout.close();
     }
 }

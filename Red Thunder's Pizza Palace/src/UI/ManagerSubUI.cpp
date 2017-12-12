@@ -525,8 +525,7 @@ void ManagerSubUI::UI_make_other_items() throw (InvalidNameException, InvalidPri
         push_type >> type;
     } while(!is_valid);
 
-    OtherProducts other_products(name, price, type);
-    serv.save_other_products(other_products);
+    serv.save_other_products(name, price, type);
 }
 
 ManagerSubUI::~ManagerSubUI()

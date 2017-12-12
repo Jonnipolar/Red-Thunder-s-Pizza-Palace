@@ -13,7 +13,7 @@ class OtherProductsRepository
 {
     public:
         OtherProductsRepository();
-        void store_other_products(const OtherProducts& other_products);
+        void store_other_products(vector <OtherProducts> other_products);
         vector <OtherProducts> get_other_products();
 };
 

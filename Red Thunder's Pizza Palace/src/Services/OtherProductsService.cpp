@@ -1,6 +1,21 @@
 #include "OtherProductsService.h"
 
-void OtherProductsService::save_other_products(const OtherProducts& other_products) {
+void OtherProductsService::save_other_products(string name, int price, int type) {
+    bool check = true;
+    vector <OtherProducts> other_products = get_other_product();
+    for(unsigned int i = 0; i < name.size(); i++) {
+        name[i] = tolower(name[i]);
+    }
+    OtherProducts other_product(name, price, type);
+    for(unsigned int i = 0; i < other_products.size(); i++) {
+        if(other_products[i].get_name() == name) {
+            other_products[i] = other_product;
+            check = false;
+        }
+    }
+    if(check) {
+        other_products.push_back(other_product);
+    }
     repo.store_other_products(other_products);
 }
 vector <OtherProducts> OtherProductsService::get_other_product() {
