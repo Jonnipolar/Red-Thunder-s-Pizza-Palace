@@ -110,7 +110,7 @@ ostream& operator <<(ostream& out, const Order& order) {
             out << other_prod.get_name() << ";";
         }
         else {
-            out << other_prod.get_name() << ":";
+            out << other_prod.get_name() << delim;
         }
     }
     out << order.OrderTime << delim << order.TotalAmount << delim << order.TypeOfDelivery
