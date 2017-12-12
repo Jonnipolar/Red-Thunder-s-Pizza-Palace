@@ -1,6 +1,5 @@
 #ifndef PIZZA_H
 #define PIZZA_H
-#include "Toppings.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -8,6 +7,7 @@
 #include "PizzaBottom.h"
 #include "PizzaSize.h"
 #include "PizzaBottom.h"
+#include "Toppings.h"
 using namespace std;
 class Pizza
 {
