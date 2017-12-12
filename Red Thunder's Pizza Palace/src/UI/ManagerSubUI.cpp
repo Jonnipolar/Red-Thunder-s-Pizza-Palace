@@ -399,6 +399,7 @@ void ManagerSubUI::UI_make_pizza_place()
 
     cout << "Please type in a new address." << endl;
      do { ///name - ready
+        is_valid = true;
         try {
             string name;
             cout << "Street name: ";
