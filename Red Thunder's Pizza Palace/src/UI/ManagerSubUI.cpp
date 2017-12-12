@@ -386,7 +386,7 @@ void ManagerSubUI::UI_make_bottom() throw (InvalidNameException, InvalidPriceExc
     } while(!is_valid);                                                                      ///only numbers
 
     PizzaBottom pizza_bottoms(name, price);
-    pizza_bottom.save_pizza_bottom(pizza_bottoms);
+    pizza_bottom.save_pizza_bottom(name, price);
 }
 void ManagerSubUI::UI_make_pizza_place()
 {
