@@ -18,8 +18,8 @@ void BakeryUI::StartUI() {/// I MESSED WITH UR CODE (bara smá samt)
     /// sem er hægt að kopera eða talar við mig og ég lít á þetta líka.
 
     unsigned int placeSel = get_integer_input_variable_size(pizza_places.size());
-    if (placeSel > 0 && placeSel < pizza_places.size()) {
-        string street = pizza_places[placeSel].get_street();
+    if (placeSel > 0 && placeSel <= pizza_places.size()) {
+        string street = pizza_places[placeSel - 1].get_street();
         UI_sub(street);
     }
 
@@ -74,6 +74,7 @@ void BakeryUI::UI_sub(string street) {
 void BakeryUI::UI_processing(string street) {
     char selection;
     system("CLS");
+    vector <Order> orders_by_street;
     cout << "Welcome to " << street << endl;
     cout << "Please select option" << endl;
     cout << "[1] list of orders in processing" << endl;
@@ -81,8 +82,13 @@ void BakeryUI::UI_processing(string street) {
     cin >> selection;
     switch (selection) {
         case '1':
+            orders_by_street = order_service.get_processing_orders_by_street(street);
+            UI_add_to_progress(orders_by_street);
             break;
         case '2':
             break;
     }
+}
+void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
+
 }
