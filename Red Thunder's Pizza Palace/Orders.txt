@@ -1,2 +1,4 @@
 Kjartan|Custom Pizza;Stor;venjulegur;pepperoni,Skinka,Bacon;Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|Coca Cola 2ltr;Coca Cola Zero 0.5 Ltr;Raw Sauce;Ketchup|12/12/2017 17:03|5764|Home|In Advance|Gnodavogur|Processing|yeee
 asdkfj|No pizza;Stór;Klassíkur;No Topping|13/12/2017 13:46|1500|Home|In Advance|Gnodavogur|Processing|
+kjar|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|13/12/2017 16:23|4000|Home|In Advance|Gnodavogur|Processing|yee
+kjartan|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|13/12/2017 16:28|4000|Home|In Advance|Gnodavogur|Processing|yee

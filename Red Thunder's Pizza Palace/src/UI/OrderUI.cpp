@@ -117,9 +117,9 @@ Pizza Order_UI::UI_Add_Order_Pizza()
 
 vector <Toppings> Order_UI::SubUI_add_topping()
 {
-    vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
-    vector <Toppings> meatTopp = toppings_list.get_meat_list();
-    vector <Toppings> vegetableTopp = toppings_list.get_vegetable_list();
+    vector <Toppings> cheeseTopp = toppings_list.get_selected_list(3);
+    vector <Toppings> meatTopp = toppings_list.get_selected_list(1);
+    vector <Toppings> vegetableTopp = toppings_list.get_selected_list(2);
     vector <Toppings> toppings;
     vector <Toppings> userToppings;
     unsigned int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();

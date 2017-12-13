@@ -16,6 +16,7 @@ class MakeToppingsList
         vector <Toppings> get_cheese_list();
         vector <Toppings> get_vegetable_list();
         vector <Toppings> get_meat_list();
+        vector <Toppings> get_selected_list(int sel);
     private:
         ToppingsRepository repo;
 };
