@@ -9,6 +9,7 @@ class OrderServices
     public:
         OrderServices();
         void SaveOrder(const Order& order);
+        vector <Order> get_orders();
         ~OrderServices();
 
 

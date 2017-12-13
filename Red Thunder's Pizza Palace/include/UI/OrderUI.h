@@ -38,7 +38,6 @@ class Order_UI
         string get_type_of_delivery();
         string get_has_been_paid_for();
         PizzaPlace get_order_location()throw (InvalidMenuNumberException);
-        string get_order_status() throw (InvalidMenuNumberException);
         string get_comment();
         ~Order_UI();
 

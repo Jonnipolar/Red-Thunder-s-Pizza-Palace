@@ -42,7 +42,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Exceptions/InvalidFileNotOpenException.h" />
 		<Unit filename="include/Exceptions/InvalidMenuNumberException.h" />
 		<Unit filename="include/Exceptions/InvalidNameException.h" />
 		<Unit filename="include/Exceptions/InvalidPriceException.h" />
@@ -73,7 +72,6 @@
 		<Unit filename="include/UI/ManagerSubUI.h" />
 		<Unit filename="include/UI/OrderUI.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Exceptions/InvalidFileNotOpenException.cpp" />
 		<Unit filename="src/Exceptions/InvalidMenuNumberException.cpp" />
 		<Unit filename="src/Exceptions/InvalidNameException.cpp" />
 		<Unit filename="src/Exceptions/InvalidPriceException.cpp" />
