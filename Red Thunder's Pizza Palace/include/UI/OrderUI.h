@@ -12,6 +12,8 @@
 #include "PizzaPlaceService.h"
 #include "OrderServices.h"
 #include "OtherProductsService.h"
+#include <sstream>
+#include "InvalidMenuNumberException.h"
 using namespace std;
 class Order_UI
 {
@@ -20,6 +22,8 @@ class Order_UI
         ///Start The UI
         void UI_Start();
         void UI_Add_Order();
+        Pizza add_custom_pizza();
+        Pizza add_menu_pizza();
         Pizza UI_Add_Order_Pizza();
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
@@ -32,10 +36,16 @@ class Order_UI
         string get_time();
         string get_type_of_delivery();
         string get_has_been_paid_for();
-        PizzaPlace get_order_location();
-        string get_order_status();
+        PizzaPlace get_order_location()throw (InvalidMenuNumberException);
+        string get_order_status() throw (InvalidMenuNumberException);
         string get_comment();
         ~Order_UI();
+
+        unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
+        ///skilar integer eftir staerd vectors setur inn (vector.size())
+//        int get_integer_input2() throw (InvalidMenuNumberException);
+//        int get_integer_input3() throw (InvalidMenuNumberException);
+//        int get_integer_input4() throw (InvalidMenuNumberException);
 
     private:
         MakeToppingsList toppings_list;

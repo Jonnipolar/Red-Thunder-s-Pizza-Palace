@@ -5,7 +5,9 @@
 #include <vector>
 #include "OrderServices.h"
 #include "PizzaPlaceService.h"
-
+#include "InvalidMenuNumberException.h"
+#include <string>
+#include <sstream>
 using namespace std;
 class BakeryUI
 {
@@ -13,6 +15,7 @@ class BakeryUI
         BakeryUI();
         ~BakeryUI();
         void StartUI();
+        unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
 
     private:
         PizzaPlaceService pizza_service;
