@@ -16,6 +16,8 @@ vector <Order> OrderRepository::get_order() {
     ifstream fin("Orders.txt");
     string NameOfPerson;
     vector <Pizza> Pizzas;
+    vector <Toppings> Topping;
+    vector <OtherProducts> Other_prod;
     string Price;
     string OrderTime;
     string TypeOfDelivery;
@@ -57,15 +59,57 @@ vector <Order> OrderRepository::get_order() {
             OrderStatus = str.substr(ninth_index + 1, (tenth_index - 1) - ninth_index);
             comment = str.substr(tenth_index + 1, (eleventh_index - 1) - tenth_index);
             int price_total = atoi(Price.c_str());
-            first_index = pizzas.find(';');
-            second_index = pizzas.find(';', first_index + 1);
-            third_index = pizzas.find(',', second_index + 1);
-            fourth_index = pizzas.find(';');
-            pizza_name = pizzas.substr(0, first_index);
-            pizza_size = pizzas.substr(first_index + 1, (second_index - 1) - first_index);
-            pizza_bottom = pizzas.substr(second_index + 1, (third_index - 1) - second_index);
-
+            while(0 != pizzas.size()){
+                first_index = pizzas.find(';');
+                second_index = pizzas.find(';', first_index + 1);
+                third_index = pizzas.find(';', second_index + 1);
+                fourth_index = pizzas.find(';', third_index + 1);
+                pizza_name = pizzas.substr(0, first_index);
+                pizza_size = pizzas.substr(first_index + 1, (second_index - 1) - first_index);
+                pizza_bottom = pizzas.substr(second_index + 1, (third_index - 1) - second_index);
+                pizza_toppings = pizzas.substr(third_index + 1, (fourth_index - 1) - third_index);
+                int k = (pizza_name.size() + pizza_size.size() + pizza_bottom.size() + pizza_toppings.size() + 4);
+                PizzaSize Pizza_size(pizza_size, 0);
+                PizzaBottom Pizza_bottom(pizza_bottom, 0);
+                for(unsigned int i = 0; i < pizza_toppings.size();i++) {
+                    if(pizza_toppings[i] == ',') {
+                        Toppings _topping(parse,0,0);
+                        Topping.push_back(_topping);
+                        parse = "";
+                    }else{
+                        parse += pizza_toppings[i];
+                    }
+                    if(i == (pizza_toppings.size()-1)){
+                        Toppings _topping(parse,0,0);
+                        Topping.push_back(_topping);
+                        parse = "";
+                    }
+                }
+                Pizza Pizz(pizza_name, 0, Topping, Pizza_bottom, Pizza_size);
+                Pizzas.push_back(Pizz);
+                pizzas.erase(0,k);
+                Topping.clear();
+            }
+            for(unsigned int i = 0; i < other_prod.size();i++) {
+                if(other_prod[i] == ';') {
+                    OtherProducts other_products(parse,0,0);
+                    Other_prod.push_back(other_products);
+                    parse = "";
+                }else{
+                    parse += other_prod[i];
+                }
+                if(i == (other_prod.size()-1)){
+                    OtherProducts other_products(parse,0,0);
+                    Other_prod.push_back(other_products);
+                    parse = "";
+                }
+            }
+            Order order(NameOfPerson, Pizzas, Other_prod, OrderTime, price_total, TypeOfDelivery, HasBeenPaidFor, OrderLocation, OrderStatus, comment);
+            Other_prod.clear();
+            Pizzas.clear();
+            orders.push_back(order);
         }
+        fin.close();
     }
 
 

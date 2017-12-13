@@ -6,7 +6,7 @@ Order_UI::Order_UI()
 }
 void Order_UI::UI_Start() {
     char selection;                                                             // Create Variable to keep hold of user selection
-    while (selection != '2') {                                                  // While loop
+    while (selection != '3') {                                                  // While loop
         system("CLS");
         cout << "Hello and welcome to Red Thunder's Pizza" << endl;             // Welcome Message
         cout << "How may i help you?" << endl;                                  // -||-
@@ -17,6 +17,12 @@ void Order_UI::UI_Start() {
             case '1':
                 UI_Add_Order();
                 break;
+            case '2':
+                vector <Order> order = order_service.get_orders();
+                for(unsigned int i = 0; i < order.size(); i++) {
+                    cout << order[i];
+                }
+                cin >> selection;
         }
     }
 }
