@@ -1,2 +1,2 @@
 Kalli|PS2;Stor;venjulegur;sveppur,pepperoni|Coca Cola Zero 0.5 Ltr|13/12/2017 17:07|3500|Home|In Advance|Gnodavogur|Processing|adsf
-Jonni|Pepp;Stor;venjulegur;pepperoni,pepperoni,pepperoni|Ketchup|13/12/2017 17:08|3500|Home|In Advance|Gnodavogur|Processing|asfa
+Jonni|Pepp;Stor;venjulegur;pepperoni,pepperoni,pepperoni|Ketchup|13/12/2017 17:08|3500|Home|In Advance|Gnodavogur|Processing|asf
