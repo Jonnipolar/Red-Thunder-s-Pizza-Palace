@@ -38,7 +38,7 @@ void Order_UI::UI_Add_Order()
     string typeOfDelivery;
     string HasBeenPaidFor;
     PizzaPlace OrderLocation;
-    string OrderStatus;
+    string OrderStatus = "Processing";
     string Comment;
     vector <Pizza> pizzas;
     vector <OtherProducts> other_products;
@@ -70,7 +70,6 @@ void Order_UI::UI_Add_Order()
             typeOfDelivery = get_type_of_delivery();
             HasBeenPaidFor = get_has_been_paid_for();
             OrderLocation = get_order_location();
-            OrderStatus = get_order_status();
             Comment = get_comment();
             order = Order(name,pizzas, other_products, order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
             order_service.SaveOrder(order);
@@ -322,46 +321,6 @@ PizzaPlace Order_UI::get_order_location() throw (InvalidMenuNumberException)  //
         return user_place;
     }
     return user_place;
-}
-string Order_UI::get_order_status() throw (InvalidMenuNumberException)
-{
-    string orderStatus;
-    char statSel; //breytti essu i char .. sja comment her fyrir nedan i all caps
-    bool is_valid = true;
-    system("CLS");
-    cout << "Select the status of the order" << endl;
-    cout << "[1] Processing" << endl;
-    cout << "[2] In Oven" << endl;
-    cout << "[3] Complete" << endl;
-    do { ///tharf ekkert valdation a thessi switch
-        try {
-            is_valid = true;
-            cout << "select status: ";
-            cin.sync();
-            cin >> statSel;
-            switch(statSel) {
-            case '1':
-                orderStatus = "Processing";
-                return orderStatus;                                          // Go to Manager's sub-UI
-                break;
-            case '2':
-                orderStatus = "In Oven";
-                return orderStatus;
-                break;
-            case '3':
-                orderStatus = "Complete";
-                return orderStatus;                                                       // if user picks b go to Bakery function
-                break;
-            default:
-                is_valid = false;
-                throw InvalidMenuNumberException();
-            }
-        } catch(InvalidMenuNumberException e) {
-            cout << e.get_message();
-        };
-    } while(!is_valid);
-    return orderStatus;
-
 }
 
 string Order_UI::get_comment()
