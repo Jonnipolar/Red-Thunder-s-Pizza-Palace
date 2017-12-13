@@ -1,9 +1,6 @@
 #include "BakeryUI.h"
 
-BakeryUI::BakeryUI()
-{
-    //ctor
-}
+
 void BakeryUI::StartUI() {/// I MESSED WITH UR CODE (bara smá samt)
     vector <PizzaPlace> pizza_places = pizza_service.get_pizza_place();
     //unsigned int placeSel = -1; fjarlægi þetta decleration og set það fyrir neðan í place-sel svo það validate-i menu choice þegar það býr til.
@@ -22,13 +19,10 @@ void BakeryUI::StartUI() {/// I MESSED WITH UR CODE (bara smá samt)
 
     unsigned int placeSel = get_integer_input_variable_size(pizza_places.size());
     if (placeSel > 0 && placeSel < pizza_places.size()) {
-
+        string street = pizza_places[placeSel].get_street();
+        UI_sub(street);
     }
 
-}
-BakeryUI::~BakeryUI()
-{
-    //dtor
 }
 unsigned int BakeryUI::get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException) //skilar int eftir s
 {
@@ -60,4 +54,35 @@ unsigned int BakeryUI::get_integer_input_variable_size(unsigned int size) throw 
         push_input >> input;
     } while(!is_valid);
     return input;
+}
+void BakeryUI::UI_sub(string street) {
+    char selection;
+    system("CLS");
+    cout << "Welcome to " << street << endl;
+    cout << "Please select option" << endl;
+    cout << "[1] Orders in processing" << endl;
+    cout << "[2] Orders in progress" << endl;
+    cin >> selection;
+    switch (selection) {
+        case '1':
+            UI_processing(street);
+            break;
+        case '2':
+            break;
+    }
+}
+void BakeryUI::UI_processing(string street) {
+    char selection;
+    system("CLS");
+    cout << "Welcome to " << street << endl;
+    cout << "Please select option" << endl;
+    cout << "[1] list of orders in processing" << endl;
+    cout << "[2] First 3 orders in processing" << endl;
+    cin >> selection;
+    switch (selection) {
+        case '1':
+            break;
+        case '2':
+            break;
+    }
 }

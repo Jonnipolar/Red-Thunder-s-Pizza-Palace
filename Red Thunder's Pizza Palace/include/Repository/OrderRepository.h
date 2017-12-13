@@ -11,7 +11,7 @@ class OrderRepository
 {
     public:
         OrderRepository();
-        void store_order(const Order& order);
+        void store_order(vector <Order> order);
         vector <Order> get_order();
         ~OrderRepository();
 

@@ -3,11 +3,13 @@
 OrderRepository::OrderRepository()
 {
 }
-void OrderRepository::store_order(const Order& order) {
+void OrderRepository::store_order(vector <Order> order) {
     ofstream fout;
-    fout.open("Orders.txt", ios::app);
+    fout.open("Orders.txt");
     if (fout.is_open()) {
-        fout << order;
+        for(unsigned int i = 0; i < order.size(); i++) {
+            fout << order[i];
+        }
         fout.close();
     }
 }
@@ -22,7 +24,6 @@ vector <Order> OrderRepository::get_order() {
     string OrderTime;
     string TypeOfDelivery;
     string HasBeenPaidFor;
-    PizzaPlace OrderLocation;
     string OrderStatus;
     string comment;
     string pizzas;
@@ -47,17 +48,16 @@ vector <Order> OrderRepository::get_order() {
             int eigth_index = str.find(delim, seventh_index + 1);
             int ninth_index = str.find(delim, eigth_index + 1);
             int tenth_index = str.find(delim, ninth_index + 1);
-            int eleventh_index = str.find(delim, tenth_index + 1);
             NameOfPerson = str.substr(0,first_index);
             pizzas = str.substr(first_index + 1, (second_index - 1) - first_index);
             other_prod = str.substr(second_index + 1, (third_index - 1) - second_index);
             OrderTime = str.substr(third_index + 1, (fourth_index - 1) - third_index);
             Price = str.substr(fourth_index + 1, (fifth_index - 1) - fourth_index);
-            TypeOfDelivery = str.substr(sixth_index + 1, (seventh_index - 1) - sixth_index);
-            HasBeenPaidFor = str.substr(seventh_index + 1, (eigth_index - 1) - seventh_index);
-            orderLoc = str.substr(eigth_index + 1, (ninth_index - 1) - eigth_index);
-            OrderStatus = str.substr(ninth_index + 1, (tenth_index - 1) - ninth_index);
-            comment = str.substr(tenth_index + 1, (eleventh_index - 1) - tenth_index);
+            TypeOfDelivery = str.substr(fifth_index + 1, (sixth_index - 1) - fifth_index);
+            HasBeenPaidFor = str.substr(sixth_index + 1, (seventh_index - 1) - sixth_index);
+            orderLoc = str.substr(seventh_index + 1, (eigth_index - 1) - seventh_index);
+            OrderStatus = str.substr(eigth_index + 1, (ninth_index - 1) - eigth_index);
+            comment = str.substr(ninth_index + 1, (tenth_index - 1) - ninth_index);
             int price_total = atoi(Price.c_str());
             while(0 != pizzas.size()){
                 first_index = pizzas.find(';');
@@ -104,6 +104,7 @@ vector <Order> OrderRepository::get_order() {
                     parse = "";
                 }
             }
+            PizzaPlace OrderLocation(orderLoc, 0);
             Order order(NameOfPerson, Pizzas, Other_prod, OrderTime, price_total, TypeOfDelivery, HasBeenPaidFor, OrderLocation, OrderStatus, comment);
             Other_prod.clear();
             Pizzas.clear();

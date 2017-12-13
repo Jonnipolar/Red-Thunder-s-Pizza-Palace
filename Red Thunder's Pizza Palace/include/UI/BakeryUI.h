@@ -12,11 +12,10 @@ using namespace std;
 class BakeryUI
 {
     public:
-        BakeryUI();
-        ~BakeryUI();
         void StartUI();
         unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
-
+        void UI_sub(string street);
+        void UI_processing(string street);
     private:
         PizzaPlaceService pizza_service;
 };

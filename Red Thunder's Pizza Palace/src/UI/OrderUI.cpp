@@ -21,7 +21,7 @@ void Order_UI::UI_Start()
             case '2':
                 vector <Order> order = order_service.get_orders();
                 for(unsigned int i = 0; i < order.size(); i++) {
-                    cout << order[i];
+                    cout << order[i] << endl;
                 }
                 cin >> selection;
         }
@@ -43,6 +43,8 @@ void Order_UI::UI_Add_Order()
     vector <Pizza> pizzas;
     vector <OtherProducts> other_products;
     char selection;
+    int check = 0;
+    int check2 = 0;
     while (selection != '4') {
         system("CLS");
         cout << "What would you like to choose?" << endl;
@@ -55,10 +57,12 @@ void Order_UI::UI_Add_Order()
         case '1':
             pizza = UI_Add_Order_Pizza();
             pizzas.push_back(pizza);
+            check2 = 1;
             break;
         case '2':
             other_product = add_other_prduct();
             other_products.push_back(other_product);
+            check = 1;
             break;
         case '3':
             system("CLS");
@@ -66,6 +70,12 @@ void Order_UI::UI_Add_Order()
             cin.sync();
             getline(cin, name);
             order_time = get_time();
+            if(check == 0) {
+                other_products.push_back(other_product);
+            }
+            if(check2 == 0) {
+                pizzas.push_back(pizza);
+            }
             total_price = get_price_of_pizzas(pizzas);
             typeOfDelivery = get_type_of_delivery();
             HasBeenPaidFor = get_has_been_paid_for();

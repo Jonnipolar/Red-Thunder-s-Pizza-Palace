@@ -4,7 +4,7 @@
 OtherProducts::OtherProducts() {
     this->name = "No Product";
     this->price = 0;
-    this->type = -1;
+    this->type = 0;
 }
 OtherProducts::OtherProducts(string name, int price, int type){
     this->name = name;
