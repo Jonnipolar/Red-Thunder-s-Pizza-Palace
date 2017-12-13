@@ -146,7 +146,7 @@ vector <Toppings> Order_UI::SubUI_add_topping()
             cntr++;
         }
         cout << "Please enter the number for topping to add (0 for no more)" << endl;
-        ToppSel = get_integer_input_variable_size(ToppingAmount);
+        ToppSel = get_integer_input_variable_size_with_zeroescape(ToppingAmount);
         if (ToppSel > 0 && ToppSel <= ToppingAmount) {
             userToppings.push_back(toppings[ToppSel-1]);
         }
@@ -380,7 +380,38 @@ unsigned int Order_UI::get_integer_input_variable_size(unsigned int size) throw 
     return input;
 }
 
-
+unsigned int Order_UI::get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException) //skilar int eftir s
+{
+    unsigned int input;
+    bool is_valid = true;
+    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
+        is_valid = true;
+        string input_input;
+        try {
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input_input);
+            stringstream push_input(input_input);
+            push_input >> input;
+            if(input == 0){break;}else
+            if(input > size || input <1 || input_input.empty()) {
+                is_valid = false;
+                throw InvalidMenuNumberException();
+            } else {};
+            for(unsigned int i = 0; i < input_input.length(); i++) {
+                if(!isdigit(input_input[i])) {      // because of this (see above)
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                } else {};
+            }
+        } catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
+        stringstream push_input(input_input);
+        push_input >> input;
+    } while(!is_valid);
+    return input;
+}
 /*
 int Order_UI::get_integer_input3() throw (InvalidMenuNumberException)
 {

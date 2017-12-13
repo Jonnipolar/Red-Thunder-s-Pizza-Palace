@@ -52,7 +52,7 @@ vector <Pizza> PizzaRepository::get_pizza () throw (InvalidFileNotOpenException)
             pizza.push_back(pizzas);
         }
         fin.close();
-    }else{throw InvalidFileNotOpenException();}
+    }else{};
     return pizza;
 }
 PizzaRepository::~PizzaRepository() {

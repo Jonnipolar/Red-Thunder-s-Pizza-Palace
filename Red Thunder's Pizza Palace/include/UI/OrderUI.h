@@ -42,6 +42,7 @@ class Order_UI
         ~Order_UI();
 
         unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
+        unsigned int get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException);
         ///skilar integer eftir staerd vectors setur inn (vector.size())
 //        int get_integer_input2() throw (InvalidMenuNumberException);
 //        int get_integer_input3() throw (InvalidMenuNumberException);

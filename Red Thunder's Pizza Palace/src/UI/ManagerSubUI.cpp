@@ -32,15 +32,11 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                     UI_make_toppings();
                     break;
                 case '3':
-                    try{
                     pizza = pizza_service.get_pizzas();
                     cin >> selection;
                     for (unsigned int i = 0; i < pizza.size(); i++) {
                         cout << pizza[i];
-                    };}catch (InvalidFileNotOpenException e){
-                        is_valid = false;
-                        cout << e.get_message();
-                    }
+                    };
                     if(!is_valid){
                         break;
                     }else{};                                                          ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
@@ -106,7 +102,7 @@ void ManagerSubUI::UImake_pizza()
     PizzaSize _size;
     PizzaBottom bottom;
     system("CLS");
-    try{cout << "Please type in new pizza name" << endl;
+    cout << "Please type in new pizza name" << endl;
     string name = get_name();
     vector <Toppings> userToppings = SubUI_add_topping();
     cout << "\nYour toppings are: " << endl;
@@ -117,12 +113,7 @@ void ManagerSubUI::UImake_pizza()
     unsigned int price = get_price();
 
 
-    pizza_service.save_pizza(name,price,userToppings,bottom,_size);}catch(InvalidFileNotOpenException e){
-            cout << e.get_message();
-            int test;
-            cout << "test cin pause"; /// /// // // // // /
-            cin >> test;
-}}
+    pizza_service.save_pizza(name,price,userToppings,bottom,_size);}
 vector <Toppings> ManagerSubUI::SubUI_add_topping()
 {
     vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
@@ -155,7 +146,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
                 cntr++;
             }
             cout << "Please enter number for topping to add (0 for no more)" << endl;
-            ToppSel = get_integer_input_variable_size(ToppingAmount);
+            ToppSel = get_integer_input_variable_size_with_zeroescape(ToppingAmount);
             if (ToppSel > 0 && ToppSel <= ToppingAmount) {
                 userToppings.push_back(toppings[ToppSel-1]);
             }
@@ -328,6 +319,38 @@ unsigned int ManagerSubUI::get_price() throw (InvalidPriceException)
 }
 
 unsigned int ManagerSubUI::get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException) //skilar int eftir s
+{
+    unsigned int input;
+    bool is_valid = true;
+    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
+        is_valid = true;
+        string input_input;
+        try {
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input_input);
+            stringstream push_input(input_input);
+            push_input >> input;
+            if(input == 0){break;}else
+            if(input > size || input <1 || input_input.empty()) {
+                is_valid = false;
+                throw InvalidMenuNumberException();
+            } else {};
+            for(unsigned int i = 0; i < input_input.length(); i++) {
+                if(!isdigit(input_input[i])) {      // because of this (see above)
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                } else {};
+            }
+        } catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
+        stringstream push_input(input_input);
+        push_input >> input;
+    } while(!is_valid);
+    return input;
+}
+unsigned int ManagerSubUI::get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException) //skilar int eftir s
 {
     unsigned int input;
     bool is_valid = true;
