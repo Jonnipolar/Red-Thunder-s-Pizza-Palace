@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdlib.h>
 #include "Toppings.h"
+#include "InvalidFileNotOpenException.h"
 
 using namespace std;
 

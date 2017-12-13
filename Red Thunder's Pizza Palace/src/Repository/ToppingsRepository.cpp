@@ -15,7 +15,7 @@ void ToppingsRepository::store_toppings(vector <Toppings> topping) {
         fout.close();
     }
 }
-vector <Toppings> ToppingsRepository::get_topping() {
+vector <Toppings> ToppingsRepository::get_topping(){
     vector <Toppings> toppings;
     string name;
     ifstream fin("Toppings.txt");

@@ -4,7 +4,7 @@ ManagerSubUI::ManagerSubUI()
 {
     //ctor
 }
-void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
+void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotOpenException)
 {
     vector <Pizza> pizza;
     char selection;                                                                          // Declare selection char
@@ -32,12 +32,18 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException)
                     UI_make_toppings();
                     break;
                 case '3':
+                    try{
                     pizza = pizza_service.get_pizzas();
+                    cin >> selection;
                     for (unsigned int i = 0; i < pizza.size(); i++) {
                         cout << pizza[i];
+                    };}catch (InvalidFileNotOpenException e){
+                        is_valid = false;
+                        cout << e.get_message();
                     }
-                    cin >> selection;                                                        ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
-                    break;
+                    if(!is_valid){
+                        break;
+                    }else{};                                                          ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
                 case '4':
                     UI_make_other_items();
                     break;
@@ -100,7 +106,7 @@ void ManagerSubUI::UImake_pizza()
     PizzaSize _size;
     PizzaBottom bottom;
     system("CLS");
-    cout << "Please type in new pizza name" << endl;
+    try{cout << "Please type in new pizza name" << endl;
     string name = get_name();
     vector <Toppings> userToppings = SubUI_add_topping();
     cout << "\nYour toppings are: " << endl;
@@ -110,8 +116,13 @@ void ManagerSubUI::UImake_pizza()
     cout << "\nSelect the price for the pizza" << endl;
     unsigned int price = get_price();
 
-    pizza_service.save_pizza(name,price,userToppings,bottom,_size);
-}
+
+    pizza_service.save_pizza(name,price,userToppings,bottom,_size);}catch(InvalidFileNotOpenException e){
+            cout << e.get_message();
+            int test;
+            cout << "test cin pause"; /// /// // // // // /
+            cin >> test;
+}}
 vector <Toppings> ManagerSubUI::SubUI_add_topping()
 {
     vector <Toppings> cheeseTopp = toppings_list.get_cheese_list();
@@ -119,33 +130,37 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
     vector <Toppings> vegetableTopp = toppings_list.get_vegetable_list();
     vector <Toppings> toppings;
     vector <Toppings> userToppings;
-    unsigned int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
     unsigned int ToppSel = -1;
+    unsigned int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
     while (ToppSel != 0) {                                                                   ///vantar ekki numberthrow herna lika?
-        int cntr = 0;
-        system("CLS");
-        cout << "\nMeat Toppings: \n" << endl;
-        for ( unsigned int i = 0; i < meatTopp.size(); i++ ) {
-            cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << meatTopp[i].get_name() << endl;
-            toppings.push_back(meatTopp[i]);
-            cntr++;
-        }
-        cout << "\nVegetable Toppings: \n" << endl;
-        for ( unsigned int i = 0; i < vegetableTopp.size(); i++ ) {
-            cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << vegetableTopp[i].get_name() << endl;
-            toppings.push_back(vegetableTopp[i]);
-            cntr++;
-        }
-        cout << "\nCheese Topping: \n" << endl;
-        for ( unsigned int i = 0; i < cheeseTopp.size(); i++ ) {
-            cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << cheeseTopp[i].get_name() << endl;
-            toppings.push_back(cheeseTopp[i]);
-            cntr++;
-        }
-        cout << "Please enter number for topping to add (0 for no more)" << endl;
-        ToppSel = get_integer_input_variable_size(ToppingAmount);
-        if (ToppSel > 0 && ToppSel <= ToppingAmount) {
-            userToppings.push_back(toppings[ToppSel-1]);
+        try{
+            int cntr = 0;
+            system("CLS");
+            cout << "\nMeat Toppings: \n" << endl;
+            for ( unsigned int i = 0; i < meatTopp.size(); i++ ) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << meatTopp[i].get_name() << endl;
+                toppings.push_back(meatTopp[i]);
+                cntr++;
+            }
+            cout << "\nVegetable Toppings: \n" << endl;
+            for ( unsigned int i = 0; i < vegetableTopp.size(); i++ ) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << vegetableTopp[i].get_name() << endl;
+                toppings.push_back(vegetableTopp[i]);
+                cntr++;
+            }
+            cout << "\nCheese Topping: \n" << endl;
+            for ( unsigned int i = 0; i < cheeseTopp.size(); i++ ) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << cheeseTopp[i].get_name() << endl;
+                toppings.push_back(cheeseTopp[i]);
+                cntr++;
+            }
+            cout << "Please enter number for topping to add (0 for no more)" << endl;
+            ToppSel = get_integer_input_variable_size(ToppingAmount);
+            if (ToppSel > 0 && ToppSel <= ToppingAmount) {
+                userToppings.push_back(toppings[ToppSel-1]);
+            }
+        }catch(InvalidMenuNumberException e){
+            cout << e.get_message();
         }
     }
     return userToppings;
@@ -212,7 +227,7 @@ void ManagerSubUI::UI_make_pizza_place() throw (InvalidStreetAddressException)
     } while(!is_valid);
 
     cout << "Please type in house number." << endl;
-    do {                                                                                     ///name - ready
+    do {                                                                                     //sama og fyrir name nema með house number
         is_valid = true;
         try {
             cout << "House number: ";
@@ -325,6 +340,7 @@ unsigned int ManagerSubUI::get_integer_input_variable_size(unsigned int size) th
             getline(cin,input_input);
             stringstream push_input(input_input);
             push_input >> input;
+            if(input == 0){break;}else
             if(input > size || input <1 || input_input.empty()) {
                 is_valid = false;
                 throw InvalidMenuNumberException();

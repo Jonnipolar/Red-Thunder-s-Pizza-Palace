@@ -105,8 +105,8 @@ Pizza Order_UI::UI_Add_Order_Pizza()
         user_pizza_bottom = UI_Get_Bottom();
         user_pizza_size = UI_Get_Size();
         price = pizza.get_price() + user_pizza_bottom.get_price() + user_pizza_size.get_price();
-        Pizza new_pizza = Pizza(pizza.get_name(),pizza.get_price(),pizza.get_toppings(),user_pizza_bottom,user_pizza_size);
-        return new_pizza;
+        pizza = Pizza(pizza.get_name(),pizza.get_price(),pizza.get_toppings(),user_pizza_bottom,user_pizza_size);
+        return pizza;
         break;
     }
     return pizza;

@@ -17,6 +17,7 @@
 #include "InvalidNameException.h"
 #include "InvalidPriceException.h"
 #include "InvalidStreetAddressException.h"
+#include "InvalidFileNotOpenException.h"
 using namespace std;
 
 class ManagerSubUI
@@ -24,7 +25,7 @@ class ManagerSubUI
 public:
     ManagerSubUI();
        ///Start The UI
-    void UI_Start() throw (InvalidMenuNumberException);
+    void UI_Start() throw (InvalidMenuNumberException, InvalidFileNotOpenException);
        ///Function to make pizza
     void UImake_pizza();
        ///Sub UI to UImake_pizza to add topping to pizza

@@ -8,6 +8,7 @@
 #include "PizzaBottom.h"
 #include "PizzaSize.h"
 #include "Pizza.h"
+#include "InvalidFileNotOpenException.h"
 
 using namespace std;
 class PizzaRepository
@@ -15,7 +16,7 @@ class PizzaRepository
     public:
         PizzaRepository();
         void store_pizza(vector <Pizza> pizza);
-        vector <Pizza> get_pizza();
+        vector <Pizza> get_pizza() throw (InvalidFileNotOpenException);
         ~PizzaRepository();
 
     private:

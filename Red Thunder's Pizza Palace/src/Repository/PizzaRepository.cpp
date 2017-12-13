@@ -13,7 +13,7 @@ void PizzaRepository::store_pizza(vector <Pizza> pizza) {
         fout.close();
     }
 }
-vector <Pizza> PizzaRepository::get_pizza () {
+vector <Pizza> PizzaRepository::get_pizza () throw (InvalidFileNotOpenException){
     vector <Pizza> pizza;
     ifstream fin("Pizzas.txt");
     string name;
@@ -52,7 +52,7 @@ vector <Pizza> PizzaRepository::get_pizza () {
             pizza.push_back(pizzas);
         }
         fin.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
     return pizza;
 }
 PizzaRepository::~PizzaRepository() {
