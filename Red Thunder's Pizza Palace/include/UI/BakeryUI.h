@@ -15,8 +15,8 @@ class BakeryUI
     public:
         void StartUI();
         unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
-        void UI_sub(string street);
-        void UI_processing(string street) throw (InvalidFileNotOpenException);
+        void UI_sub(string street) throw (InvalidMenuNumberException);
+        void UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);
         void UI_add_to_progress(vector <Order> by_street);
     private:
         PizzaPlaceService pizza_service;
