@@ -144,6 +144,8 @@ void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
 }
 void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
     unsigned int done;
+    PizzaPlace place = order.get_OrderLocation();
+    order_service.change_proc_to_inPro(sel, place.get_street());
     system("CLS");
     cout << "Name: " << order.get_name() << endl;
     vector <Pizza> pizzas = order.get_pizzas();
@@ -169,8 +171,8 @@ void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
     cout << "[1] Done?" << endl;
     cout << "[2] Back to Main Menu" << endl;
     done = get_integer_input_variable_size(2);
-    PizzaPlace place = order.get_OrderLocation();
     if (done == 1) {
-        order_service.change_proc_to_inPro(sel, place.get_street());
+        vector <Order> orders = order_service.get_all_in_pro();
+        order_service.change_inPro_to_Done((int)orders.size(), place.get_street());
     }
 }
