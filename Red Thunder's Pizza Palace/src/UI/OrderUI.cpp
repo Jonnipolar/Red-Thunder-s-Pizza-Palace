@@ -19,7 +19,7 @@ void Order_UI::UI_Start()
                 UI_Add_Order();
                 break;
             case '2':
-                vector <Order> order = order_service.get_orders();
+                vector <Order> order = order_service.get_orders(1);
                 for(unsigned int i = 0; i < order.size(); i++) {
                     cout << order[i] << endl;
                 }
