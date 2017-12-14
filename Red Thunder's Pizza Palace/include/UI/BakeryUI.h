@@ -18,6 +18,7 @@ class BakeryUI
         void UI_sub(string street) throw (InvalidMenuNumberException);
         void UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);
         void UI_add_to_progress(vector <Order> by_street);
+        void UI_change_to_in_progress(Order& order);
     private:
         PizzaPlaceService pizza_service;
         OrderServices order_service;
