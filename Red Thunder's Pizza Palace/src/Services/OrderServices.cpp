@@ -5,23 +5,13 @@ OrderServices::OrderServices()
 
 }
 void OrderServices::SaveOrder(const Order& order) {
-    vector <Order> orders = get_processing_orders();
+    vector <Order> orders = get_orders();
     orders.push_back(order);
-    order_repo.store_order(orders);
+    order_repo.store_order(orders, 1);
 }
 vector <Order> OrderServices::get_orders() {
-    vector <Order> orders = order_repo.get_order();
+    vector <Order> orders = order_repo.get_order(1);
     return orders;
-}
-vector <Order> OrderServices::get_processing_orders() {
-    vector <Order> orders = get_orders();
-    vector <Order> process_orders;
-    for(unsigned int i = 0; i < orders.size(); i++) {
-        if(orders[i].get_orderStatus() == "Processing") {
-            process_orders.push_back(orders[i]);
-        }
-    }
-    return process_orders;
 }
 vector <Order> OrderServices::get_processing_orders_by_street(string street) {
     vector <Order> orders = get_orders();

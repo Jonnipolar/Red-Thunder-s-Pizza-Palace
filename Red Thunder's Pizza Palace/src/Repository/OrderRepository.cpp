@@ -3,9 +3,14 @@
 OrderRepository::OrderRepository()
 {
 }
-void OrderRepository::store_order(vector <Order> order)  throw (InvalidFileNotOpenException){
+void OrderRepository::store_order(vector <Order> order, int sel)  throw (InvalidFileNotOpenException){
     ofstream fout;
-    fout.open("Orders.txt");
+    if (sel == 1) {
+        fout.open("Orders.txt");
+    }
+    else if (sel == 2) {
+        fout.open("OrdersProcessed.txt");
+    }
     if (fout.is_open()) {
         for(unsigned int i = 0; i < order.size(); i++) {
             fout << order[i];
@@ -13,19 +18,15 @@ void OrderRepository::store_order(vector <Order> order)  throw (InvalidFileNotOp
         fout.close();
     }else{throw InvalidFileNotOpenException();}
 }
-void OrderRepository::store_order_processing(vector <Order> order)  throw (InvalidFileNotOpenException){
-    ofstream fout;
-    fout.open("OrdersProcessed.txt");
-    if (fout.is_open()) {
-        for(unsigned int i = 0; i < order.size(); i++) {
-            fout << order[i];
-        }
-        fout.close();
-    }else{throw InvalidFileNotOpenException();}
-}
-vector <Order> OrderRepository::get_order()  throw (InvalidFileNotOpenException){
+vector <Order> OrderRepository::get_order(int sel)  throw (InvalidFileNotOpenException){
     vector <Order> orders;
-    ifstream fin("Orders.txt");
+    ifstream fin;
+    if (sel == 1) {
+        fin.open("Orders.txt");
+    }
+    else if (sel == 2) {
+        fin.open("OrdersProcessed.txt");
+    }
     string NameOfPerson;
     vector <Pizza> Pizzas;
     vector <Toppings> Topping;

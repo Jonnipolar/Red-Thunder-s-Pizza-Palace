@@ -1,9 +1,8 @@
 #include "BakeryUI.h"
 
 
-void BakeryUI::StartUI() {/// I MESSED WITH UR CODE (bara smá samt)
+void BakeryUI::StartUI() {
     vector <PizzaPlace> pizza_places = pizza_service.get_pizza_place();
-    //unsigned int placeSel = -1; fjarlægi þetta decleration og set það fyrir neðan í place-sel svo það validate-i menu choice þegar það býr til.
     system("CLS");
     cout << "Welcome To the Bakery!" << endl;
     cout << "Please choose the address of the place where you will be working at" << endl;
@@ -11,12 +10,6 @@ void BakeryUI::StartUI() {/// I MESSED WITH UR CODE (bara smá samt)
         cout << "\t[" << i+1 << "] " << pizza_places[i].get_street() << endl;
     }
     cout << "\n";
-
-    /// !!! nota frekar unsigned int þá þarftu ekki að harðkóða int inn á size.
-    /// þá er líka hægt að nota inputfallið sem ég kalla í hér.
-    /// einnig eru sambærileg finctions fyrir price og strings í manager subUI
-    /// sem er hægt að kopera eða talar við mig og ég lít á þetta líka.
-
     unsigned int placeSel = get_integer_input_variable_size(pizza_places.size());
     if (placeSel > 0 && placeSel <= pizza_places.size()) {
         string street = pizza_places[placeSel - 1].get_street();

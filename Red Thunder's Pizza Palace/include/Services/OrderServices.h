@@ -10,7 +10,6 @@ class OrderServices
         OrderServices();
         void SaveOrder(const Order& order);
         vector <Order> get_orders();
-        vector <Order> get_processing_orders();
         vector <Order> get_processing_orders_by_street(string street);
         ~OrderServices();
 

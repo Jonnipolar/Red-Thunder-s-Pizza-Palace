@@ -38,6 +38,7 @@ void MainUI::startUI()throw (InvalidMenuNumberException)
                     cout << "vantar";
                     break;
                 case '5':
+                    cout << "Goodbye User" << endl;
                     system("exit");
                     break;
                 default:
