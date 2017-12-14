@@ -5,14 +5,15 @@
 #include <fstream>
 #include <stdlib.h>
 #include "Order.h"
+#include "InvalidFileNotOpenException.h"
 
 using namespace std;
 class OrderRepository
 {
     public:
         OrderRepository();
-        void store_order(vector <Order> order);
-        vector <Order> get_order();
+        void store_order(vector <Order> order) throw (InvalidFileNotOpenException);
+        vector <Order> get_order() throw (InvalidFileNotOpenException);
         ~OrderRepository();
 
     private:

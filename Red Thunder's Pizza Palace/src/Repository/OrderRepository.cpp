@@ -3,7 +3,7 @@
 OrderRepository::OrderRepository()
 {
 }
-void OrderRepository::store_order(vector <Order> order) {
+void OrderRepository::store_order(vector <Order> order)  throw (InvalidFileNotOpenException){
     ofstream fout;
     fout.open("Orders.txt");
     if (fout.is_open()) {
@@ -11,9 +11,9 @@ void OrderRepository::store_order(vector <Order> order) {
             fout << order[i];
         }
         fout.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
 }
-vector <Order> OrderRepository::get_order() {
+vector <Order> OrderRepository::get_order()  throw (InvalidFileNotOpenException){
     vector <Order> orders;
     ifstream fin("Orders.txt");
     string NameOfPerson;
@@ -111,7 +111,7 @@ vector <Order> OrderRepository::get_order() {
             orders.push_back(order);
         }
         fin.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
 
 
     return orders;

@@ -1,6 +1,6 @@
 #include "PizzaSizeRepository.h"
 
-void PizzaSizeRepository::store_pizza_size(vector <PizzaSize> pizza_size) {
+void PizzaSizeRepository::store_pizza_size(vector <PizzaSize> pizza_size) throw (InvalidFileNotOpenException){
     ofstream fout;
     fout.open("PizzaSize.txt");
     if(fout.is_open()){
@@ -8,9 +8,9 @@ void PizzaSizeRepository::store_pizza_size(vector <PizzaSize> pizza_size) {
                     fout << pizza_size[i];                        /// prints to .txt and is not final, just made it to test
         }
         fout.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
 }
-vector <PizzaSize> PizzaSizeRepository::get_pizza_size() {
+vector <PizzaSize> PizzaSizeRepository::get_pizza_size() throw (InvalidFileNotOpenException){
     vector <PizzaSize> pizza_sizes;
     ifstream fin("PizzaSize.txt");
     if(fin.is_open()) {
@@ -25,6 +25,6 @@ vector <PizzaSize> PizzaSizeRepository::get_pizza_size() {
             pizza_sizes.push_back(pizza_size);
         }
         fin.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
     return pizza_sizes;
 }

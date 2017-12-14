@@ -43,6 +43,7 @@ public:
     unsigned int get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException);
     unsigned int get_price() throw (InvalidPriceException);
     string get_name() throw (InvalidNameException);
+    void Print_pizza_menu() throw (InvalidFileNotOpenException);
 
 private:
     MakeToppingsList toppings_list;

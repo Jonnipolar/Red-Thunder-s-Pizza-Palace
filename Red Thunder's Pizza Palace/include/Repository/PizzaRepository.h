@@ -15,7 +15,7 @@ class PizzaRepository
 {
     public:
         PizzaRepository();
-        void store_pizza(vector <Pizza> pizza);
+        void store_pizza(vector <Pizza> pizza) throw (InvalidFileNotOpenException);
         vector <Pizza> get_pizza() throw (InvalidFileNotOpenException);
         ~PizzaRepository();
 

@@ -6,7 +6,7 @@ ManagerSubUI::ManagerSubUI()
 }
 void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotOpenException)
 {
-    vector <Pizza> pizza;
+
     char selection;                                                                          // Declare selection char
     bool is_valid = true;
     while (selection != '6') {                                                               // While user does not want to quit
@@ -32,14 +32,11 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                     UI_make_toppings();
                     break;
                 case '3':
-                    pizza = pizza_service.get_pizzas();
-                    cin >> selection;
-                    for (unsigned int i = 0; i < pizza.size(); i++) {
-                        cout << pizza[i];
-                    };
-                    if(!is_valid){
-                        break;
-                    }else{};                                                          ///HVAD ER THETTA HER?? A THETTA EKKI HEIMA ANNARSTADAR?? setja number throw??
+                    Print_pizza_menu();
+                    do{ cout << "Press enter to continue. \n";
+                    cin.sync();
+                    }while(cin.get() != '\n');
+                    break;
                 case '4':
                     UI_make_other_items();
                     break;
@@ -58,6 +55,21 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
             };
         } while(!is_valid);
     }
+}
+
+void ManagerSubUI::Print_pizza_menu() throw (InvalidFileNotOpenException){
+    vector <Pizza> pizza;
+    bool is_valid = true;
+    try{
+        do{
+        is_valid = true;
+        pizza = pizza_service.get_pizzas();
+        for (unsigned int i = 0; i < pizza.size(); i++) {
+            cout << pizza[i];}
+        ;}while (!is_valid);
+    }catch(InvalidFileNotOpenException e){
+            is_valid = false;
+            cout << e.get_message();}
 }
 
 void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)

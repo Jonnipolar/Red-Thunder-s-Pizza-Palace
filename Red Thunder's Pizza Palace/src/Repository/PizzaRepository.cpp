@@ -3,7 +3,7 @@
 PizzaRepository::PizzaRepository() {
 
 }
-void PizzaRepository::store_pizza(vector <Pizza> pizza) {
+void PizzaRepository::store_pizza(vector <Pizza> pizza)  throw (InvalidFileNotOpenException){
     ofstream fout;
     fout.open("Pizzas.txt");
     if(fout.is_open()){
@@ -11,11 +11,11 @@ void PizzaRepository::store_pizza(vector <Pizza> pizza) {
             fout << pizza[i];                        /// prints to .txt and is not final, just made it to test
         }
         fout.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
 }
 vector <Pizza> PizzaRepository::get_pizza () throw (InvalidFileNotOpenException){
     vector <Pizza> pizza;
-    ifstream fin("Pizzas.txt");
+    ifstream fin("Pizzas.txt6");
     string name;
     string price;
     string parse = "";
@@ -52,7 +52,7 @@ vector <Pizza> PizzaRepository::get_pizza () throw (InvalidFileNotOpenException)
             pizza.push_back(pizzas);
         }
         fin.close();
-    }else{};
+    }else{throw InvalidFileNotOpenException();};
     return pizza;
 }
 PizzaRepository::~PizzaRepository() {

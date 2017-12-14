@@ -4,7 +4,7 @@ OtherProductsRepository::OtherProductsRepository()
 {
     //ctor
 }
-void OtherProductsRepository::store_other_products(vector <OtherProducts> other_products) {
+void OtherProductsRepository::store_other_products(vector <OtherProducts> other_products)  throw (InvalidFileNotOpenException){
     ofstream fout;
     fout.open("OtherProducts.txt", ios::app);
     if(fout.is_open()) {
@@ -12,9 +12,9 @@ void OtherProductsRepository::store_other_products(vector <OtherProducts> other_
             fout << other_products[i];
         }
         fout.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
 }
-vector <OtherProducts> OtherProductsRepository::get_other_products() {
+vector <OtherProducts> OtherProductsRepository::get_other_products()  throw (InvalidFileNotOpenException){
     vector <OtherProducts> other_products;
     ifstream fin("OtherProducts.txt");
     if(fin.is_open()) {
@@ -32,6 +32,6 @@ vector <OtherProducts> OtherProductsRepository::get_other_products() {
             other_products.push_back(other_product);
         }
         fin.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
     return other_products;
 }

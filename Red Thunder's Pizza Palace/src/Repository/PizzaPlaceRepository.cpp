@@ -1,6 +1,6 @@
 #include "PizzaPlaceRepository.h"
 
-void PizzaPlaceRepository::store_pizza_places(vector <PizzaPlace> pizza_place) {
+void PizzaPlaceRepository::store_pizza_places(vector <PizzaPlace> pizza_place)  throw (InvalidFileNotOpenException){
     ofstream fout;
     fout.open("PizzaPlaces.txt");
     if(fout.is_open()){
@@ -8,9 +8,9 @@ void PizzaPlaceRepository::store_pizza_places(vector <PizzaPlace> pizza_place) {
             fout << pizza_place[i];                        /// prints to .txt and is not final, just made it to test
         }
         fout.close();
-    }
+    }else{throw InvalidFileNotOpenException();}
 }
-vector <PizzaPlace> PizzaPlaceRepository::get_pizza_place() {
+vector <PizzaPlace> PizzaPlaceRepository::get_pizza_place()  throw (InvalidFileNotOpenException){
     vector <PizzaPlace> pizza_place;
     ifstream fin("PizzaPlaces.txt");
     if(fin.is_open()) {
@@ -25,6 +25,6 @@ vector <PizzaPlace> PizzaPlaceRepository::get_pizza_place() {
             pizza_place.push_back(pizza_places);
         }
         fin.close();
-    }
+    }else{ throw InvalidFileNotOpenException();}
     return pizza_place;
 }

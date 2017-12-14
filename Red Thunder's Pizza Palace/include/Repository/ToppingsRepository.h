@@ -14,8 +14,8 @@ class ToppingsRepository
     public:
         ToppingsRepository();
         /// function to write to document
-        void store_toppings(vector <Toppings> topping);
-        vector <Toppings> get_topping();
+        void store_toppings(vector <Toppings> topping) throw (InvalidFileNotOpenException);
+        vector <Toppings> get_topping() throw (InvalidFileNotOpenException);
     private:
 };
 

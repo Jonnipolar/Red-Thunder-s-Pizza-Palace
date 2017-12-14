@@ -12,7 +12,7 @@ void Order_UI::UI_Start()
         cout << "Hello and welcome to Red Thunder's Pizza" << endl;             // Welcome Message
         cout << "How may i help you?" << endl;                                  // -||-
         cout << "[1] Add an order" << endl;                                     // Choice
-        cout << "[2] Back to Main Menu" << endl;                                             // Choice
+        cout << "[2] Back to Main Menu" << endl;                                       /// synist thetta ekki eiga vera back to main menu?      // Choice
         cin >> selection;                                                       // Get user Input
         switch (selection) {
             case '1':
@@ -92,6 +92,7 @@ void Order_UI::UI_Add_Order()
 }
 Pizza Order_UI::UI_Add_Order_Pizza()
 {
+   // bool is_valid = true;
     Pizza pizza;
     int price;
     vector <Toppings> toppings;
@@ -106,20 +107,35 @@ Pizza Order_UI::UI_Add_Order_Pizza()
     cin >> selection;
     switch (selection) {
     case '1':
-        toppings = SubUI_add_topping();
-        name = "Custom Pizza";
-        user_pizza_bottom = UI_Get_Bottom();
-        user_pizza_size = UI_Get_Size();
-        price = get_price_of_toppings(toppings);
-        pizza = Pizza(name, price, toppings, user_pizza_bottom, user_pizza_size);
+        try{
+            toppings = SubUI_add_topping();
+            name = "Custom Pizza";
+            user_pizza_bottom = UI_Get_Bottom();
+            user_pizza_size = UI_Get_Size();
+            price = get_price_of_toppings(toppings);
+            pizza = Pizza(name, price, toppings, user_pizza_bottom, user_pizza_size);
+        }catch(InvalidFileNotOpenException e){
+            cout << e.get_message();
+            do{ cout << "Press enter to continue. \n";
+                cin.sync();
+            }while(cin.get() != '\n');
+        };
         break;
     case '2':
-        pizza = get_pizza_menus();
-        user_pizza_bottom = UI_Get_Bottom();
-        user_pizza_size = UI_Get_Size();
-        price = pizza.get_price() + user_pizza_bottom.get_price() + user_pizza_size.get_price();
-        pizza = Pizza(pizza.get_name(),pizza.get_price(),pizza.get_toppings(),user_pizza_bottom,user_pizza_size);
-        return pizza;
+        try{
+            pizza = get_pizza_menus();
+            user_pizza_bottom = UI_Get_Bottom();
+            user_pizza_size = UI_Get_Size();
+            price = pizza.get_price() + user_pizza_bottom.get_price() + user_pizza_size.get_price();
+            pizza = Pizza(pizza.get_name(),pizza.get_price(),pizza.get_toppings(),user_pizza_bottom,user_pizza_size);
+            return pizza;
+        }catch(InvalidFileNotOpenException e){
+            cout << e.get_message();
+            do{ cout << "Press enter to continue. \n";
+                cin.sync();
+            }while(cin.get() != '\n');
+        };
+
         break;
     }
     return pizza;

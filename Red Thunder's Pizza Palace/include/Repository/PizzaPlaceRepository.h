@@ -5,14 +5,15 @@
 #include <vector>
 #include <stdlib.h>
 #include "PizzaPlace.h"
+#include "InvalidFileNotOpenException.h"
 using namespace std;
 
 
 class PizzaPlaceRepository
 {
     public:
-        void store_pizza_places(vector <PizzaPlace> pizza_place);
-        vector <PizzaPlace> get_pizza_place();
+        void store_pizza_places(vector <PizzaPlace> pizza_place) throw (InvalidFileNotOpenException);
+        vector <PizzaPlace> get_pizza_place() throw (InvalidFileNotOpenException);
     private:
 };
 
