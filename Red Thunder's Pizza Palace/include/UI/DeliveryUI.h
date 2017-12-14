@@ -18,6 +18,7 @@ class DeliveryUI
         void StartUI();
         unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
         void UI_sub(string street);
+        void list_all_orders(string street);
     private:
         PizzaPlaceService pizza_service;
         OrderServices order_service;

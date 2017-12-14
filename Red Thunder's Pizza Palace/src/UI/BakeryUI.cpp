@@ -30,7 +30,7 @@ unsigned int BakeryUI::get_integer_input_variable_size(unsigned int size) throw 
             getline(cin,input_input);
             stringstream push_input(input_input);
             push_input >> input;
-            if(input > size || input <1 || input_input.empty()) {
+            if(input > size || input <1 || input_input.empty()) {  ///hafa í service öll vinnsla í service
                 is_valid = false;
                 throw InvalidMenuNumberException();
             } else {};
@@ -78,7 +78,6 @@ void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException) 
             try{
                 orders_by_street = order_service.get_processing_orders_by_street(street);
                 UI_add_to_progress(orders_by_street);
-
             }
             catch(InvalidFileNotOpenException e){
                 cout << e.get_message();

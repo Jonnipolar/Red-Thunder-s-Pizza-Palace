@@ -40,7 +40,7 @@ unsigned int DeliveryUI::get_integer_input_variable_size(unsigned int size) thro
             getline(cin,input_input);
             stringstream push_input(input_input);
             push_input >> input;
-            if(input > size || input <1 || input_input.empty()) {
+            if(input > size || input <1 || input_input.empty()) { /// sama og í bakery
                 is_valid = false;
                 throw InvalidMenuNumberException();
             } else {};
@@ -65,12 +65,20 @@ void DeliveryUI::UI_sub(string street) {
     cout << "Please select an option" << endl;
     cout << "[1] List of all orders" << endl;
     cout << "[2] List of all done orders" << endl;
+    cout << "[3] Return to main menu" << endl;
     cin >> selection;
     switch (selection) {
         case '1':
+            list_all_orders(street);
             break;
         case '2':
             break;
+    }
+}
+void DeliveryUI::list_all_orders (string street) {
+    vector <Order> order = order_service.get_all_orders_by_street(street);
+    for(unsigned int i = 0; i < order.size(); i++) {
+
     }
 }
 DeliveryUI::~DeliveryUI()
