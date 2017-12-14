@@ -27,7 +27,7 @@ void Order_UI::UI_Start()
         }
     }
 }
-void Order_UI::UI_Add_Order()
+void Order_UI::UI_Add_Order() throw (InvalidFileNotOpenException)
 {
     OtherProducts other_product;
     Pizza pizza;
@@ -55,17 +55,30 @@ void Order_UI::UI_Add_Order()
         cin >> selection;
         switch (selection) {
         case '1':
+            try{
             pizza = UI_Add_Order_Pizza();
             pizzas.push_back(pizza);
-            check2 = 1;
+            check2 = 1;} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
             break;
         case '2':
-            other_product = add_other_prduct();
+            try{
+            other_product = add_other_product();
             other_products.push_back(other_product);
-            check = 1;
+            check = 1;} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
             break;
         case '3':
             system("CLS");
+            try{
             cout << "Name of Person: ";
             cin.sync();
             getline(cin, name);
@@ -81,6 +94,12 @@ void Order_UI::UI_Add_Order()
             HasBeenPaidFor = get_has_been_paid_for();
             OrderLocation = get_order_location();
             Comment = get_comment();
+            } catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
             order = Order(name,pizzas, other_products, order_time,total_price,typeOfDelivery,HasBeenPaidFor,OrderLocation,OrderStatus,Comment);
             order_service.SaveOrder(order);
             selection = '4';
@@ -234,15 +253,18 @@ Pizza Order_UI::get_pizza_menus()
     }
     return user_pizza;
 }
-OtherProducts Order_UI::add_other_prduct()
+OtherProducts Order_UI::add_other_product()
 {
     OtherProducts other_product;
     system("CLS");
+
     cout << "Please add the sides you want!" << endl;
+    try{
     vector <OtherProducts> soda_prod = other_prod_service.get_soda_list();
     vector <OtherProducts> sauce_prod = other_prod_service.get_sauces_list();
     vector <OtherProducts> dish_prod = other_prod_service.get_side();
     vector <OtherProducts> total_prod;
+
     unsigned int total_amount = soda_prod.size() + sauce_prod.size() + dish_prod.size();
     int cntr = 0;
     cout << "Sodas: " << endl;
@@ -263,11 +285,17 @@ OtherProducts Order_UI::add_other_prduct()
         cntr++;
         total_prod.push_back(dish_prod[i]);
     }
+
     unsigned int prodSel = get_integer_input_variable_size(total_amount);                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
     if (prodSel > 0 && prodSel <= total_amount) {
         other_product = total_prod[prodSel - 1];
     }
-
+} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
     return other_product;
 }
 int Order_UI::get_price_of_pizzas(vector <Pizza> pizzas)
@@ -290,8 +318,9 @@ string Order_UI::get_time()
     string TimeOrder(time_buffer);
     return TimeOrder;
 }
-string Order_UI::get_type_of_delivery()  ///vantar
+string Order_UI::get_type_of_delivery() throw (InvalidFileNotOpenException) ///vantar
 {
+
     string typeOfDelivery = "";
     int delSel = -1;
     system("CLS");
@@ -299,6 +328,7 @@ string Order_UI::get_type_of_delivery()  ///vantar
     cout << "\t[1] Home" << endl;
     cout << "\t[2] Pickup" << endl;
     delSel = get_integer_input_variable_size(2);
+    try{
     if (delSel > 0 && delSel <= 2) {                        /// her er if en ekki switch
         if (delSel == 1) {
             typeOfDelivery = "Home";
@@ -307,14 +337,21 @@ string Order_UI::get_type_of_delivery()  ///vantar
             typeOfDelivery = "Pickup";
             return typeOfDelivery;
         }
-    }
+    }} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
     return typeOfDelivery;
 }
-string Order_UI::get_has_been_paid_for()   ///vantar
+string Order_UI::get_has_been_paid_for()  throw (InvalidFileNotOpenException) ///vantar
 {
+
     string hasBeenPaidFor = "";
     int paidSel = -1;
     system("CLS");
+    try{
     cout << "Is the user paying in advance or on pickup" << endl;
     cout << "\t[1] In Advance" << endl;
     cout << "\t[2] On Pickup" << endl;
@@ -327,15 +364,22 @@ string Order_UI::get_has_been_paid_for()   ///vantar
             hasBeenPaidFor = "On Pickup";
             return hasBeenPaidFor;
         }
-    }
+    }} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
     return hasBeenPaidFor;
 }
-PizzaPlace Order_UI::get_order_location() throw (InvalidMenuNumberException)  //virdist vera klart
+PizzaPlace Order_UI::get_order_location() throw (InvalidMenuNumberException,InvalidFileNotOpenException)  //virdist vera klart
 {
+
     vector <PizzaPlace> user_pizza_places = pizza_places.get_pizza_place();
     PizzaPlace user_place;
     unsigned int locSel;
     system("CLS");
+    try{
     cout << "Select the location to pick up / Send from" << endl;
     for ( unsigned int i = 0; i < user_pizza_places.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << user_pizza_places[i].get_street() << endl;
@@ -345,18 +389,25 @@ PizzaPlace Order_UI::get_order_location() throw (InvalidMenuNumberException)  //
     if (locSel > 0 && locSel <= user_pizza_places.size()) {                    ///liklega thetta size ??? kannski
         user_place = user_pizza_places[locSel - 1];
         return user_place;
-    }
+    }} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
     return user_place;
 }
 
 string Order_UI::get_comment()
 {
     system("CLS");
+
     string comment = "";
     unsigned int ComSel;
     cout << "(Optional) Any Comments?" << endl;
     cout << "[1] Yes" << endl;
     cout << "[2] No" << endl;
+    try{
     ComSel = get_integer_input_variable_size(2);
     if (ComSel > 0 && ComSel <= 2) {
         if (ComSel == 1) {
@@ -366,7 +417,12 @@ string Order_UI::get_comment()
         } else {
             return comment;
         }
-    }
+    }} catch (InvalidFileNotOpenException e) {
+                cout << e.get_message();
+                do {
+                cout << "Press enter to continue. \n";
+                cin.sync();
+                } while(cin.get() != '\n');}
     return comment;
 }
 Order_UI::~Order_UI()

@@ -2,17 +2,17 @@
 
 void PizzaPlaceRepository::store_pizza_places(vector <PizzaPlace> pizza_place)  throw (InvalidFileNotOpenException){
     ofstream fout;
-    fout.open("PizzaPlaces.txt6");
+    fout.open("PizzaPlaces.txt");
     if(fout.is_open()){
         for(unsigned int i = 0; i < pizza_place.size(); i++) {
             fout << pizza_place[i];                        /// prints to .txt and is not final, just made it to test
         }
         fout.close();
-    }else{throw InvalidFileNotOpenException();}
+    }else{ throw InvalidFileNotOpenException();}
 }
 vector <PizzaPlace> PizzaPlaceRepository::get_pizza_place()  throw (InvalidFileNotOpenException){
     vector <PizzaPlace> pizza_place;
-    ifstream fin("PizzaPlaces.txt6");
+    ifstream fin("PizzaPlaces.txt");
     if(fin.is_open()) {
         string str;
         while (getline(fin, str)) {
