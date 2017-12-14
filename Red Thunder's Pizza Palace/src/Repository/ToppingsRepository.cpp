@@ -7,7 +7,7 @@ ToppingsRepository::ToppingsRepository() {
 void ToppingsRepository::store_toppings(vector <Toppings> topping) throw (InvalidFileNotOpenException) {
 
     ofstream fout;
-    fout.open("Toppings.txt");
+    fout.open("Toppings.txt6");
     if(fout.is_open()){
         for (unsigned int i = 0; i < topping.size(); i++) {
             fout << topping[i];                        /// prints to .txt and is not final, just made it to test
@@ -18,7 +18,7 @@ void ToppingsRepository::store_toppings(vector <Toppings> topping) throw (Invali
 vector <Toppings> ToppingsRepository::get_topping() throw (InvalidFileNotOpenException){
     vector <Toppings> toppings;
     string name;
-    ifstream fin("Toppings.txt");
+    ifstream fin("Toppings.txt6");
     if (fin.is_open()) {
         string str;
         while (getline(fin, str)) {

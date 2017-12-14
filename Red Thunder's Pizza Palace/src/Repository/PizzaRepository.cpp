@@ -5,7 +5,7 @@ PizzaRepository::PizzaRepository() {
 }
 void PizzaRepository::store_pizza(vector <Pizza> pizza)  throw (InvalidFileNotOpenException){
     ofstream fout;
-    fout.open("Pizzas.txt");
+    fout.open("Pizzas.txt6");
     if(fout.is_open()){
         for(unsigned int i = 0; i < pizza.size(); i++) {
             fout << pizza[i];                        /// prints to .txt and is not final, just made it to test
