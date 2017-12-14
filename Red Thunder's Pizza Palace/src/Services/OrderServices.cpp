@@ -91,6 +91,54 @@ void OrderServices::change_paid_status (int select, string street) {
     order_repo.store_order(prog_order, 2);
     order_repo.store_order(done_order, 3);
 }
+void OrderServices::change_proc_to_inPro(int select, string street){
+    vector <Order> proc_order = get_processing_orders_by_street(street);
+    vector <Order> proc_other_order = get_processing_orders_by_not_street(street);
+    vector <Order> prog_order = get_in_progress_orders_by_street(street);
+    vector <Order> prog_other_order = get_in_progress_orders_by_not_street(street);
+    proc_order[select-1].set_orderStatus("In Progress");
+
+    Order new_order = proc_order[select - 1];
+    proc_order.erase(proc_order.begin() + select - 1);
+
+    for ( unsigned int i = 0; i < proc_other_order.size(); i++ ) {
+        proc_order.push_back(proc_other_order[i]);
+    }
+
+    for ( unsigned int i = 0; i < prog_other_order.size(); i++ ) {
+        prog_order.push_back(prog_other_order[i]);
+    }
+
+    prog_order.push_back(new_order);
+    order_repo.store_order(proc_order, 1);
+    order_repo.store_order(prog_order, 2);
+}
+void OrderServices::change_inPro_to_Done(int select, string street){
+    vector <Order> prog_order = get_in_progress_orders_by_street(street);
+    vector <Order> prog_other_order = get_in_progress_orders_by_not_street(street);
+    vector <Order> done_order = get_done_orders_by_street(street);
+    vector <Order> done_other_order = get_done_orders_by_not_street(street);
+    prog_order[select-1].set_orderStatus("Done");
+    cout << select << endl;
+    cout << prog_order.size() << endl;
+    Order new_order = prog_order[select - 1];
+    prog_order.erase(prog_order.begin() + select - 1);
+    for ( unsigned int i = 0; i < prog_other_order.size(); i++ ) {
+        prog_order.push_back(prog_other_order[i]);
+    }
+    for ( unsigned int i = 0; i < done_other_order.size(); i++ ) {
+        done_order.push_back(done_other_order[i]);
+    }
+    done_order.push_back(new_order);
+    order_repo.store_order(prog_order, 2);
+    order_repo.store_order(done_order, 3);
+}
+vector <Order> OrderServices::get_all_in_pro() {
+    return order_repo.get_order(2);
+}
+vector <Order> OrderServices::get_all_in_done() {
+    return order_repo.get_order(3);
+}
 vector <Order> OrderServices::get_processing_orders_by_not_street(string street) {
     vector <Order> orders = get_orders(1);
     vector <Order> process_orders;
