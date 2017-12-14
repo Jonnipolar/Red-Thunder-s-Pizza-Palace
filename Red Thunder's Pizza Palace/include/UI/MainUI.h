@@ -5,6 +5,7 @@
 #include "ManagerSubUI.h"
 #include "OrderUI.h"
 #include "BakeryUI.h"
+#include "DeliveryUI.h"
 #include "InvalidMenuNumberException.h"
 #include <stdlib.h>
 
@@ -24,6 +25,7 @@ class MainUI
         ManagerSubUI man_sub_ui;
         Order_UI order_UI;
         BakeryUI bakery_ui;
+        DeliveryUI delivery_ui;
 };
 
 #endif // MAINUI_H

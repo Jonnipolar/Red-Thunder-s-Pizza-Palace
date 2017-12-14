@@ -16,7 +16,7 @@ void MainUI::startUI()throw (InvalidMenuNumberException)
         cout << "[1] Manager" << endl,                                          // Menu for user to pick
         cout << "[2] Sales" << endl;                                            // ------""-------------
         cout << "[3] Bakery" << endl;                                           // ------""-------------
-        cout << "[4] Delivery" << "inactive ATM" << endl ;                       // ------""-------------
+        cout << "[4] Delivery" << endl ;                       // ------""-------------
         cout << "[5] Quit" << endl;                                             // ------""-------------
         do {
             try {
@@ -35,7 +35,7 @@ void MainUI::startUI()throw (InvalidMenuNumberException)
                     bakery_ui.StartUI();                                        // if user picks b go to Bakery function
                     break;
                 case '4':
-                    cout << "vantar";
+                    delivery_ui.StartUI();
                     break;
                 case '5':
                     cout << "Goodbye User" << endl;

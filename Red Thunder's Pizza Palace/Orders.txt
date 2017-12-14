@@ -1,3 +1,3 @@
 Kalli|PS2;Stor;venjulegur;sveppur,pepperoni|Coca Cola Zero 0.5 Ltr|13/12/2017 17:07|3500|Home|In Advance|Gnodavogur|Processing|adsf
 Jonni|Pepp;Stor;venjulegur;pepperoni,pepperoni,pepperoni|Ketchup|13/12/2017 17:08|3500|Home|In Advance|Gnodavogur|Processing|asf
-123|No pizza;Stór;Klassíkur;No Topping|No Product|14/12/2017 12:22|1500|Home|In Advance|No Street|Processing|asd
+Kalli|Custom Pizza;Stor;venjulegur;pepperoni,Bacon|Coca Cola Zero 0.5 Ltr|14/12/2017 12:39|1734|Home|In Advance|Gnodavogur|Processing|
