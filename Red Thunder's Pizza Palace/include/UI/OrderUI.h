@@ -22,7 +22,7 @@ class Order_UI
         Order_UI();
         ///Start The UI
         void UI_Start();
-        void UI_Add_Order();
+        void UI_Add_Order() throw (InvalidFileNotOpenException);
         Pizza add_custom_pizza();
         Pizza add_menu_pizza();
         Pizza UI_Add_Order_Pizza();
@@ -32,12 +32,12 @@ class Order_UI
         PizzaSize UI_Get_Size();
         int get_price_of_toppings(vector <Toppings> toppings);
         Pizza get_pizza_menus();
-        OtherProducts add_other_prduct();
+        OtherProducts add_other_product();
         int get_price_of_pizzas(vector <Pizza> pizzas);
         string get_time();
-        string get_type_of_delivery();
-        string get_has_been_paid_for();
-        PizzaPlace get_order_location()throw (InvalidMenuNumberException);
+        string get_type_of_delivery() throw (InvalidFileNotOpenException);
+        string get_has_been_paid_for() throw (InvalidFileNotOpenException);
+        PizzaPlace get_order_location()throw (InvalidMenuNumberException, InvalidFileNotOpenException);
         string get_comment();
         ~Order_UI();
 
