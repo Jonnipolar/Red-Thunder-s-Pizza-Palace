@@ -8,7 +8,7 @@ void PizzaPlaceRepository::store_pizza_places(vector <PizzaPlace> pizza_place)  
             fout << pizza_place[i];                        /// prints to .txt and is not final, just made it to test
         }
         fout.close();
-    }else{throw InvalidFileNotOpenException();}
+    }else{ throw InvalidFileNotOpenException();}
 }
 vector <PizzaPlace> PizzaPlaceRepository::get_pizza_place()  throw (InvalidFileNotOpenException){
     vector <PizzaPlace> pizza_place;
