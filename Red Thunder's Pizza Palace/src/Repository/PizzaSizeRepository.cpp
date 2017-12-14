@@ -2,7 +2,7 @@
 
 void PizzaSizeRepository::store_pizza_size(vector <PizzaSize> pizza_size) throw (InvalidFileNotOpenException){
     ofstream fout;
-    fout.open("PizzaSize.txt6");
+    fout.open("PizzaSize.txt");
     if(fout.is_open()){
         for(unsigned int i = 0; i < pizza_size.size(); i++) {
                     fout << pizza_size[i];                        /// prints to .txt and is not final, just made it to test
@@ -12,7 +12,7 @@ void PizzaSizeRepository::store_pizza_size(vector <PizzaSize> pizza_size) throw 
 }
 vector <PizzaSize> PizzaSizeRepository::get_pizza_size() throw (InvalidFileNotOpenException){
     vector <PizzaSize> pizza_sizes;
-    ifstream fin("PizzaSize.txt6");
+    ifstream fin("PizzaSize.txt");
     if(fin.is_open()) {
         string str;
         while (getline(fin,str)) {
