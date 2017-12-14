@@ -22,6 +22,7 @@ class OrderServices
         vector <Order> get_done_orders_by_not_street(string street);
         vector <Order> get_all_orders_by_not_street(string street);
         vector <Order> get_all_in_pro();
+        vector <Order> get_all_in_done();
         ~OrderServices();
 
 

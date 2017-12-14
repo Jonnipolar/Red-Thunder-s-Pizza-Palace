@@ -1,1 +1,19 @@
-kjartan|Custom Pizza;Stor;venjulegur;pepperoni,Skinka;Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|Coca Cola 2ltr|14/12/2017 19:10|5730|Pickup|On Pickup|Hjardarhagi|In Progress|yeee
+qweewq|Meat n Cheese;Stor;Pan;pepperoni,Skinka,Piparostur|No Product|14/12/2017 22:00|5000|Pickup|On Pickup|Hjardarhagi|Done|121
+qweqwe|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:55|4000|Pickup|On Pickup|Hjardarhagi|Done|qew
+wqeqe|Meat n Cheese;Stor;Pan;pepperoni,Skinka,Piparostur|No Product|14/12/2017 22:01|5000|Pickup|On Pickup|Hjardarhagi|Done|qweeqw
+qwe|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:56|4000|Pickup|On Pickup|Hjardarhagi|Done|dfs
+kjartn|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 21:59|1730|Pickup|On Pickup|Hjardarhagi|Done|qwe
+dasads|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:53|4000|Pickup|On Pickup|Hjardarhagi|Done|qweqwe
+qwqew|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:52|4000|Pickup|On Pickup|Hjardarhagi|Done|qwewqe
+qwe|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:49|4000|Pickup|On Pickup|Hjardarhagi|Done|qwe
+asd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 21:49|1730|Home|In Advance|Hjardarhagi|Done|qwe
+qwe|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:16|4000|Pickup|In Advance|Hjardarhagi|Done|xz
+haga|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|Coca Cola 2ltr|14/12/2017 20:44|1730|Home|In Advance|Hjardarhagi|Done|ew
+Kjartan|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur;Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 22:14|6730|Pickup|On Pickup|Hjardarhagi|Done|HELP
+asd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|Coca Cola 2ltr|14/12/2017 20:35|1730|Home|In Advance|Gnodavogur|Done|qwe
+creep|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|Coca Cola 2ltr|14/12/2017 20:37|1730|Home|In Advance|Gnodavogur|Done|wtf
+crrrrrrreppppppyy|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 20:39|1730|Home|In Advance|Gnodavogur|Done|wwwaaaattaff
+asd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 20:45|1730|Pickup|On Pickup|Gnodavogur|Done|qwe
+asd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 21:13|1730|Home|In Advance|Gnodavogur|Done|qwe
+1|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 21:29|1730|Pickup|In Advance|Gnodavogur|Done|123
+APPLEPAN|Meat n Cheese;Stor;Pan;pepperoni,Skinka,Piparostur|No Product|14/12/2017 22:15|5000|Pickup|On Pickup|Hjardarhagi|Done|UUUU

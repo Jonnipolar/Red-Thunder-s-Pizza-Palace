@@ -64,6 +64,7 @@ void BakeryUI::UI_sub(string street) throw (InvalidMenuNumberException) {
                 UI_processing(street);
                 break;
             case '2':
+                UI_in_progress(street);
                 break;
             default :
                 is_valid = false;
@@ -85,7 +86,7 @@ void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException, 
     cout << "Welcome to " << street << endl;
     cout << "Please select option" << endl;
     cout << "[1] list of orders in processing" << endl;
-    cout << "[2] First 3 orders in processing" << endl;
+    cout << "[2] Back to Main Menu" << endl;
     do {
         try {
 
@@ -108,6 +109,69 @@ void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException, 
     } while(!is_valid);
 
 }
+void BakeryUI::UI_in_progress(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException) {
+    char selection;
+    bool is_valid = true;
+
+    system("CLS");
+    vector <Order> orders_by_street;
+    cout << "Welcome to " << street << endl;
+    cout << "Please select option" << endl;
+    cout << "[1] list of orders in progress" << endl;
+    cout << "[2] Back to Main Menu" << endl;
+    do {
+        try {
+
+            cin >> selection;
+            switch (selection) {
+                case '1':
+                    orders_by_street = order_service.get_in_progress_orders_by_street(street);
+                    UI_add_to_done(orders_by_street);
+                    break;
+                case '2':
+                    break;
+                default :
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                    break;
+            }
+    } catch(InvalidMenuNumberException e) {
+                cout << e.get_message();
+    };
+    } while(!is_valid);
+
+}
+void BakeryUI::UI_add_to_done(vector <Order> by_street) {
+    system("CLS");
+    cout << "Here is a list of orders in progress, but not done" << endl;
+    for ( unsigned int i = 0; i < by_street.size(); i++) {
+        vector <Pizza> pizzas = by_street[i].get_pizzas();
+        cout << "[" << i+1 << "] " << by_street[i].get_name() << endl;
+        for ( unsigned int j = 0; j < pizzas.size(); j++ ) {
+            vector <Toppings> toppings = pizzas[j].get_toppings();
+            PizzaBottom bottom = pizzas[j].get_bottom();
+            PizzaSize p_size = pizzas[j].get_size();
+            cout << "\t" << pizzas[j].get_name() << "\n\tBottom: " << bottom.get_type() << "\n\tSize: " << p_size.get_size();
+            cout << "\n\tToppings: ";
+            for ( unsigned int x = 0; x < toppings.size(); x++ ) {
+                if (x != toppings.size() - 1) {
+                    cout << toppings[x].get_name() << ", ";
+                }
+                else {
+                    cout << toppings[x].get_name() << endl;
+                }
+            }
+        }
+        vector <OtherProducts> other = by_street[i].get_other_prod();
+        for ( unsigned int i = 0; i < other.size(); i++ ) {
+            cout << "\t" << other[i].get_name() << endl;
+        }
+    }
+    cout << "\n";
+    unsigned int selection = get_integer_input_variable_size(by_street.size());
+    Order sel_order = by_street[selection - 1];
+    UI_change_to_done(sel_order, selection);
+}
 void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
     system("CLS");
     cout << "Here is a list of orders not processed" << endl;
@@ -128,7 +192,6 @@ void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
                     cout << toppings[x].get_name() << endl;
                 }
             }
-
         }
         vector <OtherProducts> other = by_street[i].get_other_prod();
         for ( unsigned int i = 0; i < other.size(); i++ ) {
@@ -139,8 +202,6 @@ void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
     unsigned int selection = get_integer_input_variable_size(by_street.size());
     Order sel_order = by_street[selection - 1];
     UI_change_to_in_progress(sel_order, selection);
-
-
 }
 void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
     unsigned int done;
@@ -172,7 +233,42 @@ void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
     cout << "[2] Back to Main Menu" << endl;
     done = get_integer_input_variable_size(2);
     if (done == 1) {
-        vector <Order> orders = order_service.get_all_in_pro();
+        vector <Order> orders = order_service.get_in_progress_orders_by_street(place.get_street());
+        order_service.change_inPro_to_Done((int)orders.size(), place.get_street());
+    }
+}
+void BakeryUI::UI_change_to_done(Order& order, int sel) {
+    unsigned int done;
+    PizzaPlace place = order.get_OrderLocation();
+    cout << "**********************************";
+    system("CLS");
+    cout << "Name: " << order.get_name() << endl;
+    vector <Pizza> pizzas = order.get_pizzas();
+    vector <OtherProducts> other = order.get_other_prod();
+    for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
+        vector <Toppings> toppings = pizzas[i].get_toppings();
+        PizzaBottom bottom = pizzas[i].get_bottom();
+        PizzaSize p_size = pizzas[i].get_size();
+        cout << "\t" << pizzas[i].get_name() << "\n\tBottom: " << bottom.get_type() << "\n\tSize: " << p_size.get_size() << endl;
+        cout << "\tToppings: ";
+        for ( unsigned int j = 0; j < toppings.size(); j++) {
+            if (j != toppings.size() - 1) {
+                cout << toppings[i].get_name() << ", ";
+            }
+            else {
+                cout << toppings[i].get_name() << endl;
+            }
+        }
+    }
+    for ( unsigned int i = 0; i < other.size(); i++ ) {
+        cout << "\t" << other[i].get_name() << endl;
+    }
+    cout << "[1] Done?" << endl;
+    cout << "[2] Back to Main Menu" << endl;
+    done = get_integer_input_variable_size(2);
+
+    if (done == 1) {
+        vector <Order> orders = order_service.get_in_progress_orders_by_street(place.get_street());
         order_service.change_inPro_to_Done((int)orders.size(), place.get_street());
     }
 }
