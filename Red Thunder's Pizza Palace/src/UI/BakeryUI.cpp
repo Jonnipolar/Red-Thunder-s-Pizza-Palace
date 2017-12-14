@@ -240,7 +240,6 @@ void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
 void BakeryUI::UI_change_to_done(Order& order, int sel) {
     unsigned int done;
     PizzaPlace place = order.get_OrderLocation();
-    cout << "**********************************";
     system("CLS");
     cout << "Name: " << order.get_name() << endl;
     vector <Pizza> pizzas = order.get_pizzas();
