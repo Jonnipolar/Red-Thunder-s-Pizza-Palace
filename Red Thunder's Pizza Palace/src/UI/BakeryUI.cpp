@@ -71,7 +71,7 @@ void BakeryUI::UI_sub(string street) {
             break;
     }
 }
-void BakeryUI::UI_processing(string street) {
+void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException) {
     char selection;
     system("CLS");
     vector <Order> orders_by_street;
@@ -82,13 +82,42 @@ void BakeryUI::UI_processing(string street) {
     cin >> selection;
     switch (selection) {
         case '1':
-            orders_by_street = order_service.get_processing_orders_by_street(street);
-            UI_add_to_progress(orders_by_street);
+            try{
+                orders_by_street = order_service.get_processing_orders_by_street(street);
+                UI_add_to_progress(orders_by_street);
+
+            }
+            catch(InvalidFileNotOpenException e){
+                cout << e.get_message();
+                do {
+                    cout << "Press enter to continue. \n";
+                    cin.sync();
+                }
+                while(cin.get() != '\n');
+            }
             break;
         case '2':
             break;
     }
 }
 void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
+    system("CLS");
+    cout << "Here is a list of orders not processed" << endl;
+    for ( unsigned int i = 0; i < by_street.size(); i++) {
+        vector <Pizza> pizzas = by_street[i].get_pizzas();
+        cout << "[" << i+1 << "] " << by_street[i].get_name() << endl;
+        for ( unsigned int j = 0; j < pizzas.size(); j++ ) {
+            vector <Toppings> toppings = pizzas[j].get_toppings();
+            cout << "\t" << pizzas[j].get_name() << "\n\tBottom: " << pizzas[j].get_bottom() << "\tSize: " << pizzas[j].get_size();
+            cout << "\tToppings: ";
+            for ( unsigned int x = 0; x < toppings.size(); x++ ) {
+                cout << toppings[x].get_name() << ", ";
+            }
+            cout << "\n";
+        }
+    }
+    cout << "\n";
+    unsigned int selection = get_integer_input_variable_size(by_street.size());
+
 
 }

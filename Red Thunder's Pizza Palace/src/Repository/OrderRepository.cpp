@@ -13,6 +13,16 @@ void OrderRepository::store_order(vector <Order> order)  throw (InvalidFileNotOp
         fout.close();
     }else{throw InvalidFileNotOpenException();}
 }
+void OrderRepository::store_order_processing(vector <Order> order)  throw (InvalidFileNotOpenException){
+    ofstream fout;
+    fout.open("OrdersProcessed.txt");
+    if (fout.is_open()) {
+        for(unsigned int i = 0; i < order.size(); i++) {
+            fout << order[i];
+        }
+        fout.close();
+    }else{throw InvalidFileNotOpenException();}
+}
 vector <Order> OrderRepository::get_order()  throw (InvalidFileNotOpenException){
     vector <Order> orders;
     ifstream fin("Orders.txt");

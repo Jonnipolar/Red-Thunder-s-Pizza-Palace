@@ -14,6 +14,7 @@ class OrderRepository
         OrderRepository();
         void store_order(vector <Order> order) throw (InvalidFileNotOpenException);
         vector <Order> get_order() throw (InvalidFileNotOpenException);
+        void store_order_processing(vector <Order> order)  throw (InvalidFileNotOpenException);
         ~OrderRepository();
 
     private:
