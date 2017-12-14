@@ -23,6 +23,8 @@ class Order
         PizzaPlace get_OrderLocation();
         string get_orderStatus();
         string get_Comment();
+        void set_HasBeenPaidFor(string paid);
+        void set_orderStatus(string status);
         void set_time();
         friend ostream& operator << (ostream& out, const Order& order);
         friend istream& operator >>(istream& in, Order& order);

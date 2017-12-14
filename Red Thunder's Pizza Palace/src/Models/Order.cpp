@@ -65,6 +65,12 @@ string Order::get_orderStatus() {
 string Order::get_Comment() {
     return this->Comment;
 }
+void Order::set_HasBeenPaidFor(string paid) {
+    this->HasBeenPaidFor = paid;
+}
+void Order::set_orderStatus(string status) {
+    this->OrderStatus = status;
+}
 ostream& operator <<(ostream& out, const Order& order) {
     PizzaPlace place = order.OrderLocation;
     string delim = "|";
