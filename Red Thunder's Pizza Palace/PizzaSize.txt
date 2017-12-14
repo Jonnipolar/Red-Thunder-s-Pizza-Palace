@@ -1,6 +1,6 @@
 Stor:1500
 Stor:1500
-stor:0
+stor:21663129
 jebb:0
 oke:500
 23e:234

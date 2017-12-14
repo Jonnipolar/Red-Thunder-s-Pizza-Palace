@@ -18,12 +18,12 @@
 #include "InvalidPriceException.h"
 #include "InvalidStreetAddressException.h"
 #include "InvalidFileNotOpenException.h"
+#include "ValidationService.h"
 using namespace std;
 
 class ManagerSubUI
 {
 public:
-    ManagerSubUI();
        ///Start The UI
     void UI_Start() throw (InvalidMenuNumberException, InvalidFileNotOpenException);
        ///Function to make pizza
@@ -32,16 +32,18 @@ public:
     vector <Toppings> SubUI_add_topping();
        ///Function to make topping
     void UI_make_toppings();
-    void UI_make_menu();
+       ///Make new pizza sizes
     void UI_make_size();
+        ///make new pizza bottom types
     void UI_make_bottom();
+        ///Make new pizza places
     void UI_make_pizza_place() throw (InvalidStreetAddressException);
+        ///Make new pizza for menu
     void UI_select_make_pizza()throw (InvalidMenuNumberException);
+        ///Make new products
     void UI_make_other_items();
     ~ManagerSubUI();
     unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
-    unsigned int get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException);
-    unsigned int get_price() throw (InvalidPriceException);
     string get_name() throw (InvalidNameException);
     void Print_pizza_menu() throw (InvalidFileNotOpenException);
 
@@ -52,6 +54,7 @@ private:
     PizzaPlaceService pizza_places;
     PizzaService pizza_service;
     OtherProductsService serv;
+    ValidationService valid;
 };
 
 #endif // MANAGER_SUB_UI_H

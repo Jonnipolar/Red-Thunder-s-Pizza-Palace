@@ -1,9 +1,5 @@
 #include "ManagerSubUI.h"
 
-ManagerSubUI::ManagerSubUI()
-{
-    //ctor
-}
 void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotOpenException)
 {
 
@@ -114,19 +110,42 @@ void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
 
 void ManagerSubUI::UImake_pizza()
 {
+    bool is_valid = true;
+    string price_input;
+    string name;
+    unsigned int price;
     PizzaSize _size;
     PizzaBottom bottom;
     system("CLS");
     try {
         cout << "Please type in new pizza name" << endl;
-        string name = get_name();
+        do{
+            cout << "Name: ";
+            cin.sync();
+            getline(cin, name);
+            try{
+                name = valid.get_name(name);
+            }catch(InvalidNameException e) {
+                cout << e.get_message();
+            }
+        }while(!is_valid);
         vector <Toppings> userToppings = SubUI_add_topping();
         cout << "\nYour toppings are: " << endl;
         for (unsigned int i = 0; i < userToppings.size(); i++) {
             cout << "\t[" << i+1 << "] " << "Name of Topping: " << userToppings[i].get_name() << endl;
         }
-        cout << "\nSelect the price for the pizza" << endl;
-        unsigned int price = get_price();
+        do{
+            cout << "\nSelect the price for the pizza" << endl;
+            cout << "Price: ";
+            cin.sync();                                                                      /// setja inn throw a illegal number
+            getline(cin, price_input);
+            try {
+                price = valid.get_price(price_input);
+            }catch(InvalidPriceException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
         pizza_service.save_pizza(name,price,userToppings,bottom,_size);
     } catch(InvalidFileNotOpenException e) {
         cout << e.get_message();
@@ -138,7 +157,7 @@ void ManagerSubUI::UImake_pizza()
 }
 vector <Toppings> ManagerSubUI::SubUI_add_topping()
 {
-
+    string input_input;
     vector <Toppings> cheeseTopp = toppings_list.get_selected_list(3);
     vector <Toppings> meatTopp = toppings_list.get_selected_list(1);
     vector <Toppings> vegetableTopp = toppings_list.get_selected_list(2);
@@ -146,59 +165,94 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
     vector <Toppings> userToppings;
     unsigned int ToppSel = -1;
     unsigned int ToppingAmount = cheeseTopp.size() + meatTopp.size() + vegetableTopp.size();
-    try{
     while (ToppSel != 0) {
-                                                                         ///vantar ekki numberthrow herna lika?
-            try {
-                int cntr = 0;
-                system("CLS");
-                cout << "\nMeat Toppings: \n" << endl;
-                for ( unsigned int i = 0; i < meatTopp.size(); i++ ) {
-                    cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << meatTopp[i].get_name() << endl;
-                    toppings.push_back(meatTopp[i]);
-                    cntr++;
-                }
-                cout << "\nVegetable Toppings: \n" << endl;
-                for ( unsigned int i = 0; i < vegetableTopp.size(); i++ ) {
-                    cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << vegetableTopp[i].get_name() << endl;
-                    toppings.push_back(vegetableTopp[i]);
-                    cntr++;
-                }
-                cout << "\nCheese Topping: \n" << endl;
-                for ( unsigned int i = 0; i < cheeseTopp.size(); i++ ) {
-                    cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << cheeseTopp[i].get_name() << endl;
-                    toppings.push_back(cheeseTopp[i]);
-                    cntr++;
-                }
-                cout << "Please enter number for topping to add (0 for no more)" << endl;
-                ToppSel = get_integer_input_variable_size_with_zeroescape(ToppingAmount);
-                if (ToppSel > 0 && ToppSel <= ToppingAmount) {
-                    userToppings.push_back(toppings[ToppSel-1]);
-                }
-            } catch(InvalidMenuNumberException e) {
-                cout << e.get_message();
-            };
-
-        }} catch
-            (InvalidFileNotOpenException e) {
-            cout << e.get_message();
-            do {
-            cout << "Press enter to continue. \n";
+        try {
+            int cntr = 0;
+            system("CLS");
+            cout << "\nMeat Toppings: \n" << endl;
+            for ( unsigned int i = 0; i < meatTopp.size(); i++ ) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << meatTopp[i].get_name() << endl;
+                toppings.push_back(meatTopp[i]);
+                cntr++;
+            }
+            cout << "\nVegetable Toppings: \n" << endl;
+            for ( unsigned int i = 0; i < vegetableTopp.size(); i++ ) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << vegetableTopp[i].get_name() << endl;
+                toppings.push_back(vegetableTopp[i]);
+                cntr++;
+            }
+            cout << "\nCheese Topping: \n" << endl;
+            for ( unsigned int i = 0; i < cheeseTopp.size(); i++ ) {
+                cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << cheeseTopp[i].get_name() << endl;
+                toppings.push_back(cheeseTopp[i]);
+                cntr++;
+            }
+            cout << "Please enter number for topping to add (0 for no more)" << endl;
+            cout << "Select option: ";
             cin.sync();
-        } while(cin.get() != '\n');};
+            getline(cin,input_input);
+            try {
+                ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
+            }catch(InvalidMenuNumberException e) {
+                cout << e.get_message();
+            }
+            if (ToppSel > 0 && ToppSel <= ToppingAmount) {
+                userToppings.push_back(toppings[ToppSel-1]);
+            }
+        }catch(InvalidFileNotOpenException e) {
+            cout << e.get_message();
+        }
+    }
+    do {
+        cout << "Press enter to continue. \n";
+        cin.sync();
+    } while(cin.get() != '\n');
     return userToppings;
 }
 void ManagerSubUI::UI_make_toppings()
 {
+    bool is_valid = true;
+    string price_input;
+    string input_input;
+    string name;
+    unsigned int type;
+    unsigned int price;
     try{
         system("CLS");
         cout << "Please type in topping" << endl;
-        string name = get_name();
-        cout << "Please type in price of topping" << endl;
-        unsigned int price = get_price();
+        do{
+            cout << "Name: ";
+            cin.sync();
+            getline(cin, name);
+            try{
+                name = valid.get_name(name);
+            }catch(InvalidNameException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
+        do{
+            is_valid = true;
+            cout << "Please type in price of topping" << endl;
+            cout << "Price: ";
+            cin.sync();                                                                      /// setja inn throw a illegal number
+            getline(cin, price_input);
+            try {
+                price = valid.get_price(price_input);
+            }catch(InvalidPriceException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
         cout << "Type: \n\t1 for meat\n\t2 for vegetable\n\t3 for cheese" << endl;
-        unsigned int type = get_integer_input_variable_size(3);
-
+        cout << "Select option: ";
+        cin.sync();
+        getline(cin,input_input);
+        try {
+            type = valid.get_integer_input_variable_size(input_input,3);
+        }catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
         toppings_list.save_topping_list(name, price, type);                                      // sendir í function sem vistar í skjal
     }catch(InvalidFileNotOpenException e){
         cout << e.get_message();
@@ -210,13 +264,37 @@ void ManagerSubUI::UI_make_toppings()
 }
 void ManagerSubUI::UI_make_size()
 {
+    bool is_valid = true;
+    string price_input;
+    string name;
+    unsigned int price;
     try{
         system("CLS");
         cout << "Please type in new size name (description)." << endl;
-        string name = get_name();
-        cout << "Select price for size.\n";
-        unsigned int price = get_price();
-
+        do{
+            cout << "Name: ";
+            cin.sync();
+            getline(cin, name);
+            try{
+                name = valid.get_name(name);
+            }catch(InvalidNameException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
+        do{
+            is_valid = true;
+            cout << "Select price for size.\n";
+            cout << "Price: ";
+                cin.sync();                                                                      /// setja inn throw a illegal number
+                getline(cin, price_input);
+            try{
+                price = valid.get_price(price_input);
+            }catch(InvalidPriceException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
         pizza_size.save_pizza_size(name, price);
     }catch(InvalidFileNotOpenException e){
         cout << e.get_message();
@@ -228,14 +306,37 @@ void ManagerSubUI::UI_make_size()
 }
 void ManagerSubUI::UI_make_bottom()
 {
+    bool is_valid = true;
+    string price_input;
+    string name;
+    unsigned int price;
     try{
         system("CLS");
         cout << "Please type in new bottom name (description)." << endl;
-        string name = get_name();
-
-        cout << "Select price for bottom." << endl;
-        unsigned int price = get_price();
-
+        do{
+            cout << "Name: ";
+            cin.sync();
+            getline(cin, name);
+            try {
+                name = valid.get_name(name);
+            }catch(InvalidNameException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
+        do{
+            is_valid = true;
+            cout << "Select price for bottom." << endl;
+            cout << "Price: ";
+            cin.sync();                                                                      /// setja inn throw a illegal number
+            getline(cin, price_input);
+            try {
+                price = valid.get_price(price_input);
+            }catch(InvalidPriceException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
         PizzaBottom pizza_bottoms(name, price);
         pizza_bottom.save_pizza_bottom(name, price);
 
@@ -310,15 +411,49 @@ void ManagerSubUI::UI_make_pizza_place() throw (InvalidStreetAddressException)
 }
 void ManagerSubUI::UI_make_other_items()
 {
+    bool is_valid;
+    string input_input;
+    string price_input;
+    string name;
+    unsigned int price;
+    unsigned int type;
     try{
-    cout << "Please type in a new extra." << endl;
-    string name = get_name();
-    cout << "Type in new extra price." << endl;
-    unsigned int price = get_price();
-    cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl;                 /// herna get eg kannski stungid inn djos tharna... moddinu fyrir thetta Uppi
-    unsigned int type = get_integer_input_variable_size(3);
-
-    serv.save_other_products(name, price, type);}catch(InvalidFileNotOpenException e){
+        cout << "Please type in a new extra." << endl;
+        do{
+            cout << "Name: ";
+            cin.sync();
+            getline(cin, name);
+            try{
+                name = valid.get_name(name);
+            }catch(InvalidNameException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
+        do{
+            is_valid = true;
+            cout << "Type in new extra price." << endl;
+            cout << "Price: ";
+            cin.sync();                                                                      /// setja inn throw a illegal number
+            getline(cin, price_input);
+            try {
+                price = valid.get_price(price_input);
+            }catch(InvalidPriceException e) {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        }while(!is_valid);
+        cout << "Type: \n\t1 for soda\n\t2 for sauces\n\t3 side dishes" << endl;                 /// herna get eg kannski stungid inn djos tharna... moddinu fyrir thetta Uppi
+        cout << "Select option: ";
+        cin.sync();
+        getline(cin,input_input);
+        try {
+            type = valid.get_integer_input_variable_size(input_input,3);
+        }catch(InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
+        serv.save_other_products(name, price, type);
+    }catch(InvalidFileNotOpenException e){
         cout << e.get_message();
         do {
             cout << "Press enter to continue. \n";
@@ -332,124 +467,3 @@ ManagerSubUI::~ManagerSubUI()
     //dtor
 }
 
-string ManagerSubUI::get_name() throw (InvalidNameException)
-{
-    string name;
-    bool is_valid = true;
-    do {                                                                                     ///name - ready
-        is_valid = true;
-        try {
-            cout << "Name: ";
-            cin.sync();
-            getline(cin, name);
-            if(name.length() > 20 || isspace(name[0])) {
-                is_valid = false;
-                throw InvalidNameException();
-            } else {};
-            if(name.empty()) {
-                is_valid = false;
-                throw InvalidNameException();
-            } else {};
-        } catch(InvalidNameException e) {
-            cout << e.get_message();
-        }
-    } while(!is_valid);
-    return name;
-}
-
-unsigned int ManagerSubUI::get_price() throw (InvalidPriceException)
-{
-    string price_input;
-    unsigned int price;
-    bool is_valid = true;
-    do {
-        is_valid = true;
-        try {
-            cout << "Price: ";
-            cin.sync();                                                                      /// setja inn throw a illegal number
-            getline(cin, price_input);
-            for(unsigned int i = 0; i < price_input.length(); i++) {
-                if(!isdigit(price_input[i])) {
-                    is_valid = false;
-                    throw InvalidPriceException();
-                } else {};
-            }
-            if(price_input.empty()) {                                                        // passar ad madur slai eitthvad inn
-                is_valid = false;
-                throw InvalidPriceException();
-            } else {};
-        } catch(InvalidPriceException e) {
-            cout << e.get_message();
-        }
-        stringstream push_price(price_input);
-        push_price >> price;
-    } while(!is_valid);
-    return price;
-}
-
-unsigned int ManagerSubUI::get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException)   //skilar int eftir s
-{
-    unsigned int input;
-    bool is_valid = true;
-    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
-        is_valid = true;
-        string input_input;
-        try {
-            cout << "Select option: ";
-            cin.sync();
-            getline(cin,input_input);
-            stringstream push_input(input_input);
-            push_input >> input;
-            if(input == 0) {
-                break;
-            } else if(input > size || input <1 || input_input.empty()) {
-                is_valid = false;
-                throw InvalidMenuNumberException();
-            } else {};
-            for(unsigned int i = 0; i < input_input.length(); i++) {
-                if(!isdigit(input_input[i])) {      // because of this (see above)
-                    is_valid = false;
-                    throw InvalidMenuNumberException();
-                } else {};
-            }
-        } catch(InvalidMenuNumberException e) {
-            cout << e.get_message();
-        }
-        stringstream push_input(input_input);
-        push_input >> input;
-    } while(!is_valid);
-    return input;
-}
-unsigned int ManagerSubUI::get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException)   //skilar int eftir s
-{
-    unsigned int input;
-    bool is_valid = true;
-    do {                                                                                     //mod for menunumber - not universally adaptive (see below)
-        is_valid = true;
-        string input_input;
-        try {
-            cout << "Select option: ";
-            cin.sync();
-            getline(cin,input_input);
-            stringstream push_input(input_input);
-            push_input >> input;
-            if(input == 0) {
-                break;
-            } else if(input > size || input <1 || input_input.empty()) {
-                is_valid = false;
-                throw InvalidMenuNumberException();
-            } else {};
-            for(unsigned int i = 0; i < input_input.length(); i++) {
-                if(!isdigit(input_input[i])) {      // because of this (see above)
-                    is_valid = false;
-                    throw InvalidMenuNumberException();
-                } else {};
-            }
-        } catch(InvalidMenuNumberException e) {
-            cout << e.get_message();
-        }
-        stringstream push_input(input_input);
-        push_input >> input;
-    } while(!is_valid);
-    return input;
-}

@@ -92,6 +92,8 @@ void DeliveryUI::UI_sub(string street) {
 }
 void DeliveryUI::list_all_orders (string street) {
     char selection;
+    unsigned int placeSel;
+    bool is_valid = true;
     system("CSL");
     vector <Order> order = order_service.get_all_orders_by_street(street);
     cout << "Here is a list of all orders" << endl;
@@ -100,6 +102,29 @@ void DeliveryUI::list_all_orders (string street) {
         << " Status: " << order[i].get_orderStatus() << " Price: "
         << order[i].get_totalAmount() << " Paid status: " << order[i].get_HasBeenPaidFor() << endl;
     }
+    cout << "Do you want to change paid status?" << endl;
+    cout << "[1] Yes" << endl;
+    cout << "[2] No" << endl;
+    do {
+        try {
+
+            cin >> selection;
+            switch (selection) {
+                case '1':
+                    placeSel = get_integer_input_variable_size(order.size());
+                    order_service.change_paid_status(placeSel, street);
+                    break;
+                case '2':
+                    break;
+                default :
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                    break;
+            }
+        } catch(InvalidMenuNumberException e) {
+                    cout << e.get_message();
+        };
+    } while(!is_valid);
 
 }
 void DeliveryUI::list_done_orders(string street) {
