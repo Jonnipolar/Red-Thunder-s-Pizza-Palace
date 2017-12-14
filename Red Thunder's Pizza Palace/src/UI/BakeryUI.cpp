@@ -130,9 +130,43 @@ void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
             }
 
         }
+        vector <OtherProducts> other = by_street[i].get_other_prod();
+        for ( unsigned int i = 0; i < other.size(); i++ ) {
+            cout << "\t" << other[i].get_name() << endl;
+        }
     }
     cout << "\n";
     unsigned int selection = get_integer_input_variable_size(by_street.size());
     Order sel_order = by_street[selection - 1];
+    UI_change_to_in_progress(sel_order);
 
+
+}
+void BakeryUI::UI_change_to_in_progress(Order& order) {
+    unsigned int done;
+    system("CLS");
+    cout << "Name: " << order.get_name() << endl;
+    vector <Pizza> pizzas = order.get_pizzas();
+    vector <OtherProducts> other = order.get_other_prod();
+    for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
+        vector <Toppings> toppings = pizzas[i].get_toppings();
+        PizzaBottom bottom = pizzas[i].get_bottom();
+        PizzaSize p_size = pizzas[i].get_size();
+        cout << "\t" << pizzas[i].get_name() << "\n\tBottom: " << bottom.get_type() << "\n\tSize: " << p_size.get_size() << endl;
+        cout << "\tToppings: ";
+        for ( unsigned int j = 0; j < toppings.size(); j++) {
+            if (j != toppings.size() - 1) {
+                cout << toppings[i].get_name() << ", ";
+            }
+            else {
+                cout << toppings[i].get_name() << endl;
+            }
+        }
+    }
+    for ( unsigned int i = 0; i < other.size(); i++ ) {
+        cout << "\t" << other[i].get_name() << endl;
+    }
+    cout << "[1] Done?" << endl;
+    cout << "[2] Back to Main Menu" << endl;
+    done = get_integer_input_variable_size(2);
 }
