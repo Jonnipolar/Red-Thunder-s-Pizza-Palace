@@ -48,50 +48,65 @@ unsigned int BakeryUI::get_integer_input_variable_size(unsigned int size) throw 
     } while(!is_valid);
     return input;
 }
-void BakeryUI::UI_sub(string street) {
+void BakeryUI::UI_sub(string street) throw (InvalidMenuNumberException) {
     char selection;
+    bool is_valid = true;
     system("CLS");
     cout << "Welcome to " << street << endl;
     cout << "Please select option" << endl;
     cout << "[1] Orders in processing" << endl;
     cout << "[2] Orders in progress" << endl;
-    cin >> selection;
-    switch (selection) {
-        case '1':
-            UI_processing(street);
-            break;
-        case '2':
-            break;
+    do {
+        try {
+            cin >> selection;
+            switch (selection) {
+            case '1':
+                UI_processing(street);
+                break;
+            case '2':
+                break;
+            default :
+                is_valid = false;
+                throw InvalidMenuNumberException();
+                break;
     }
+        }
+        catch (InvalidMenuNumberException e) {
+            cout << e.get_message();
+        }
+    } while(!is_valid);
 }
-void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException) {
+void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException) {
     char selection;
+    bool is_valid = true;
+
     system("CLS");
     vector <Order> orders_by_street;
     cout << "Welcome to " << street << endl;
     cout << "Please select option" << endl;
     cout << "[1] list of orders in processing" << endl;
     cout << "[2] First 3 orders in processing" << endl;
-    cin >> selection;
-    switch (selection) {
-        case '1':
-            try{
-                orders_by_street = order_service.get_processing_orders_by_street(street);
-                UI_add_to_progress(orders_by_street);
+    do {
+        try {
 
+            cin >> selection;
+            switch (selection) {
+                case '1':
+                    orders_by_street = order_service.get_processing_orders_by_street(street);
+                    UI_add_to_progress(orders_by_street);
+                    break;
+                case '2':
+                    break;
+                default :
+                    is_valid = false;
+                    throw InvalidMenuNumberException();
+                    break;
             }
-            catch(InvalidFileNotOpenException e){
+    } catch(InvalidMenuNumberException e) {
                 cout << e.get_message();
-                do {
-                    cout << "Press enter to continue. \n";
-                    cin.sync();
-                }
-                while(cin.get() != '\n');
-            }
-            break;
-        case '2':
-            break;
-    }
+    };
+    } while(!is_valid);
+
 }
 void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
     system("CLS");
@@ -101,16 +116,23 @@ void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
         cout << "[" << i+1 << "] " << by_street[i].get_name() << endl;
         for ( unsigned int j = 0; j < pizzas.size(); j++ ) {
             vector <Toppings> toppings = pizzas[j].get_toppings();
-            cout << "\t" << pizzas[j].get_name() << "\n\tBottom: " << pizzas[j].get_bottom() << "\tSize: " << pizzas[j].get_size();
-            cout << "\tToppings: ";
+            PizzaBottom bottom = pizzas[j].get_bottom();
+            PizzaSize p_size = pizzas[j].get_size();
+            cout << "\t" << pizzas[j].get_name() << "\n\tBottom: " << bottom.get_type() << "\n\tSize: " << p_size.get_size();
+            cout << "\n\tToppings: ";
             for ( unsigned int x = 0; x < toppings.size(); x++ ) {
-                cout << toppings[x].get_name() << ", ";
+                if (x != toppings.size() - 1) {
+                    cout << toppings[x].get_name() << ", ";
+                }
+                else {
+                    cout << toppings[x].get_name() << endl;
+                }
             }
-            cout << "\n";
+
         }
     }
     cout << "\n";
     unsigned int selection = get_integer_input_variable_size(by_street.size());
-
+    Order sel_order = by_street[selection - 1];
 
 }
