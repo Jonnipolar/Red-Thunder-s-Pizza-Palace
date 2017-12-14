@@ -1,4 +1,0 @@
-Kalli|PS2;Stor;venjulegur;sveppur,pepperoni|Coca Cola Zero 0.5 Ltr|13/12/2017 17:07|3500|Home|In Advance|Gnodavogur|Processing|adsf
-Jonni|Pepp;Stor;venjulegur;pepperoni,pepperoni,pepperoni|Ketchup|13/12/2017 17:08|3500|Home|In Advance|Gnodavogur|Processing|asf
-Kalli|Custom Pizza;Stor;venjulegur;pepperoni,Bacon|Coca Cola Zero 0.5 Ltr|14/12/2017 12:39|1734|Home|In Advance|Gnodavogur|Processing|
-kjartan|Custom Pizza;Stor;venjulegur;pepperoni,Skinka,Bacon;Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|Coca Cola 2ltr|14/12/2017 12:50|5764|Home|In Advance|Hjardarhagi|Processing|yeee
