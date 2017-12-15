@@ -3,9 +3,10 @@
 void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotOpenException)
 {
 
-    char selection;                                                                          // Declare selection char
+    string selection;                                                                          // Declare selection char
     bool is_valid = true;
-    while (selection != '6') {                                                               // While user does not want to quit
+    unsigned int check;
+    while (check != 6) {                                                               // While user does not want to quit
         system("CLS");
         cout << "Hello Mr. Manager" << endl;                                                 // Welcome message
         cout << "What would you like to do:" << endl;                                        // -||-
@@ -20,31 +21,31 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                 is_valid = true;
                 cout << "Select option: ";
                 cin >> selection;
-                switch (selection) {
-                case '1':                                                                    // if user picks p create pizza
+                check = valid.get_integer_input_variable_size(selection, 6);
+                switch (check) {
+                case 1:                                                                    // if user picks p create pizza
                     UI_select_make_pizza();
                     break;
-                case '2':
+                case 2:
                     UI_make_toppings();
                     break;
-                case '3':
+                case 3:
                     Print_pizza_menu();
                     do {
                         cout << "Press enter to continue. \n";
                         cin.sync();
                     } while(cin.get() != '\n');
                     break;
-                case '4':
+                case 4:
                     UI_make_other_items();
                     break;
-                case '5':
+                case 5:
                     UI_make_pizza_place();
                     break;
-                case '6':
+                case 6:
                     break;
                 default:
                     is_valid = false;
-                    throw InvalidMenuNumberException();
                 }
             } catch(InvalidMenuNumberException e) {
                 cout << e.get_message();
