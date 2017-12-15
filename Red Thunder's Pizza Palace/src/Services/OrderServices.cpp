@@ -188,6 +188,16 @@ vector <Order> OrderServices::get_all_orders_by_not_street(string street) {
     }
     return all_orders;
 }
+void OrderServices::set_done_orders(vector <Order> order, int sel) {
+    order[sel-1].set_orderStatus("Checked Out");
+    vector <Order> done_order;
+    for(unsigned int i = 0; i < order.size(); i++) {
+        if(order[i].get_orderStatus() == "Done") {
+            done_order.push_back(order[i]);
+        }
+    }
+    order_repo.store_order(done_order, 3);
+}
 OrderServices::~OrderServices()
 {
 

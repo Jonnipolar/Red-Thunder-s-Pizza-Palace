@@ -61,13 +61,13 @@ unsigned int DeliveryUI::get_integer_input_variable_size(unsigned int size) thro
 void DeliveryUI::UI_sub(string street) {
     char selection;
     bool is_valid = true;
-    system("CSL");
-    cout << "Welcome to " << street << endl;
-    cout << "Please select an option" << endl;
-    cout << "[1] List of all orders" << endl;
-    cout << "[2] List of all done orders" << endl;
-    cout << "[3] Return to main menu" << endl;
     do {
+        system("CLS");
+        cout << "Welcome to " << street << endl;
+        cout << "Please select an option" << endl;
+        cout << "[1] List of all orders" << endl;
+        cout << "[2] List of all done orders" << endl;
+        cout << "[3] Return to main menu" << endl;
         try {
 
             cin >> selection;
@@ -76,22 +76,23 @@ void DeliveryUI::UI_sub(string street) {
                     list_all_orders(street);
                     break;
                 case '2':
-                    //list_done_orders(street);
+                    list_done_orders(street);
                     break;
                 case '3':
+                    is_valid = false;
                     break;
                 default :
-                    is_valid = false;
                     throw InvalidMenuNumberException();
                     break;
             }
         } catch(InvalidMenuNumberException e) {
                     cout << e.get_message();
         };
-    } while(!is_valid);
+    } while(is_valid);
 }
 void DeliveryUI::list_all_orders (string street) {
     char selection;
+    string sel;
     unsigned int placeSel;
     bool is_valid = true;
     system("CSL");
@@ -107,11 +108,12 @@ void DeliveryUI::list_all_orders (string street) {
     cout << "[2] No" << endl;
     do {
         try {
-
+            cout << "Select order: ";
             cin >> selection;
+            sel = selection;
             switch (selection) {
                 case '1':
-                    placeSel = get_integer_input_variable_size(order.size());
+                    placeSel = valid.get_integer_input_variable_size(sel, order.size());
                     order_service.change_paid_status(placeSel, street);
                     break;
                 case '2':
@@ -128,7 +130,11 @@ void DeliveryUI::list_all_orders (string street) {
 
 }
 void DeliveryUI::list_done_orders(string street) {
-    system("CSL");
+    system("CLS");
+    bool is_valid = true;
+    unsigned int placeSel;
+    char selection;
+    string input_input;
     vector <Order> order = order_service.get_done_orders_by_street(street);
     cout << "Here is a list of all done orders" << endl;
     for(unsigned int i = 0; i < order.size(); i++) {
@@ -136,8 +142,46 @@ void DeliveryUI::list_done_orders(string street) {
         <<  " Price: " << order[i].get_totalAmount() << " Paid status: "
         << order[i].get_HasBeenPaidFor() << endl;
     }
-    unsigned int placeSel = get_integer_input_variable_size(order.size());
-
+    cout << "Do you want to select an order to checkout" << endl;
+    cout << "[1] Yes" << endl;
+    cout << "[2] No" << endl;
+    do {
+        try {
+            cout << "Select option: ";
+            cin >> selection;
+            switch (selection) {
+                case '1':
+                    do{
+                        is_valid = true;
+                        cout << "Select order: ";
+                        cin.sync();
+                        getline(cin,input_input);
+                        try{
+                            placeSel = valid.get_integer_input_variable_size(input_input, order.size());
+                            try{
+                                legacy_serv.change_status(placeSel, order);
+                                order_service.set_done_orders(order, placeSel);
+                            }catch (InvalidFileNotOpenException e) {
+                                cout << e.get_message();
+                                is_valid = false;
+                            }
+                        }catch (InvalidMenuNumberException e) {
+                            cout << e.get_message();
+                            is_valid = false;
+                        }
+                    }while(!is_valid);
+                    break;
+                case '2':
+                    is_valid = false;
+                    break;
+                default :
+                    throw InvalidMenuNumberException();
+                    break;
+            }
+        } catch(InvalidMenuNumberException e) {
+                    cout << e.get_message();
+        };
+    } while(is_valid);
 }
 DeliveryUI::~DeliveryUI()
 {
