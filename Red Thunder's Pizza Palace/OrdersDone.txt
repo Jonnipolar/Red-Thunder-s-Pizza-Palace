@@ -1,4 +1,0 @@
-creep|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|Coca Cola 2ltr|14/12/2017 20:37|1730|Home|In Advance|Gnodavogur|Done|wtf
-crrrrrrreppppppyy|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 20:39|1730|Home|In Advance|Gnodavogur|Done|wwwaaaattaff
-asd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 20:45|1730|Pickup|Paid|Gnodavogur|Done|qwe
-asd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|14/12/2017 21:13|1730|Home|In Advance|Gnodavogur|Done|qwe

@@ -1,13 +1,3 @@
-Stor:1500
-Stor:1500
-stor:21663129
-jebb:0
-oke:500
-23e:234
-\:123
-sdfgdfg4:123
-123:4141
-villi:123
-mega stor:2000
-123123:0
-hasfd:300
+litil:500
+stor:1500
+midlungs:1000
