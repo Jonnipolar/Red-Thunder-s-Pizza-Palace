@@ -15,7 +15,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
         cout << "[3] View pizza menu" << endl;                                               // ------""-------------
         cout << "[4] Add other items" << endl;                                               // ------""-------------
         cout << "[5] Add pizza place" << endl;                                               // ------""-------------
-        cout << "[6] Back to main menu" << endl;                                             // ------""-------------
+        cout << "[6] Back to login screen" << endl;                                             // ------""-------------
         do {
             try {
                 is_valid = true;

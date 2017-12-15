@@ -6,27 +6,60 @@ Order_UI::Order_UI()
 }
 void Order_UI::UI_Start()
 {
-    char selection;                                                             // Create Variable to keep hold of user selection
-    while (selection != '3') {                                                  // While loop
+    char selection;
+    bool is_valid = true;
+                                                              // Create Variable to keep hold of user selection
+    while (selection != '3')
+    {
+        // While loop
         system("CLS");
         cout << "Hello and welcome to Red Thunder's Pizza" << endl;             // Welcome Message
         cout << "How may i help you?" << endl;                                  // -||-
         cout << "[1] Add an order" << endl;                                     // Choice
-        cout << "[2] Back to Main Menu" << endl;                                       /// synist thetta ekki eiga vera back to main menu?      // Choice
-        cin >> selection;                                                       // Get user Input
-        switch (selection) {
-        case '1':
-            UI_Add_Order();
-            break;
-        case '2':
-            vector <Order> order = order_service.get_orders(1);
-            for(unsigned int i = 0; i < order.size(); i++) {
-                cout << order[i] << endl;
+        cout << "[2] Print last orders" << endl;
+        cout << "[3] Back to login screen" << endl;
+        do {
+            try {
+                is_valid = true;
+                cout << "Selection: ";
+                cin >> selection;                                                       // Get user Input
+                switch (selection) {
+                case '1':
+                    UI_Add_Order();
+                    break;
+                case '2':
+                    {
+                        vector <Order> order = order_service.get_orders(1);
+                        for(unsigned int i = 0; i < order.size(); i++)
+                        {
+                            cout << order[i] << endl;
+                        }
+                        if(order.size() == 0)
+                        {
+                            cout << "No order has been made in this session. \n";
+                        };
+                        do {
+                            cout << "\nPress enter to continue. \n";
+                            cin.sync();
+                        } while(cin.get() != '\n');
+                    }
+                    break;
+                case '3': break;
+                default:
+                    {
+                        throw InvalidMenuNumberException();
+                    }
+                }
+            } catch(InvalidMenuNumberException e)
+            {
+                is_valid = false;
+                cout << e.get_message();
+                cin.sync();
             }
-            cin >> selection;
-        }
+        } while(!is_valid);
     }
 }
+
 void Order_UI::UI_Add_Order() throw (InvalidFileNotOpenException)
 {
     OtherProducts other_product;
