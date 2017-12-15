@@ -95,7 +95,7 @@ void DeliveryUI::list_all_orders (string street) {
     string sel;
     unsigned int placeSel;
     bool is_valid = true;
-    system("CSL");
+    system("CLS");
     vector <Order> order = order_service.get_all_orders_by_street(street);
     cout << "Here is a list of all orders" << endl;
     for(unsigned int i = 0; i < order.size(); i++) {

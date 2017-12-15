@@ -1,0 +1,11 @@
+coca cola 2ltr:30:1
+braudstangir:30:3
+coca cola zero 2ltr:369:1
+coca cola light 2ltr:369:1
+sprite 2ltr:369:1
+braudstangasosa:30:2
+hvitlaukssosa:30:2
+kanilgott:30:2
+smakaka:419:3
+chicken wings:419:3
+buffalo wings:419:3

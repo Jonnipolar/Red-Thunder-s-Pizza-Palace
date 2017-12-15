@@ -1,3 +1,7 @@
 meat n cheese:1000:pepperoni,Skinka
-ps2:500:hawaiian:500:Skinka
-margarita:0:
+ps2:500:hawaiian
+margarita:0:cheese master
+onion master:1000:Onion,Onion,Onion,Onion
+cheese master:1000:Ostur,Gradostur,Piparostur,Rjomaostur
+pepp supreme:700:pepperoni,pepperoni,pepperoni
+cheese n meat:1000:Ostur,Gradostur,Piparostur,pepperoni
