@@ -222,7 +222,9 @@ vector <Toppings> Order_UI::SubUI_add_topping()
     unsigned int ToppSel = -1;
     while (ToppSel != 0) {
         int cntr = 0;
+        bool is_valid = true;
         system("CLS");
+        try{
         cout << "\nMeat Toppings: \n" << endl;
         for ( unsigned int i = 0; i < meatTopp.size(); i++ ) {
             cout << "\t[" << cntr+1 << "] " << "Name of Topping: " << meatTopp[i].get_name() << endl;
@@ -241,13 +243,34 @@ vector <Toppings> Order_UI::SubUI_add_topping()
             toppings.push_back(cheeseTopp[i]);
             cntr++;
         }
+        string input_input;
         cout << "Please enter the number for topping to add (0 for no more)" << endl;
-        ToppSel = get_integer_input_variable_size_with_zeroescape(ToppingAmount);
-        if (ToppSel > 0 && ToppSel <= ToppingAmount) {
-            userToppings.push_back(toppings[ToppSel-1]);
+                    do {
+                try {
+                    is_valid = true;
+                    cout << "Select option: ";
+                    cin.sync();
+                    getline(cin,input_input);
+                    ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
+                    if(ToppSel == 0){break;}
+                    if (ToppSel > 0 && ToppSel <= ToppingAmount) {
+                        userToppings.push_back(toppings[ToppSel-1]);
+                    }
+                } catch(InvalidMenuNumberException e) {
+                    cout << e.get_message();
+                    is_valid = false;
+                }
+            } while (!is_valid);
+        } catch(InvalidFileNotOpenException e) {
+            cout << e.get_message();
         }
     }
+    do {
+        cout << "\nPress enter to continue. \n";
+        cin.sync();
+    } while(cin.get() != '\n');
     return userToppings;
+
 }
 PizzaBottom Order_UI::UI_Get_Bottom()
 {
@@ -298,6 +321,7 @@ Pizza Order_UI::get_pizza_menus()
     for ( unsigned int i = 0; i < pizzas.size(); i++ ) {
         cout << "\t[" << i+1 << "] " << pizzas[i].get_name() << endl;
     }
+
     unsigned int PizzaSel = get_integer_input_variable_size(pizzas.size());                                                          ///ath herna input mida vid array
     if (PizzaSel > 0 && PizzaSel <= pizzas.size()) {
         user_pizza = pizzas[PizzaSel - 1];
@@ -315,6 +339,7 @@ OtherProducts Order_UI::add_other_product()
         vector <OtherProducts> sauce_prod = other_prod_service.get_sauces_list();
         vector <OtherProducts> dish_prod = other_prod_service.get_side();
         vector <OtherProducts> total_prod;
+        unsigned int prodSel = -1;
 
         unsigned int total_amount = soda_prod.size() + sauce_prod.size() + dish_prod.size();
         int cntr = 0;
@@ -336,11 +361,25 @@ OtherProducts Order_UI::add_other_product()
             cntr++;
             total_prod.push_back(dish_prod[i]);
         }
+        bool is_valid = true;
+        string input;
+        do {
+               try {
+                   is_valid = true;
+                   cout << "Select option: ";
+                   cin.sync();
+                   getline(cin,input);
+         prodSel = valid.get_integer_input_variable_size(input, total_amount);
 
-        unsigned int prodSel = get_integer_input_variable_size(total_amount);                                                             ///ath thetta input her, liklega mbara menu throw eins og hitt (nema size of stuff)
-        if (prodSel > 0 && prodSel <= total_amount) {
+            if (prodSel > 0 && prodSel <= total_amount) {
             other_product = total_prod[prodSel - 1];
         }
+        } catch(InvalidMenuNumberException e) {
+                    cout << e.get_message();
+                    is_valid = false;
+                }
+            } while (!is_valid);
+
     } catch (InvalidFileNotOpenException e) {
         cout << e.get_message();
         do {
@@ -379,18 +418,36 @@ string Order_UI::get_type_of_delivery() throw (InvalidFileNotOpenException) ///v
     cout << "PLease choose the type of delivery" << endl;
     cout << "\t[1] Home" << endl;
     cout << "\t[2] Pickup" << endl;
-    delSel = get_integer_input_variable_size(2);
-    try {
-        if (delSel > 0 && delSel <= 2) {                        /// her er if en ekki switch
-            if (delSel == 1) {
-                typeOfDelivery = "Home";
-                return typeOfDelivery;
-            } else {
-                typeOfDelivery = "Pickup";
-                return typeOfDelivery;
+    string input;
+    bool is_valid = true;
+    try{
+    do {
+        try {
+            is_valid = true;
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input);
+
+            delSel = valid.get_integer_input_variable_size( input,2);
+
+                if (delSel > 0 && delSel <= 2)                          /// her er if en ekki switch
+                {
+                    if (delSel == 1) {
+                        typeOfDelivery = "Home";
+                        return typeOfDelivery;
+                    } else {
+                        typeOfDelivery = "Pickup";
+                        return typeOfDelivery;
+                    }
+                }
+            } catch(InvalidMenuNumberException e)
+            {
+                cout << e.get_message();
+                is_valid = false;
             }
-        }
-    } catch (InvalidFileNotOpenException e) {
+        } while (!is_valid);
+    } catch (InvalidFileNotOpenException e)
+    {
         cout << e.get_message();
         do {
             cout << "Press enter to continue. \n";
@@ -404,21 +461,38 @@ string Order_UI::get_has_been_paid_for()  throw (InvalidFileNotOpenException) //
 
     string hasBeenPaidFor = "";
     int paidSel = -1;
+    bool is_valid = true;
+    string input;
     system("CLS");
     try {
         cout << "Is the user paying in advance or on pickup" << endl;
         cout << "\t[1] In Advance" << endl;
         cout << "\t[2] On Pickup" << endl;
-        paidSel = get_integer_input_variable_size(2);                                                  /// ath her (menu input??) - thetta er if en ekki switch
-        if (paidSel > 0 && paidSel <= 2) {
-            if (paidSel == 1) {
-                hasBeenPaidFor = "In Advance";
-                return hasBeenPaidFor;
-            } else {
-                hasBeenPaidFor = "On Pickup";
-                return hasBeenPaidFor;
+            do {
+        try {
+            is_valid = true;
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input);
+
+            paidSel = valid.get_integer_input_variable_size( input,2);
+
+                if (paidSel > 0 && paidSel<= 2)                          /// her er if en ekki switch
+                {
+                    if (paidSel == 1) {
+                        hasBeenPaidFor= "In advance";
+                        return hasBeenPaidFor;
+                    } else {
+                        hasBeenPaidFor= "On Pickup";
+                        return hasBeenPaidFor;
+                    }
+                }
+            } catch(InvalidMenuNumberException e)
+            {
+                cout << e.get_message();
+                is_valid = false;
             }
-        }
+        } while (!is_valid);
     } catch (InvalidFileNotOpenException e) {
         cout << e.get_message();
         do {
@@ -434,18 +508,32 @@ PizzaPlace Order_UI::get_order_location() throw (InvalidMenuNumberException,Inva
     vector <PizzaPlace> user_pizza_places = pizza_places.get_pizza_place();
     PizzaPlace user_place;
     unsigned int locSel;
+    bool is_valid = true;
+    string input;
     system("CLS");
     try {
         cout << "Select the location to pick up / Send from" << endl;
         for ( unsigned int i = 0; i < user_pizza_places.size(); i++ ) {
             cout << "\t[" << i+1 << "] " << user_pizza_places[i].get_street() << endl;
         }
-        locSel = get_integer_input_variable_size(user_pizza_places.size());
+           do {
+        try {
+            is_valid = true;
+            cout << "Select option: ";
+            cin.sync();
+            getline(cin,input);
+
+            locSel = valid.get_integer_input_variable_size( input,user_pizza_places.size());
 
         if (locSel > 0 && locSel <= user_pizza_places.size()) {                    ///liklega thetta size ??? kannski
             user_place = user_pizza_places[locSel - 1];
             return user_place;
-        }
+        }} catch(InvalidMenuNumberException e)
+            {
+                cout << e.get_message();
+                is_valid = false;
+            }
+        } while (!is_valid);
     } catch (InvalidFileNotOpenException e) {
         cout << e.get_message();
         do {

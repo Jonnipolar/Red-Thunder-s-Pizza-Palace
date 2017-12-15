@@ -3,3 +3,6 @@ hal|hawai;Stor;venjulegur;Skinka|No Product|15/12/2017 11:25|3000|Home|In Advanc
 afd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|15/12/2017 11:36|1730|Home|In Advance|Gnodavogur|Processing|dafafawe
 123|pepp;Stor;venjulegur;pepperoni,pepperoni|No Product|15/12/2017 11:41|3000|Home|In Advance|Gnodavogur|Processing|asfdafa
 kjar|meat n cheese;litil;venjulegur;pepperoni,Skinka|coca cola 2ltr|15/12/2017 12:28|1500|Home|In Advance|Gnodavogur|Processing|yeee
+123|No pizza;Stór;Klassíkur;No Topping|No Product|15/12/2017 14:22|1500|Home|In Advance|Gnodavogur|Processing|
+123|No pizza;Stór;Klassíkur;No Topping|No Product|15/12/2017 14:40|1500|Pickup|On Pickup|Hjardarhagi|Processing|
+123|No pizza;Stór;Klassíkur;No Topping|No Product|15/12/2017 14:48|1500|Home|In advance|Gnodavogur|Processing|
