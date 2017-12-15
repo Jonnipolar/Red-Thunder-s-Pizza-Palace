@@ -162,6 +162,7 @@ void BakeryUI::UI_add_to_done(vector <Order> by_street) {
     do{
         try{
             cin >> select;
+            cout << "Selection: ";
             check = valid.get_integer_input_variable_size(select, 2);
             if(check == 1) {
                     do{
