@@ -54,6 +54,7 @@
 		<Unit filename="include/Models/PizzaPlace.h" />
 		<Unit filename="include/Models/PizzaSize.h" />
 		<Unit filename="include/Models/Toppings.h" />
+		<Unit filename="include/Repository/LegacyRepo.h" />
 		<Unit filename="include/Repository/OrderRepository.h" />
 		<Unit filename="include/Repository/OtherProductsRepository.h" />
 		<Unit filename="include/Repository/PizzaBottomRepository.h" />
@@ -69,6 +70,7 @@
 		<Unit filename="include/Services/PizzaPlaceService.h" />
 		<Unit filename="include/Services/PizzaService.h" />
 		<Unit filename="include/Services/PizzaSizeService.h" />
+		<Unit filename="include/Services/ValidationService.h" />
 		<Unit filename="include/UI/BakeryUI.h" />
 		<Unit filename="include/UI/DeliveryUI.h" />
 		<Unit filename="include/UI/MainUI.h" />
@@ -87,6 +89,7 @@
 		<Unit filename="src/Models/PizzaPlace.cpp" />
 		<Unit filename="src/Models/PizzaSize.cpp" />
 		<Unit filename="src/Models/Toppings.cpp" />
+		<Unit filename="src/Repository/LegacyRepo.cpp" />
 		<Unit filename="src/Repository/OrderRepository.cpp" />
 		<Unit filename="src/Repository/OtherProductsRepository.cpp" />
 		<Unit filename="src/Repository/PizzaBottomRepository.cpp" />
@@ -102,6 +105,7 @@
 		<Unit filename="src/Services/PizzaPlaceService.cpp" />
 		<Unit filename="src/Services/PizzaService.cpp" />
 		<Unit filename="src/Services/PizzaSizeService.cpp" />
+		<Unit filename="src/Services/ValidationService.cpp" />
 		<Unit filename="src/UI/BakeryUI.cpp" />
 		<Unit filename="src/UI/DeliveryUI.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />

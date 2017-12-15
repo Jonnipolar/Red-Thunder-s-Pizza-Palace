@@ -8,6 +8,8 @@
 #include "InvalidMenuNumberException.h"
 #include <string>
 #include <sstream>
+#include <ValidationService.h>
+#include "LegacyService.h"
 using namespace std;
 
 class DeliveryUI
@@ -23,6 +25,8 @@ class DeliveryUI
     private:
         PizzaPlaceService pizza_service;
         OrderServices order_service;
+        LegacyService legacy_serv;
+        ValidationService valid;
 };
 
 #endif // DELIVERYUI_H

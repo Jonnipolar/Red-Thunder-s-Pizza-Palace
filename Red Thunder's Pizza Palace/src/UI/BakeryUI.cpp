@@ -121,7 +121,6 @@ void BakeryUI::UI_in_progress(string street) throw (InvalidFileNotOpenException,
     cout << "[2] Back to Main Menu" << endl;
     do {
         try {
-
             cin >> selection;
             switch (selection) {
                 case '1':

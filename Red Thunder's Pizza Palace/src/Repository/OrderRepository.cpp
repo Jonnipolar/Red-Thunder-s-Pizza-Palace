@@ -12,8 +12,6 @@ void OrderRepository::store_order(vector <Order> order, int sel)  throw (Invalid
         fout.open("OrdersProcessed.txt");
     }else if (sel == 3) {
         fout.open("OrdersDone.txt");
-    }else if (sel == 4) {
-        fout.open("OrderLegacy.txt");
     }
     if (fout.is_open()) {
         for(unsigned int i = 0; i < order.size(); i++) {
@@ -32,8 +30,6 @@ vector <Order> OrderRepository::get_order(int sel)  throw (InvalidFileNotOpenExc
         fin.open("OrdersProcessed.txt");
     }else if (sel == 3) {
         fin.open("OrdersDone.txt");
-    }else if (sel == 4) {
-        fin.open("OrderLegacy.txt");
     }
     string NameOfPerson;
     vector <Pizza> Pizzas;

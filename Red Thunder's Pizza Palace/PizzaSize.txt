@@ -8,3 +8,4 @@ oke:500
 sdfgdfg4:123
 123:4141
 villi:123
+mega stor:2000

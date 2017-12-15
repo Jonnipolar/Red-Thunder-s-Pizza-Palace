@@ -1,5 +1,4 @@
 IHAVEAPEN|Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 22:15|2730|Pickup|On Pickup|Hjardarhagi|In Progress|AAA
-IVAHEANAPPLE|Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 22:15|2730|Pickup|On Pickup|Hjardarhagi|In Progress|TTT
 fixxx|Custom Pizza;Stor;venjulegur;pepperoni,Skinka;Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|Coca Cola 2ltr|14/12/2017 20:41|5730|Home|In Advance|Gnodavogur|In Progress|ifxx
 sk|Custom Pizza;Stor;venjulegur;pepperoni,Skinka,Bacon|No Product|14/12/2017 20:44|1764|Home|In Advance|Gnodavogur|In Progress|qwe
 qwe|Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 21:15|2730|Home|In Advance|Gnodavogur|In Progress|qe
