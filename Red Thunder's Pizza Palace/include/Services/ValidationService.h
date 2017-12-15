@@ -22,6 +22,7 @@ class ValidationService
 {
     public:
         unsigned int get_integer_input_variable_size(string input_input, unsigned int size) throw (InvalidMenuNumberException);
+        unsigned int get_integer_input_variable_size_with_zero_excep(string input_input, unsigned int size) throw (InvalidMenuNumberException);
         unsigned int get_price(string price_input) throw (InvalidPriceException);
         string get_name(string name) throw (InvalidNameException);
     private:

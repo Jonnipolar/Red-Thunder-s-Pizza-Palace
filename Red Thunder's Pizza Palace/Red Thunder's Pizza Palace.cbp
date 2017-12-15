@@ -46,7 +46,6 @@
 		<Unit filename="include/Exceptions/InvalidMenuNumberException.h" />
 		<Unit filename="include/Exceptions/InvalidNameException.h" />
 		<Unit filename="include/Exceptions/InvalidPriceException.h" />
-		<Unit filename="include/Exceptions/InvalidStreetAddressException.h" />
 		<Unit filename="include/Models/Order.h" />
 		<Unit filename="include/Models/OtherProducts.h" />
 		<Unit filename="include/Models/Pizza.h" />
@@ -82,7 +81,6 @@
 		<Unit filename="src/Exceptions/InvalidMenuNumberException.cpp" />
 		<Unit filename="src/Exceptions/InvalidNameException.cpp" />
 		<Unit filename="src/Exceptions/InvalidPriceException.cpp" />
-		<Unit filename="src/Exceptions/InvalidStreetAddressException.cpp" />
 		<Unit filename="src/Models/Order.cpp" />
 		<Unit filename="src/Models/OtherProducts.cpp" />
 		<Unit filename="src/Models/Pizza.cpp" />

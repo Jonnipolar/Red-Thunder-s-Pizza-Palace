@@ -50,33 +50,33 @@ unsigned int BakeryUI::get_integer_input_variable_size(unsigned int size) throw 
     return input;
 }
 void BakeryUI::UI_sub(string street) throw (InvalidMenuNumberException) {
-    char selection;
+    string selection;
     bool is_valid = true;
     system("CLS");
     cout << "Welcome to " << street << endl;
     cout << "Please select option" << endl;
     cout << "[1] Orders in processing" << endl;
     cout << "[2] Orders in progress" << endl;
+    cout << "[3] Back to main menu" << endl;
     do {
         try {
             cin >> selection;
-            switch (selection) {
-            case '1':
+            unsigned int check = valid.get_integer_input_variable_size(selection, 3);
+            switch (check) {
+            case 1:
                 UI_processing(street);
                 break;
-            case '2':
+            case 2:
                 UI_in_progress(street);
                 break;
-            default :
+            case 3:
                 is_valid = false;
-                throw InvalidMenuNumberException();
                 break;
-    }
-        }
-        catch (InvalidMenuNumberException e) {
+            }
+        }catch (InvalidMenuNumberException e) {
             cout << e.get_message();
         }
-    } while(!is_valid);
+    } while(is_valid);
 }
 void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException) {
     char selection;

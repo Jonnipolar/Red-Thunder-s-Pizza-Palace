@@ -5,7 +5,7 @@ unsigned int ValidationService::get_integer_input_variable_size(string input_inp
     unsigned int input;
         stringstream push_input(input_input);
         push_input >> input;
-        if(input > size || input <0 || input_input.empty()) {
+        if(input > size || input <1 || input_input.empty()) {
             throw InvalidMenuNumberException();
         }
         for(unsigned int i = 0; i < input_input.length(); i++) {
@@ -39,4 +39,19 @@ string ValidationService::get_name(string name) throw (InvalidNameException)
                 throw InvalidNameException();
             }
     return name;
+}
+unsigned int ValidationService::get_integer_input_variable_size_with_zero_excep(string input_input, unsigned int size) throw (InvalidMenuNumberException)   //skilar int eftir s
+{
+    unsigned int input;
+        stringstream push_input(input_input);
+        push_input >> input;
+        if(input > size || input <0 || input_input.empty()) {
+            throw InvalidMenuNumberException();
+        }
+        for(unsigned int i = 0; i < input_input.length(); i++) {
+            if(!isdigit(input_input[i])) {      // because of this (see above)
+                throw InvalidMenuNumberException();
+            } else {};
+        }
+    return input;
 }
