@@ -24,7 +24,7 @@ class Order_UI
         Order_UI();
         ///Start The UI
         void UI_Start();
-        void UI_Add_Order() throw (InvalidFileNotOpenException);
+        void UI_Add_Order() throw (InvalidFileNotOpenException, InvalidMenuNumberException);
         Pizza add_custom_pizza();
         Pizza add_menu_pizza();
         Pizza UI_Add_Order_Pizza();
