@@ -15,6 +15,8 @@
 #include <sstream>
 #include "InvalidMenuNumberException.h"
 #include "InvalidFileNotOpenException.h"
+#include "InvalidNameException.h"
+#include "ValidationService.h"
 using namespace std;
 class Order_UI
 {
@@ -56,6 +58,7 @@ class Order_UI
         PizzaService pizza_service;
         OrderServices order_service;
         OtherProductsService other_prod_service;
+        ValidationService valid;
 };
 
 #endif // ORDER_UI_H
