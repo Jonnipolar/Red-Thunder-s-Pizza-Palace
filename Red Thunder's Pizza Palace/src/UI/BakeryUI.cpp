@@ -161,7 +161,9 @@ void BakeryUI::UI_add_to_done(vector <Order> by_street) {
     cout << "[2] Back" << endl;
     do{
         try{
+            cout << "Selection: ";
             cin >> select;
+
             check = valid.get_integer_input_variable_size(select, 2);
             if(check == 1) {
                     do{
@@ -218,6 +220,7 @@ void BakeryUI::UI_add_to_progress(vector <Order> by_street) {
         cout << "[2] Back" << endl;
     do{
         try{
+            cout << "Selection: ";
             cin >> select;
             check = valid.get_integer_input_variable_size(select, 2);
             if(check == 1) {
@@ -272,6 +275,7 @@ void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
     cout << "[2] Back to Main Menu" << endl;
     do{
         try {
+            cout << "Selection: ";
             cin >> select;
             done = valid.get_integer_input_variable_size(select, 2);
 
@@ -315,6 +319,7 @@ void BakeryUI::UI_change_to_done(Order& order, int sel) {
     cout << "[2] Back to Main Menu" << endl;
     do{
         try {
+            cout << "Selection: ";
             cin >> select;
             done = valid.get_integer_input_variable_size(select, 2);
 

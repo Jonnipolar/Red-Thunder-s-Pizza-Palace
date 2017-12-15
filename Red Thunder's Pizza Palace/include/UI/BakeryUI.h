@@ -14,6 +14,7 @@ using namespace std;
 class BakeryUI
 {
     public:
+        ///Start the UI
         void StartUI();
         void UI_sub(string street) throw (InvalidMenuNumberException);
         void UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);

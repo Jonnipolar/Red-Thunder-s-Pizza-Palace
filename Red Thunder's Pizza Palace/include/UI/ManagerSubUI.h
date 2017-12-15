@@ -43,7 +43,7 @@ public:
         ///Make new products
     void UI_make_other_items();
     ~ManagerSubUI();
-        ///list of pizza menu
+    ///Print the pizza menu list
     void Print_pizza_menu() throw (InvalidFileNotOpenException);
     void get_legacy_list();
 
