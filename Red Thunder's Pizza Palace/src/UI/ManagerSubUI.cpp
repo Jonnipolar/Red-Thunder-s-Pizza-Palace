@@ -17,6 +17,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
         cout << "[5] Add pizza place" << endl;                                               // ------""-------------
         cout << "[6] Back to login screen" << endl;                                             // ------""-------------
         do {
+            try {
                 is_valid = true;
                 cout << "Select option: ";
                 cin >> selection;
@@ -46,9 +47,14 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                 default:
                     is_valid = false;
                     throw InvalidMenuNumberException();
-                    break;
                 }
-
+            } catch (InvalidMenuNumberException e) {
+                cout << e.get_message();
+                do {
+                    cout << "\nPress enter to continue. \n";
+                    cin.sync();
+                } while(cin.get() != '\n');
+            };
         } while(!is_valid);
     }
 }
