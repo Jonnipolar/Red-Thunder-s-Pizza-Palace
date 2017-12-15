@@ -7,6 +7,7 @@
 #include "PizzaPlaceService.h"
 #include "InvalidMenuNumberException.h"
 #include "InvalidFileNotOpenException.h"
+#include "ValidationService.h"
 #include <string>
 #include <sstream>
 using namespace std;
@@ -25,6 +26,7 @@ class BakeryUI
     private:
         PizzaPlaceService pizza_service;
         OrderServices order_service;
+        ValidationService valid;
 };
 
 #endif // BAKERYUI_H
