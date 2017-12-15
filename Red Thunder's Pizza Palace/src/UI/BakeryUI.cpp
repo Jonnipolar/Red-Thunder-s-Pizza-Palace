@@ -35,7 +35,7 @@ void BakeryUI::UI_sub(string street) throw (InvalidMenuNumberException) {
         system("CLS");
         cout << "Welcome to " << street << endl;
         cout << "Please select option" << endl;
-        cout << "[1] Orders in processing" << endl;
+        cout << "[1] Orders not started" << endl;
         cout << "[2] Orders in progress" << endl;
         cout << "[3] Back to main menu" << endl;
         try {
@@ -71,7 +71,7 @@ void BakeryUI::UI_processing(string street) throw (InvalidFileNotOpenException, 
         system("CLS");
         cout << "Welcome to " << street << endl;
         cout << "Please select option" << endl;
-        cout << "[1] list of orders in processing" << endl;
+        cout << "[1] list of orders not started" << endl;
         cout << "[2] Back to Main Menu" << endl;
         try {
             cin >> selection;
@@ -270,7 +270,6 @@ void BakeryUI::UI_change_to_in_progress(Order& order, int sel) {
     }
     cout << "[1] Done?" << endl;
     cout << "[2] Back to Main Menu" << endl;
-    ///setja inn rett check
     do{
         try {
             cin >> select;

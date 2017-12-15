@@ -8,3 +8,4 @@ hal|hawai;Stor;venjulegur;Skinka|No Product|15/12/2017 11:25|3000|Home|In Advanc
 afd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|15/12/2017 11:36|1730|Home|In Advance|Gnodavogur|In Progress|dafafawe
 123|pepp;Stor;venjulegur;pepperoni,pepperoni|No Product|15/12/2017 11:41|3000|Home|In Advance|Gnodavogur|In Progress|asfdafa
 IHAVEAPEN|Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 22:15|2730|Pickup|On Pickup|Hjardarhagi|In Progress|AAA
+hal|hawai;Stor;venjulegur;Skinka|No Product|15/12/2017 11:25|3000|Home|In Advance|Gnodavogur|In Progress|asdf
