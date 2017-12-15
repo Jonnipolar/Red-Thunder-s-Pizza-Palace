@@ -119,8 +119,6 @@ void OrderServices::change_inPro_to_Done(int select, string street){
     vector <Order> done_order = get_done_orders_by_street(street);
     vector <Order> done_other_order = get_done_orders_by_not_street(street);
     prog_order[select-1].set_orderStatus("Done");
-    cout << select << endl;
-    cout << prog_order.size() << endl;
     Order new_order = prog_order[select - 1];
     prog_order.erase(prog_order.begin() + select - 1);
     for ( unsigned int i = 0; i < prog_other_order.size(); i++ ) {

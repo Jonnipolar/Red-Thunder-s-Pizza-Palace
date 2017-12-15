@@ -44,7 +44,7 @@ void DeliveryUI::UI_sub(string street) {
         cout << "[2] List of all done orders" << endl;
         cout << "[3] Return to main menu" << endl;
         try {
-
+            is_valid = true;
             cin >> selection;
             check = valid.get_integer_input_variable_size(selection, 3);
             switch (check) {

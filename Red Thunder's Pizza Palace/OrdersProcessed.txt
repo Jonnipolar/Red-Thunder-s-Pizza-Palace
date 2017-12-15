@@ -3,4 +3,8 @@ sk|Custom Pizza;Stor;venjulegur;pepperoni,Skinka,Bacon|No Product|14/12/2017 20:
 qwe|Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 21:15|2730|Home|In Advance|Gnodavogur|In Progress|qe
 2|Meat n Cheese;Stor;venjulegur;pepperoni,Skinka,Piparostur|No Product|14/12/2017 21:29|4000|Pickup|In Advance|Gnodavogur|In Progress|456
 2|Custom Pizza;Stor;venjulegur;pepperoni,Skinka;PS2;Stor;Pan;sveppur,pepperoni|No Product|14/12/2017 21:30|6230|Pickup|In Advance|Gnodavogur|In Progress|123
+vv|Custom Pizza;Stor;venjulegur;pepperoni,Skinka,Bacon|No Product|15/12/2017 11:28|1764|Home|Paid|Gnodavogur|In Progress|ds
+hal|hawai;Stor;venjulegur;Skinka|No Product|15/12/2017 11:25|3000|Home|In Advance|Gnodavogur|In Progress|asdf
+afd|Custom Pizza;Stor;venjulegur;pepperoni,Skinka|No Product|15/12/2017 11:36|1730|Home|In Advance|Gnodavogur|In Progress|dafafawe
+123|pepp;Stor;venjulegur;pepperoni,pepperoni|No Product|15/12/2017 11:41|3000|Home|In Advance|Gnodavogur|In Progress|asfdafa
 IHAVEAPEN|Custom Pizza;Stor;Pan;pepperoni,Skinka|No Product|14/12/2017 22:15|2730|Pickup|On Pickup|Hjardarhagi|In Progress|AAA

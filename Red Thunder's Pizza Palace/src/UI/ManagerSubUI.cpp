@@ -17,7 +17,6 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
         cout << "[5] Add pizza place" << endl;                                               // ------""-------------
         cout << "[6] Back to login screen" << endl;                                             // ------""-------------
         do {
-            try {
                 is_valid = true;
                 cout << "Select option: ";
                 cin >> selection;
@@ -46,15 +45,9 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                     break;
                 default:
                     is_valid = false;
-                    throw InvalidMenuNumberException();
+                    break;
                 }
-            } catch (InvalidMenuNumberException e) {
-                cout << e.get_message();
-                do {
-                    cout << "\nPress enter to continue. \n";
-                    cin.sync();
-                } while(cin.get() != '\n');
-            };
+
         } while(!is_valid);
     }
 }
@@ -68,7 +61,16 @@ void ManagerSubUI::Print_pizza_menu() throw (InvalidFileNotOpenException)
             is_valid = true;
             pizza = pizza_service.get_pizzas();
             for (unsigned int i = 0; i < pizza.size(); i++) {
-                cout << pizza[i];
+                cout << pizza[i].get_name() << ":" << pizza[i].get_price() << ":";
+                vector <Toppings> toppings = pizza[i].get_toppings();
+                for (unsigned int k = 0; k < toppings.size(); k++ ) {
+                    Toppings topping = toppings[k];
+                    if (k != toppings.size() - 1) {
+                        cout << topping.get_name() << ",";
+                    } else {
+                        cout << topping.get_name() << endl;
+                    }
+                }
             }
         } catch(InvalidFileNotOpenException e) {
             is_valid = false;
@@ -204,7 +206,8 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
                     cout << "Select option: ";
                     cin.sync();
                     getline(cin,input_input);
-                    ToppSel = valid.get_integer_input_variable_size_with_zero_excep(input_input, ToppingAmount);
+                    ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
+                    if(ToppSel == 0){break;}
                     if (ToppSel > 0 && ToppSel <= ToppingAmount) {
                         userToppings.push_back(toppings[ToppSel-1]);
                     }
