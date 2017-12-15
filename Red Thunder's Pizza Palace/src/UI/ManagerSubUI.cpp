@@ -45,6 +45,8 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                     break;
                 default:
                     is_valid = false;
+                    throw InvalidMenuNumberException();
+                    break;
                 }
 
         } while(!is_valid);

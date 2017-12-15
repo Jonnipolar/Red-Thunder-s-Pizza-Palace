@@ -1,4 +1,7 @@
-hawai:1500:Skinka
-ps2:1500:pepperoni
-pepp:1500:pepperoni,pepperoni,pepperoni
-sadf:12:pepperoni,Bacon
+meat n cheese:1000:pepperoni,Skinka
+ps2:500:hawaiian
+margarita:0:cheese master
+onion master:1000:Onion,Onion,Onion,Onion
+cheese master:1000:Ostur,Gradostur,Piparostur,Rjomaostur
+pepp supreme:700:pepperoni,pepperoni,pepperoni
+cheese n meat:1000:Ostur,Gradostur,Piparostur,pepperoni
