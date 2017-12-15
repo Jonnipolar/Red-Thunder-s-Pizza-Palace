@@ -24,32 +24,42 @@ class Order_UI
         Order_UI();
         ///Start The UI
         void UI_Start();
+        /// create order UI
         void UI_Add_Order() throw (InvalidFileNotOpenException);
+        /// add custom pizza to order
         Pizza add_custom_pizza();
+        /// add pre made pizza to order
         Pizza add_menu_pizza();
+        /// Sub UI to Add_Order to select pizzas
         Pizza UI_Add_Order_Pizza();
         ///Sub UI to UImake_pizza to add topping to pizza
         vector <Toppings> SubUI_add_topping();
+        ///sub ui for custom and menu pizzas to select bottom type
         PizzaBottom UI_Get_Bottom();
+        ///sub ui for custom and menu pizzas to select size
         PizzaSize UI_Get_Size();
+        ///get total price for toppings per pizza
         int get_price_of_toppings(vector <Toppings> toppings);
+        /// get pizzas from menu to select
         Pizza get_pizza_menus();
+        /// add other products to order
         OtherProducts add_other_product();
+        /// get total price for order
         int get_price_of_pizzas(vector <Pizza> pizzas);
+        /// get time order is made
         string get_time();
+        /// set type of delivery
         string get_type_of_delivery() throw (InvalidFileNotOpenException);
+        /// set paid status
         string get_has_been_paid_for() throw (InvalidFileNotOpenException);
+        /// set location for order
         PizzaPlace get_order_location()throw (InvalidMenuNumberException, InvalidFileNotOpenException);
+        /// set comment
         string get_comment();
         ~Order_UI();
-
+        /// 2 validation that should have been in service
         unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
         unsigned int get_integer_input_variable_size_with_zeroescape(unsigned int size) throw (InvalidMenuNumberException); /// nota thar sem null er escape char
-        ///skilar integer eftir staerd vectors setur inn (vector.size())
-//        int get_integer_input2() throw (InvalidMenuNumberException);
-//        int get_integer_input3() throw (InvalidMenuNumberException);
-//        int get_integer_input4() throw (InvalidMenuNumberException);
-
     private:
         MakeToppingsList toppings_list;
         PizzaSizeService pizza_size;
