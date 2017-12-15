@@ -42,7 +42,7 @@ vector <Pizza> PizzaRepository::get_pizza () throw (InvalidFileNotOpenException)
                 }else{
                     parse += toppings[i];
                 }
-                if(i == (topping.size()-1)){
+                if(i == (toppings.size()-1)){
                     Toppings _topping(parse,0,0);
                     topping.push_back(_topping);
                     parse = "";
