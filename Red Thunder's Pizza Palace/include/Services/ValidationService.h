@@ -21,9 +21,13 @@
 class ValidationService
 {
     public:
+        ///validate menu number pick
         unsigned int get_integer_input_variable_size(string input_input, unsigned int size) throw (InvalidMenuNumberException);
+        ///validate menu number pick with 0 escape
         unsigned int get_integer_input_variable_size_with_zero_excep(string input_input, unsigned int size) throw (InvalidMenuNumberException);
+        ///validate price
         unsigned int get_price(string price_input) throw (InvalidPriceException);
+        ///validate name/street
         string get_name(string name) throw (InvalidNameException);
     private:
 };

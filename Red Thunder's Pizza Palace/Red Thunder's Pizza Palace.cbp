@@ -61,7 +61,6 @@
 		<Unit filename="include/Repository/PizzaRepository.h" />
 		<Unit filename="include/Repository/PizzaSizeRepository.h" />
 		<Unit filename="include/Repository/ToppingsRepository.h" />
-		<Unit filename="include/Services/BakeryService.h" />
 		<Unit filename="include/Services/LegacyService.h" />
 		<Unit filename="include/Services/MakePizzaBottomList.h" />
 		<Unit filename="include/Services/MakeToppingsList.h" />
@@ -96,7 +95,6 @@
 		<Unit filename="src/Repository/PizzaRepository.cpp" />
 		<Unit filename="src/Repository/PizzaSizeRepository.cpp" />
 		<Unit filename="src/Repository/ToppingsRepository.cpp" />
-		<Unit filename="src/Services/BakeryService.cpp" />
 		<Unit filename="src/Services/LegacyService.cpp" />
 		<Unit filename="src/Services/MakePizzaBottomList.cpp" />
 		<Unit filename="src/Services/MakeToppingsList.cpp" />

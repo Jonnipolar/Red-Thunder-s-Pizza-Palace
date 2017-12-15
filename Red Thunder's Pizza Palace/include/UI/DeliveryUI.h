@@ -17,10 +17,13 @@ class DeliveryUI
     public:
         DeliveryUI();
         virtual ~DeliveryUI();
+        /// Start UI
         void StartUI();
-        unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
+        /// sub UI for start
         void UI_sub(string street);
+        /// work with all order list
         void list_all_orders(string street);
+        /// work with done order list
         void list_done_orders(string street);
     private:
         PizzaPlaceService pizza_service;
