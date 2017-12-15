@@ -8,11 +8,13 @@ class InvalidPriceException
     public:
         InvalidPriceException();
         string get_message();
+        string get_messagenumber();
 
     protected:
 
     private:
         string _message;
+        string _messagenumber;
 };
 
 #endif // INVALIDPRICEEXCEPTION_H
