@@ -14,11 +14,13 @@ using namespace std;
 class BakeryUI
 {
     public:
-        ///Start the UI
+        ///Start the UI select while
         void StartUI();
-        ///Go to Sub UI
+        ///UI sub for start ui
         void UI_sub(string street) throw (InvalidMenuNumberException);
+        /// ui sub sub for processing orders
         void UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);
+        /// ui  sub sub for in progress orders
         void UI_in_progress(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);
         void UI_add_to_progress(vector <Order> by_street);
         void UI_add_to_done(vector <Order> by_street);

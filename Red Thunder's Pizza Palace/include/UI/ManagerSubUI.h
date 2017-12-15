@@ -45,6 +45,7 @@ public:
     ~ManagerSubUI();
     ///Print the pizza menu list
     void Print_pizza_menu() throw (InvalidFileNotOpenException);
+    /// prins legacy list
     void get_legacy_list();
 
 private:
