@@ -16,7 +16,6 @@
 #include "InvalidMenuNumberException.h"
 #include "InvalidNameException.h"
 #include "InvalidPriceException.h"
-#include "InvalidStreetAddressException.h"
 #include "InvalidFileNotOpenException.h"
 #include "ValidationService.h"
 using namespace std;
@@ -37,7 +36,7 @@ public:
         ///make new pizza bottom types
     void UI_make_bottom();
         ///Make new pizza places
-    void UI_make_pizza_place() throw (InvalidStreetAddressException);
+    void UI_make_pizza_place();
         ///Make new pizza for menu
     void UI_select_make_pizza()throw (InvalidMenuNumberException);
         ///Make new products

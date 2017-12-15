@@ -10,6 +10,7 @@ void BakeryUI::StartUI() {
         cout << "\t[" << i+1 << "] " << pizza_places[i].get_street() << endl;
     }
     cout << "\n";
+
     unsigned int placeSel = get_integer_input_variable_size(pizza_places.size());
     if (placeSel > 0 && placeSel <= pizza_places.size()) {
         string street = pizza_places[placeSel - 1].get_street();

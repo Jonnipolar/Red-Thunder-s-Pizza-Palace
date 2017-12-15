@@ -16,7 +16,6 @@
 #include "InvalidMenuNumberException.h"
 #include "InvalidNameException.h"
 #include "InvalidPriceException.h"
-#include "InvalidStreetAddressException.h"
 #include "InvalidFileNotOpenException.h"
 
 class ValidationService
