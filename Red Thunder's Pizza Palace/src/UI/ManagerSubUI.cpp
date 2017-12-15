@@ -210,7 +210,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
                     cout << "Select option: ";
                     cin.sync();
                     getline(cin,input_input);
-                    ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
+                    ToppSel = valid.get_integer_input_variable_size_with_zero_excep(input_input, ToppingAmount);
                     if(ToppSel == 0){break;}
                     if (ToppSel > 0 && ToppSel <= ToppingAmount) {
                         userToppings.push_back(toppings[ToppSel-1]);
