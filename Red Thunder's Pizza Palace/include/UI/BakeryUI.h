@@ -16,6 +16,7 @@ class BakeryUI
     public:
         ///Start the UI
         void StartUI();
+        ///Go to Sub UI
         void UI_sub(string street) throw (InvalidMenuNumberException);
         void UI_processing(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);
         void UI_in_progress(string street) throw (InvalidFileNotOpenException, InvalidMenuNumberException);
