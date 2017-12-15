@@ -18,6 +18,7 @@
 #include "InvalidPriceException.h"
 #include "InvalidFileNotOpenException.h"
 #include "ValidationService.h"
+#include "LegacyService.h"
 using namespace std;
 
 class ManagerSubUI
@@ -44,6 +45,7 @@ public:
     ~ManagerSubUI();
     ///Print the pizza menu list
     void Print_pizza_menu() throw (InvalidFileNotOpenException);
+    void get_legacy_list();
 
 private:
     MakeToppingsList toppings_list;
@@ -53,6 +55,7 @@ private:
     PizzaService pizza_service;
     OtherProductsService serv;
     ValidationService valid;
+    LegacyService leg_serv;
 };
 
 #endif // MANAGER_SUB_UI_H

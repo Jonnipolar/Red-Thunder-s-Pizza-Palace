@@ -6,7 +6,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
     string selection;                                                                          // Declare selection char
     bool is_valid = true;
     unsigned int check;
-    while (check != 6) {                                                               // While user does not want to quit
+    while (check != 7) {                                                               // While user does not want to quit
         system("CLS");
         cout << "Hello Mr. Manager" << endl;                                                 // Welcome message
         cout << "What would you like to do:" << endl;                                        // -||-
@@ -15,12 +15,13 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
         cout << "[3] View pizza menu" << endl;                                               // ------""-------------
         cout << "[4] Add other items" << endl;                                               // ------""-------------
         cout << "[5] Add pizza place" << endl;                                               // ------""-------------
-        cout << "[6] Back to login screen" << endl;                                             // ------""-------------
+        cout << "[6] List of all orders checked out" << endl;                                             // ------""-------------
+        cout << "[7] Back to login screen" << endl;
         do {
                 is_valid = true;
                 cout << "Select option: ";
                 cin >> selection;
-                check = valid.get_integer_input_variable_size(selection, 6);
+                check = valid.get_integer_input_variable_size(selection, 7);
                 switch (check) {
                 case 1:                                                                    // if user picks p create pizza
                     UI_select_make_pizza();
@@ -42,6 +43,9 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                     UI_make_pizza_place();
                     break;
                 case 6:
+                    get_legacy_list();
+                    break;
+                case 7:
                     break;
                 default:
                     is_valid = false;
@@ -467,7 +471,23 @@ void ManagerSubUI::UI_make_other_items()
         } while(cin.get() != '\n');
     }
 }
-
+void ManagerSubUI::get_legacy_list() {
+    vector <Order> order;
+    system("CLS");
+        try {
+            cout << "List of all checked out orders";
+            order = leg_serv.get_order();
+            for (unsigned int i = 0; i < order.size(); i++) {
+               cout << order[i];
+            }
+        } catch(InvalidFileNotOpenException e) {
+            cout << e.get_message();
+        }
+        do {
+            cout << "\nPress enter to continue. \n";
+            cin.sync();
+        } while(cin.get() != '\n');
+}
 ManagerSubUI::~ManagerSubUI()
 {
     //dtor
