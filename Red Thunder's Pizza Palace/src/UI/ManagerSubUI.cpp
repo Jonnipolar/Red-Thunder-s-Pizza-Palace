@@ -32,7 +32,7 @@ void ManagerSubUI::UI_Start() throw (InvalidMenuNumberException, InvalidFileNotO
                 case 3:
                     Print_pizza_menu();
                     do {
-                        cout << "Press enter to continue. \n";
+                        cout << "\nPress enter to continue. \n";
                         cin.sync();
                     } while(cin.get() != '\n');
                     break;
@@ -151,7 +151,7 @@ void ManagerSubUI::UImake_pizza()
     } catch(InvalidFileNotOpenException e) {
         cout << e.get_message();
         do {
-            cout << "Press enter to continue. \n";
+            cout << "\nPress enter to continue. \n";
             cin.sync();
         } while(cin.get() != '\n');
     }
@@ -205,7 +205,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
         }
     }
     do {
-        cout << "Press enter to continue. \n";
+        cout << "\nPress enter to continue. \n";
         cin.sync();
     } while(cin.get() != '\n');
     return userToppings;
@@ -302,7 +302,7 @@ void ManagerSubUI::UI_make_size()
     }catch(InvalidFileNotOpenException e){
         cout << e.get_message();
         do {
-            cout << "Press enter to continue. \n";
+            cout << "\nPress enter to continue. \n";
             cin.sync();
         } while(cin.get() != '\n');
     }
@@ -347,7 +347,7 @@ void ManagerSubUI::UI_make_bottom()
     }catch(InvalidFileNotOpenException e){
         cout << e.get_message();
         do {
-            cout << "Press enter to continue. \n";
+            cout << "\nPress enter to continue. \n";
             cin.sync();
         } while(cin.get() != '\n');
     }
@@ -408,7 +408,7 @@ void ManagerSubUI::UI_make_pizza_place() throw (InvalidStreetAddressException)
     pizza_places.save_pizza_place(street, number);}catch(InvalidFileNotOpenException e){
         cout << e.get_message();
         do {
-            cout << "Press enter to continue. \n";
+            cout << "\nPress enter to continue. \n";
             cin.sync();
         } while(cin.get() != '\n');
     }
@@ -461,7 +461,7 @@ void ManagerSubUI::UI_make_other_items()
     }catch(InvalidFileNotOpenException e){
         cout << e.get_message();
         do {
-            cout << "Press enter to continue. \n";
+            cout << "\nPress enter to continue. \n";
             cin.sync();
         } while(cin.get() != '\n');
     }
