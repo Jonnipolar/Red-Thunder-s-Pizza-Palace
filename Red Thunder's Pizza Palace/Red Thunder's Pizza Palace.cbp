@@ -5,6 +5,7 @@
 		<Option title="Red Thunder&apos;s Pizza Palace" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="include\Exceptions\;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Red Thunder&apos;s Pizza Palace" prefix_auto="1" extension_auto="1" />
@@ -112,7 +113,9 @@
 		<Unit filename="src/UI/DeliveryUI.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />
 		<Unit filename="src/UI/ManagerSubUI.cpp" />
-		<Unit filename="src/UI/OrderUI.cpp" />
+		<Unit filename="src/UI/OrderUI.cpp">
+			<Option virtualFolder="include/Exceptions/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

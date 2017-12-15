@@ -58,18 +58,28 @@ void ManagerSubUI::Print_pizza_menu() throw (InvalidFileNotOpenException)
 {
     vector <Pizza> pizza;
     bool is_valid = true;
-    try {
-        do {
+    do{
+        try {
             is_valid = true;
             pizza = pizza_service.get_pizzas();
             for (unsigned int i = 0; i < pizza.size(); i++) {
-                cout << pizza[i];
-            };
-        } while (!is_valid);
-    } catch(InvalidFileNotOpenException e) {
-        is_valid = false;
-        cout << e.get_message();
-    }
+                cout << pizza[i].get_name() << ":" << pizza[i].get_price() << ":";
+                vector <Toppings> toppings = pizza[i].get_toppings();
+                for (unsigned int k = 0; k < toppings.size(); k++ ) {
+                    Toppings topping = toppings[k];
+                    if (k != toppings.size() - 1) {
+                        cout << topping.get_name() << ",";
+                    }
+                    else {
+                        cout << topping.get_name() << endl;
+                    }
+                }
+            }
+        } catch(InvalidFileNotOpenException e) {
+            is_valid = false;
+            cout << e.get_message();
+        }
+    }while(!is_valid);
 }
 
 void ManagerSubUI::UI_select_make_pizza() throw (InvalidMenuNumberException)
@@ -121,6 +131,7 @@ void ManagerSubUI::UImake_pizza()
     try {
         cout << "Please type in new pizza name" << endl;
         do{
+            is_valid = true;
             cout << "Name: ";
             cin.sync();
             getline(cin, name);
@@ -128,6 +139,7 @@ void ManagerSubUI::UImake_pizza()
                 name = valid.get_name(name);
             }catch(InvalidNameException e) {
                 cout << e.get_message();
+                is_valid = false;
             }
         }while(!is_valid);
         vector <Toppings> userToppings = SubUI_add_topping();
@@ -197,6 +209,7 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
                     cout << "Select option: ";
                     cin.sync();
                     getline(cin,input_input);
+                    cout << ToppingAmount;
                     ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
                     if (ToppSel > 0 && ToppSel <= ToppingAmount) {
                         userToppings.push_back(toppings[ToppSel-1]);
