@@ -1,6 +1,4 @@
-Meat n Cheese:2500:pepperoni,Skinka
-PS2:2000:sveppur
-Pepp:2000:pepperoni,pepperoni
-pepp:1000:PS2:2000:sveppur,pepperoni
-Pepp:2000:pepperoni,pepperoni,pepperoni
-asdf:1500:bahamas:500:Skinka,Ananas
+Meat n Cheese:2500:pepperoni
+PS2:2000:Pepp:2000:pepperoni
+pepp:1000:Pepp:2000:pepperoni,pepperoni
+asdf:1500:afaf:500:Skinka

@@ -136,6 +136,7 @@ void ManagerSubUI::UImake_pizza()
             cout << "\t[" << i+1 << "] " << "Name of Topping: " << userToppings[i].get_name() << endl;
         }
         do{
+            is_valid = true;
             cout << "\nSelect the price for the pizza" << endl;
             cout << "Price: ";
             cin.sync();                                                                      /// setja inn throw a illegal number
@@ -158,6 +159,7 @@ void ManagerSubUI::UImake_pizza()
 }
 vector <Toppings> ManagerSubUI::SubUI_add_topping()
 {
+    bool is_valid = true;
     string input_input;
     vector <Toppings> cheeseTopp = toppings_list.get_selected_list(3);
     vector <Toppings> meatTopp = toppings_list.get_selected_list(1);
@@ -189,17 +191,21 @@ vector <Toppings> ManagerSubUI::SubUI_add_topping()
                 cntr++;
             }
             cout << "Please enter number for topping to add (0 for no more)" << endl;
-            cout << "Select option: ";
-            cin.sync();
-            getline(cin,input_input);
-            try {
-                ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
-            }catch(InvalidMenuNumberException e) {
-                cout << e.get_message();
-            }
-            if (ToppSel > 0 && ToppSel <= ToppingAmount) {
-                userToppings.push_back(toppings[ToppSel-1]);
-            }
+            do{
+                try {
+                    is_valid = true;
+                    cout << "Select option: ";
+                    cin.sync();
+                    getline(cin,input_input);
+                    ToppSel = valid.get_integer_input_variable_size(input_input, ToppingAmount);
+                    if (ToppSel > 0 && ToppSel <= ToppingAmount) {
+                        userToppings.push_back(toppings[ToppSel-1]);
+                    }
+                }catch(InvalidMenuNumberException e) {
+                    cout << e.get_message();
+                    is_valid = false;
+                }
+            }while (!is_valid);
         }catch(InvalidFileNotOpenException e) {
             cout << e.get_message();
         }
