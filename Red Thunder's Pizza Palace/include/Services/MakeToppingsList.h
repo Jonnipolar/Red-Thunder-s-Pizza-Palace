@@ -12,10 +12,9 @@ class MakeToppingsList
     public:
         /// sends information to toppings repository
         void save_topping_list(string name, int price, int type);
+        ///Get Complete list of toppings
         vector <Toppings> get_topping_list();
-        vector <Toppings> get_cheese_list();
-        vector <Toppings> get_vegetable_list();
-        vector <Toppings> get_meat_list();
+        ///Get a list of toppings specified by type
         vector <Toppings> get_selected_list(int sel);
     private:
         ToppingsRepository repo;

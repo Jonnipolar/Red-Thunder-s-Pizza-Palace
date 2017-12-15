@@ -42,8 +42,7 @@ public:
         ///Make new products
     void UI_make_other_items();
     ~ManagerSubUI();
-    unsigned int get_integer_input_variable_size(unsigned int size) throw (InvalidMenuNumberException);
-    string get_name() throw (InvalidNameException);
+    ///Print the pizza menu list
     void Print_pizza_menu() throw (InvalidFileNotOpenException);
 
 private:
